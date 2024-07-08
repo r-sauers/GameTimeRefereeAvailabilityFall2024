@@ -1,0 +1,54 @@
+Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+222-HSG24,8/22/2024,3:30 PM,Hastings High School,Girls,C-Squad,Hastings,Eastview,MEC
+223-HSG24,8/22/2024,5:00 PM,Hastings High School,Girls,JV,Hastings,Eastview,MEC
+101-HSB24,8/22/2024,5:00 PM,Park High School,Boys,Varsity,Park,Bloomington Jefferson,SEC
+102-HSB24,8/22/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Spring Lake Park,SEC
+100-HSG24,8/22/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Hill-Murray,SEC
+103-HSG24,8/22/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Eastview,MEC
+100-HSB24,8/22/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Chisago Lakes,MEC
+101-HSG24,8/22/2024,7:00 PM,Park High School,Girls,Varsity,Park,Bloomington Jefferson,SEC
+102-HSG24,8/22/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Spring Lake Park,SEC
+103-HSB24,8/23/2024,10:00 AM,Forest Lake High School,Boys,Varsity,Forest Lake,Blaine,SEC
+104-HSB24,8/23/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Duluth East,SEC
+238-HSB24,8/23/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Duluth Denfeld,MEC
+224-HSG24,8/24/2024,9:00 AM,Hastings High School,Girls,C-Squad,Hastings,Bloomington Jefferson,MEC
+225-HSB24,8/24/2024,9:00 AM,Hastings High School,Boys,C-Squad,Hastings,Bloomington Jefferson,MEC
+109-HSB24,8/24/2024,11:00 AM,East Ridge High School,Boys,Varsity,East Ridge,Rosemount,SEC
+225-HSG24,8/24/2024,11:00 AM,Hastings High School,Girls,JV,Hastings,Bloomington Jefferson,MEC
+226-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,JV,Hastings,Bloomington Jefferson,MEC
+105-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSB24,8/24/2024,11:00 AM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Duluth Denfeld,MEC
+107-HSG24,8/24/2024,11:00 AM,North St Paul High School,Girls,Varsity,North St Paul,Fridley,MEC
+104-HSG24,8/24/2024,1:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Rosemount,SEC
+105-HSG24,8/24/2024,1:00 PM,Hastings High School,Girls,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSG24,8/24/2024,1:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Totino-Grace,MEC
+107-HSB24,8/24/2024,1:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Minneapolis Edison,MEC
+108-HSB24,8/24/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Champlin Park,SEC
+110-HSB24,8/24/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,St Thomas Academy,SEC
+109-HSG24,8/26/2024,2:00 PM,Roseville High School,Girls,Varsity,Roseville,Duluth Denfeld,SEC
+108-HSG24,8/26/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Eastview,SEC
+110-HSG24,8/26/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Byron,MEC
+213-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Rochester John Marshall,MEC
+242-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Rochester John Marshall,MEC
+226-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,JV,Hastings,Shakopee,MEC
+227-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,C-Squad,Hastings,Shakopee,MEC
+224-HSB24,8/27/2024,3:00 PM,Hastings High School,Boys,C-Squad,Hastings,Irondale,MEC
+223-HSB24,8/27/2024,5:00 PM,Hastings High School,Boys,JV,Hastings,Irondale,MEC
+113-HSG24,8/27/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,Shakopee,MEC
+113-HSB24,8/27/2024,5:00 PM,Park High School,Boys,Varsity,Park,Burnsville,SEC
+111-HSB24,8/27/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Jordan,MEC
+242-HSB24,8/27/2024,5:00 PM,Two Rivers High School,Boys,JV,Two Rivers,St Paul Central,MEC
+221-HSG24,8/27/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,Irondale,MEC
+111-HSG24,8/27/2024,7:00 PM,Irondale High School,Girls,Varsity,Irondale,Cambridge-Isanti,SEC
+112-HSG24,8/27/2024,7:00 PM,Park High School,Girls,Varsity,Park,Burnsville,SEC
+112-HSB24,8/27/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,St Paul Central,MEC
+114-HSG24,8/28/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,South St Paul,SEC
+239-HSB24,8/28/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Roseville,MEC
+115-HSG24,8/29/2024,3:00 PM,Park High School,Girls,Varsity,Park,Hastings,SEC
+243-HSB24,8/29/2024,3:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Stillwater,MEC
+116-HSG24,8/29/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,East Ridge,MEC
+115-HSB24,8/29/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Stillwater,MEC
+243-HSG24,8/29/2024,5:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Minnetonka,MEC
+114-HSB24,8/29/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,East Ridge,MEC
+238-HSG24,8/29/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Woodbury,MEC
+117-HSG24,8/29/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Minnetonka,MEC

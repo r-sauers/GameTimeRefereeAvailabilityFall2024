@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+        <style>
+        #calendar-container {
+            border: 1px solid black;
+        }
+        .calendar-headers, .calendar-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 5px 5px;
+        }
+        .calendar-cards {
+            grid-template-rows: auto auto auto auto auto auto auto;
+        }
+        .calendar-headers {
+            grid-template-rows: 1fr;
+        }
+        .calendar-card {
+            padding: 0.5em;
+            background-color: #dfffdf;
+            position: relative;
+            padding-bottom: 2.7em;
+        }
+        .calendar-header {
+            text-align: center;
+            font-family: "Audiowide", sans-serif;
+            
+        }
+        .calendar-date {
+            font-family: "Audiowide", sans-serif;
+            font-size: 2.2em;
+            color: #b0b0b0;
+            position: absolute;
+            bottom: 0.1em;
+            left: 0.3em;
+        }
+        .calendar-card ul {
+            margin-left: -2em;
+            list-style: none;
+        }
+        .card-venue {
+            margin: 0.1em;
+            font-size: small;
+            font-family: Calibri;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
+        .card-venue::after {
+            content: ">";
+            margin-left: 0.5em;
+            position: absolute;
+        }
+        .card-venue.closed::after {
+            transform: rotate(90deg);
+        }
+        .card-venue.closed + .card-list {
+            display: none;
+        }
+        #calendar-title {
+            font-family: "Audiowide", sans-serif;
+            text-align: center;
+        }
+        .card-label {
+            font-size: small;
+            font-family: Calibri;
+        }
+        .card-game {
+            margin: 0.1em;
+        }
+        .card-list {
+            margin: 0.1em;
+            margin-left: -2em;
+        }
+        #btn-bin {
+            background-color: white;
+            padding: 1em;
+            border: 1px solid black;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 3em;
+            max-width: 25em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #footer {
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="calendar-main">
+            <h1 id="calendar-title">August</h1>
+            <h2 id="league"></h2>
+            <div id="calendar-container">
+                <div class="calendar">
+                    <div class="calendar-headers">
+                        <div class="calendar-header">SUNDAY</div>
+                        <div class="calendar-header">MONDAY</div>
+                        <div class="calendar-header">TUESDAY</div>
+                        <div class="calendar-header">WEDNESDAY</div>
+                        <div class="calendar-header">THURSDAY</div>
+                        <div class="calendar-header">FRIDAY</div>
+                        <div class="calendar-header">SATURDAY</div>
+                    </div>
+                    <div class="calendar-cards" id="august-cards"></div>
+                    <div class="calendar-cards" id="september-cards"></div>
+                    <div class="calendar-cards" id="october-cards"></div>
+                </div>
+            </div>
+
+        </div>
+        <div id="homepage">
+            <h1>Referee Availability Form</h1>
+            <h4>Game Time Assigning</h4>
+            <label>Referee Name: </label>
+            <input id="referee-name"></input>
+            <h2>Instructions</h2>
+        </div>
+        <div id="footer">
+            <div id="btn-bin">
+                <button id="previous-btn" class="btn" onclick="previousPage()">Previous</button>
+                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">Download</a>
+                <button id="next-btn" class="btn" onclick="nextPage()">Next</button>
+            </div>
+        </div>
+        
+    </body>
+    <script>
+        const august = 
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+222-HSG24,8/22/2024,3:30 PM,Hastings High School,Girls,C-Squad,Hastings,Eastview,MEC
+223-HSG24,8/22/2024,5:00 PM,Hastings High School,Girls,JV,Hastings,Eastview,MEC
+101-HSB24,8/22/2024,5:00 PM,Park High School,Boys,Varsity,Park,Bloomington Jefferson,SEC
+102-HSB24,8/22/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Spring Lake Park,SEC
+100-HSG24,8/22/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Hill-Murray,SEC
+103-HSG24,8/22/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Eastview,MEC
+100-HSB24,8/22/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Chisago Lakes,MEC
+101-HSG24,8/22/2024,7:00 PM,Park High School,Girls,Varsity,Park,Bloomington Jefferson,SEC
+102-HSG24,8/22/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Spring Lake Park,SEC
+103-HSB24,8/23/2024,10:00 AM,Forest Lake High School,Boys,Varsity,Forest Lake,Blaine,SEC
+104-HSB24,8/23/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Duluth East,SEC
+238-HSB24,8/23/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Duluth Denfeld,MEC
+224-HSG24,8/24/2024,9:00 AM,Hastings High School,Girls,C-Squad,Hastings,Bloomington Jefferson,MEC
+225-HSB24,8/24/2024,9:00 AM,Hastings High School,Boys,C-Squad,Hastings,Bloomington Jefferson,MEC
+109-HSB24,8/24/2024,11:00 AM,East Ridge High School,Boys,Varsity,East Ridge,Rosemount,SEC
+225-HSG24,8/24/2024,11:00 AM,Hastings High School,Girls,JV,Hastings,Bloomington Jefferson,MEC
+226-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,JV,Hastings,Bloomington Jefferson,MEC
+105-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSB24,8/24/2024,11:00 AM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Duluth Denfeld,MEC
+107-HSG24,8/24/2024,11:00 AM,North St Paul High School,Girls,Varsity,North St Paul,Fridley,MEC
+104-HSG24,8/24/2024,1:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Rosemount,SEC
+105-HSG24,8/24/2024,1:00 PM,Hastings High School,Girls,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSG24,8/24/2024,1:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Totino-Grace,MEC
+107-HSB24,8/24/2024,1:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Minneapolis Edison,MEC
+108-HSB24,8/24/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Champlin Park,SEC
+110-HSB24,8/24/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,St Thomas Academy,SEC
+109-HSG24,8/26/2024,2:00 PM,Roseville High School,Girls,Varsity,Roseville,Duluth Denfeld,SEC
+108-HSG24,8/26/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Eastview,SEC
+110-HSG24,8/26/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Byron,MEC
+213-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Rochester John Marshall,MEC
+242-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Rochester John Marshall,MEC
+226-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,JV,Hastings,Shakopee,MEC
+227-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,C-Squad,Hastings,Shakopee,MEC
+224-HSB24,8/27/2024,3:00 PM,Hastings High School,Boys,C-Squad,Hastings,Irondale,MEC
+223-HSB24,8/27/2024,5:00 PM,Hastings High School,Boys,JV,Hastings,Irondale,MEC
+113-HSG24,8/27/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,Shakopee,MEC
+113-HSB24,8/27/2024,5:00 PM,Park High School,Boys,Varsity,Park,Burnsville,SEC
+111-HSB24,8/27/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Jordan,MEC
+242-HSB24,8/27/2024,5:00 PM,Two Rivers High School,Boys,JV,Two Rivers,St Paul Central,MEC
+221-HSG24,8/27/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,Irondale,MEC
+111-HSG24,8/27/2024,7:00 PM,Irondale High School,Girls,Varsity,Irondale,Cambridge-Isanti,SEC
+112-HSG24,8/27/2024,7:00 PM,Park High School,Girls,Varsity,Park,Burnsville,SEC
+112-HSB24,8/27/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,St Paul Central,MEC
+114-HSG24,8/28/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,South St Paul,SEC
+239-HSB24,8/28/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Roseville,MEC
+115-HSG24,8/29/2024,3:00 PM,Park High School,Girls,Varsity,Park,Hastings,SEC
+243-HSB24,8/29/2024,3:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Stillwater,MEC
+116-HSG24,8/29/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,East Ridge,MEC
+115-HSB24,8/29/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Stillwater,MEC
+243-HSG24,8/29/2024,5:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Minnetonka,MEC
+114-HSB24,8/29/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,East Ridge,MEC
+238-HSG24,8/29/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Woodbury,MEC
+117-HSG24,8/29/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Minnetonka,MEC`;
+        const september =
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+227-HSB24,9/3/2024,3:30 PM,Hastings High School,Boys,C-Squad,Hastings,Burnsville,MEC
+228-HSG24,9/3/2024,3:30 PM,Hastings High School,Girls,C-Squad,Hastings,Burnsville,MEC
+228-HSB24,9/3/2024,5:00 PM,Hastings High School,Boys,JV,Hastings,Burnsville,MEC
+229-HSG24,9/3/2024,5:00 PM,Hastings High School,Girls,JV,Hastings,Burnsville,MEC
+116-HSB24,9/3/2024,5:00 PM,Hastings High School,Boys,Varsity,Hastings,Burnsville,MEC
+119-HSG24,9/3/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Columbia Heights,SEC
+120-HSG24,9/3/2024,5:00 PM,Park High School,Girls,Varsity,Park,Apple Valley,SEC
+123-HSG24,9/3/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Johnson,MEC
+244-HSG24,9/3/2024,5:00 PM,Two Rivers High School,Girls,JV,Two Rivers,'Benilde-St Margaret''s',MEC
+122-HSG24,9/3/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Burnsville,MEC
+118-HSB24,9/3/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Tartan,SEC
+119-HSB24,9/3/2024,7:00 PM,Park High School,Boys,Varsity,Park,Apple Valley,SEC
+117-HSB24,9/3/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,St Paul Humboldt,MEC
+124-HSG24,9/3/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,'Benilde-St Margaret''s',MEC
+121-HSG24,9/3/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Lakeville South,SEC
+118-HSG24,9/3/2024,7:30 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Mahtomedi,SEC
+125-HSG24,9/4/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Chisago Lakes,SEC
+120-HSB24,9/4/2024,7:30 PM,Woodbury High School,Boys,Varsity,Woodbury,Stillwater,SEC
+125-HSB24,9/5/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Roseville,SEC
+128-HSB24,9/5/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Cretin-Derham Hall,SEC
+130-HSG24,9/5/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,St Paul Harding,MEC
+126-HSB24,9/5/2024,5:00 PM,Park High School,Boys,Varsity,Park,Mounds View,SEC
+131-HSG24,9/5/2024,5:00 PM,Simley High School,Girls,Varsity,Simley,Hill-Murray,MEC
+132-HSG24,9/5/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Mahtomedi,MEC
+124-HSB24,9/5/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,Two Rivers,MEC
+127-HSB24,9/5/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Irondale,SEC
+126-HSG24,9/5/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Roseville,SEC
+134-HSG24,9/5/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Cretin-Derham Hall,SEC
+121-HSB24,9/5/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,St Thomas Academy,MEC
+127-HSG24,9/5/2024,7:00 PM,Park High School,Girls,Varsity,Park,Mounds View,SEC
+122-HSB24,9/5/2024,7:00 PM,Simley High School,Boys,Varsity,Simley,Hill-Murray,MEC
+123-HSB24,9/5/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Mahtomedi,MEC
+133-HSG24,9/5/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,Two Rivers,MEC
+128-HSG24,9/5/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Irondale,SEC
+129-HSG24,9/5/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Stillwater,SEC
+230-HSG24,9/7/2024,9:00 AM,Hastings High School,Girls,C-Squad,Hastings,Apple Valley,MEC
+229-HSB24,9/7/2024,11:00 AM,Hastings High School,Boys,C-Squad,Hastings,Apple Valley,MEC
+137-HSG24,9/7/2024,11:00 AM,North St Paul High School,Girls,Varsity,North St Paul,Richfield,MEC
+129-HSB24,9/7/2024,12:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Cretin-Derham Hall,MEC
+130-HSB24,9/7/2024,12:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Highland Park,MEC
+135-HSG24,9/7/2024,1:00 PM,Irondale High School,Girls,Varsity,Irondale,Fridley,SEC
+136-HSG24,9/7/2024,1:00 PM,Roseville High School,Girls,Varsity,Roseville,Concordia Academy,SEC
+244-HSB24,9/7/2024,5:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Eastview,MEC
+131-HSB24,9/7/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Eastview,MEC
+231-HSG24,9/9/2024,3:45 PM,Hastings High School,Girls,JV,Hastings,Two Rivers,MEC
+138-HSG24,9/9/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,Two Rivers,MEC
+139-HSG24,9/9/2024,5:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Tartan,MEC
+135-HSB24,9/9/2024,5:00 PM,North St Paul High School,Boys,Varsity,North St Paul,South St Paul,MEC
+230-HSB24,9/9/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,Two Rivers,MEC
+132-HSB24,9/9/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,Two Rivers,MEC
+133-HSB24,9/9/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,St Thomas Academy,MEC
+134-HSB24,9/9/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Tartan,MEC
+140-HSG24,9/9/2024,7:00 PM,North St Paul High School,Girls,Varsity,North St Paul,South St Paul,MEC
+141-HSG24,9/10/2024,5:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Stillwater,SEC
+142-HSG24,9/10/2024,5:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Woodbury,SEC
+143-HSG24,9/10/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Forest Lake,SEC
+139-HSB24,9/10/2024,5:00 PM,Mounds View High School,Boys,Varsity,Mounds View,White Bear Lake,SEC
+145-HSG24,9/10/2024,5:00 PM,Roseville High School,Girls,Varsity,Roseville,Park,SEC
+136-HSB24,9/10/2024,7:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Stillwater,SEC
+137-HSB24,9/10/2024,7:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Woodbury,SEC
+138-HSB24,9/10/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Forest Lake,SEC
+144-HSG24,9/10/2024,7:00 PM,Mounds View High School,Girls,Varsity,Mounds View,White Bear Lake,SEC
+140-HSB24,9/10/2024,7:00 PM,Roseville High School,Boys,Varsity,Roseville,Park,SEC
+146-HSG24,9/11/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,North St Paul,MEC
+142-HSB24,9/11/2024,5:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Mahtomedi,MEC
+144-HSB24,9/11/2024,5:00 PM,Simley High School,Boys,Varsity,Simley,Tartan,MEC
+231-HSB24,9/11/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,North St Paul,MEC
+141-HSB24,9/11/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,North St Paul,MEC
+147-HSG24,9/11/2024,7:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Mahtomedi,MEC
+148-HSG24,9/11/2024,7:00 PM,Simley High School,Girls,Varsity,Simley,Tartan,MEC
+149-HSG24,9/11/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,St Croix Prepatory,MEC
+143-HSB24,9/11/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,South St Paul,MEC
+150-HSG24,9/12/2024,5:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Mounds View,SEC
+151-HSG24,9/12/2024,5:00 PM,Park High School,Girls,Varsity,Park,East Ridge,SEC
+152-HSG24,9/12/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Irondale,SEC
+153-HSG24,9/12/2024,5:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Roseville,SEC
+154-HSG24,9/12/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Cretin-Derham Hall,SEC
+145-HSB24,9/12/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Mounds View,SEC
+146-HSB24,9/12/2024,7:00 PM,Park High School,Boys,Varsity,Park,East Ridge,SEC
+147-HSB24,9/12/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Irondale,SEC
+148-HSB24,9/12/2024,7:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Roseville,SEC
+149-HSB24,9/12/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Cretin-Derham Hall,SEC
+155-HSG24,9/13/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Mounds Park Academy,MEC
+232-HSG24,9/14/2024,11:00 AM,Hastings High School,Girls,JV,Hastings,Minnetonka,MEC
+156-HSG24,9/14/2024,11:00 AM,Roseville High School,Girls,Varsity,Roseville,Osseo,SEC
+152-HSB24,9/14/2024,1:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Hastings,SEC
+157-HSG24,9/14/2024,1:00 PM,Hastings High School,Girls,Varsity,Hastings,Minnetonka,MEC
+153-HSB24,9/14/2024,1:00 PM,Roseville High School,Boys,Varsity,Roseville,Osseo,SEC
+245-HSB24,9/14/2024,1:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Woodbury,MEC
+151-HSB24,9/14/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Owatonna,SEC
+150-HSB24,9/14/2024,3:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Woodbury,MEC
+158-HSB24,9/17/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,White Bear Lake,SEC
+159-HSB24,9/17/2024,5:00 PM,Irondale High School,Boys,Varsity,Irondale,Cretin-Derham Hall,SEC
+154-HSB24,9/17/2024,5:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Hastings,MEC
+160-HSB24,9/17/2024,5:00 PM,Mounds View High School,Boys,Varsity,Mounds View,Stillwater,SEC
+161-HSB24,9/17/2024,5:00 PM,Park High School,Boys,Varsity,Park,Woodbury,SEC
+162-HSB24,9/17/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Forest Lake,SEC
+156-HSB24,9/17/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,Hill-Murray,MEC
+165-HSG24,9/17/2024,5:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,North St Paul,MEC
+246-HSB24,9/17/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,North St Paul,MEC
+158-HSG24,9/17/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,White Bear Lake,SEC
+159-HSG24,9/17/2024,7:00 PM,Irondale High School,Girls,Varsity,Irondale,Cretin-Derham Hall,SEC
+163-HSG24,9/17/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Hastings,MEC
+160-HSG24,9/17/2024,7:00 PM,Mounds View High School,Girls,Varsity,Mounds View,Stillwater,SEC
+161-HSG24,9/17/2024,7:00 PM,Park High School,Girls,Varsity,Park,Woodbury,SEC
+162-HSG24,9/17/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Forest Lake,SEC
+155-HSB24,9/17/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Simley,MEC
+164-HSG24,9/17/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,Hill-Murray,MEC
+157-HSB24,9/17/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,North St Paul,MEC
+232-HSB24,9/18/2024,3:45 PM,Hastings High School,Boys,C-Squad,Hastings,Mahtomedi,MEC
+233-HSG24,9/18/2024,5:15 PM,Hastings High School,Girls,C-Squad,Hastings,Mahtomedi,MEC
+167-HSB24,9/19/2024,5:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Mounds View,SEC
+168-HSB24,9/19/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,East Ridge,SEC
+171-HSG24,9/19/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Anoka,MEC
+172-HSG24,9/19/2024,5:00 PM,Simley High School,Girls,Varsity,Simley,North St Paul,MEC
+165-HSB24,9/19/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Two Rivers,MEC
+169-HSB24,9/19/2024,5:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Roseville,SEC
+174-HSG24,9/19/2024,5:00 PM,Tartan High School,Girls,Varsity,Tartan,Hastings,MEC
+170-HSB24,9/19/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Park,SEC
+171-HSB24,9/19/2024,5:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Irondale,SEC
+166-HSG24,9/19/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Mounds View,SEC
+167-HSG24,9/19/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,East Ridge,SEC
+164-HSB24,9/19/2024,7:00 PM,Simley High School,Boys,Varsity,Simley,North St Paul,MEC
+173-HSG24,9/19/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Two Rivers,MEC
+163-HSB24,9/19/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Mahtomedi,MEC
+168-HSG24,9/19/2024,7:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Roseville,SEC
+166-HSB24,9/19/2024,7:00 PM,Tartan High School,Boys,Varsity,Tartan,Hastings,MEC
+169-HSG24,9/19/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Park,SEC
+170-HSG24,9/19/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Irondale,SEC
+234-HSG24,9/20/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,Tartan,MEC
+233-HSB24,9/20/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,Tartan,MEC
+175-HSG24,9/21/2024,12:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Eagan,MEC
+300-HSB24,9/21/2024,12:00 PM,Irondale High School,Boys,Varsity,Irondale,Henry High School,SEC
+239-HSG24,9/21/2024,12:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,'Benilde-St Margaret''s',MEC
+240-HSB24,9/21/2024,2:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,'Benilde-St Margaret''s',MEC
+172-HSB24,9/21/2024,3:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Two Rivers,SEC
+173-HSB24,9/21/2024,7:00 PM,Park High School,Boys,Varsity,Park,Shakopee,SEC
+234-HSB24,9/24/2024,3:45 PM,Hastings High School,Boys,JV,Hastings,Hill-Murray,MEC
+176-HSG24,9/24/2024,5:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Stillwater,SEC
+174-HSB24,9/24/2024,5:00 PM,Hastings High School,Boys,Varsity,Hastings,Hill-Murray,MEC
+182-HSG24,9/24/2024,5:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Simley,MEC
+177-HSG24,9/24/2024,5:00 PM,Mounds View High School,Girls,Varsity,Mounds View,Irondale,SEC
+178-HSG24,9/24/2024,5:00 PM,Park High School,Girls,Varsity,Park,Forest Lake,SEC
+179-HSG24,9/24/2024,5:00 PM,Roseville High School,Girls,Varsity,Roseville,Cretin-Derham Hall,SEC
+177-HSB24,9/24/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,South St Paul,MEC
+180-HSG24,9/24/2024,5:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Woodbury,SEC
+235-HSG24,9/24/2024,5:15 PM,Hastings High School,Girls,JV,Hastings,Hill-Murray,MEC
+247-HSB24,9/24/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,St Thomas Academy,MEC
+179-HSB24,9/24/2024,7:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Stillwater,SEC
+181-HSG24,9/24/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Hill-Murray,MEC
+175-HSB24,9/24/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Simley,MEC
+180-HSB24,9/24/2024,7:00 PM,Mounds View High School,Boys,Varsity,Mounds View,Irondale,SEC
+176-HSB24,9/24/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Washington Technology Magnet,MEC
+181-HSB24,9/24/2024,7:00 PM,Park High School,Boys,Varsity,Park,Forest Lake,SEC
+182-HSB24,9/24/2024,7:00 PM,Roseville High School,Boys,Varsity,Roseville,Cretin-Derham Hall,SEC
+183-HSG24,9/24/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,South St Paul,MEC
+178-HSB24,9/24/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,St Thomas Academy,MEC
+183-HSB24,9/24/2024,7:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Woodbury,SEC
+184-HSG24,9/26/2024,5:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,White Bear Lake,SEC
+188-HSG24,9/26/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Two Rivers,MEC
+185-HSG24,9/26/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Roseville,SEC
+186-HSB24,9/26/2024,5:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,North St Paul,MEC
+187-HSB24,9/26/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Simley,MEC
+186-HSG24,9/26/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Park,SEC
+187-HSG24,9/26/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Mounds View,SEC
+235-HSB24,9/26/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,St Thomas Academy,MEC
+188-HSB24,9/26/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,White Bear Lake,SEC
+184-HSB24,9/26/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,St Thomas Academy,MEC
+185-HSB24,9/26/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Two Rivers,MEC
+189-HSB24,9/26/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Roseville,SEC
+189-HSG24,9/26/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,North St Paul,MEC
+190-HSG24,9/26/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Simley,MEC
+190-HSB24,9/26/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Park,SEC
+191-HSB24,9/26/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Mounds View,SEC
+191-HSG24,9/28/2024,10:00 AM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,East Ridge,SEC
+192-HSG24,9/28/2024,11:00 AM,Hill-Murray High School,Girls,Varsity,Hill-Murray,'Benilde-St Margaret''s',MEC
+193-HSB24,9/28/2024,12:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,East Ridge,SEC
+241-HSB24,9/28/2024,12:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Mounds View,MEC
+192-HSB24,9/28/2024,1:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,'Benilde-St Margaret''s',MEC
+240-HSG24,9/28/2024,2:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Mounds View,MEC
+194-HSB24,9/28/2024,7:00 PM,Park High School,Boys,Varsity,Park,Hastings,SEC`;
+        const october = 
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+248-HSB24,10/1/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Simley,MEC
+199-HSB24,10/1/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Irondale,SEC
+200-HSB24,10/1/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Woodbury,SEC
+198-HSG24,10/1/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Hill-Murray,MEC
+201-HSB24,10/1/2024,5:00 PM,Park High School,Boys,Varsity,Park,Cretin-Derham Hall,SEC
+202-HSB24,10/1/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Mounds View,SEC
+199-HSG24,10/1/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Hastings,MEC
+198-HSB24,10/1/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Simley,MEC
+203-HSB24,10/1/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Stillwater,SEC
+245-HSG24,10/1/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Simley,MEC
+193-HSG24,10/1/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Irondale,SEC
+194-HSG24,10/1/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Woodbury,SEC
+195-HSB24,10/1/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Hill-Murray,MEC
+195-HSG24,10/1/2024,7:00 PM,Park High School,Girls,Varsity,Park,Cretin-Derham Hall,SEC
+196-HSG24,10/1/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Mounds View,SEC
+197-HSB24,10/1/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Hastings,MEC
+196-HSB24,10/1/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Tartan,MEC
+200-HSG24,10/1/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Simley,MEC
+197-HSG24,10/1/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Stillwater,SEC
+236-HSG24,10/2/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,South St Paul,MEC
+236-HSB24,10/2/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,South St Paul,MEC
+249-HSB24,10/3/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Mahtomedi,MEC
+201-HSG24,10/3/2024,5:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,White Bear Lake,SEC
+206-HSG24,10/3/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,South St Paul,MEC
+202-HSG24,10/3/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Park,SEC
+203-HSG24,10/3/2024,5:00 PM,Mounds View High School,Girls,Varsity,Mounds View,East Ridge,SEC
+205-HSB24,10/3/2024,5:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Tartan,MEC
+206-HSB24,10/3/2024,5:00 PM,Simley High School,Boys,Varsity,Simley,Hastings,MEC
+204-HSG24,10/3/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Forest Lake,SEC
+207-HSB24,10/3/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Mahtomedi,MEC
+205-HSG24,10/3/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Roseville,SEC
+246-HSG24,10/3/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Mahtomedi,MEC
+208-HSB24,10/3/2024,7:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,White Bear Lake,SEC
+204-HSB24,10/3/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,South St Paul,MEC
+209-HSB24,10/3/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Park,SEC
+210-HSB24,10/3/2024,7:00 PM,Mounds View High School,Boys,Varsity,Mounds View,East Ridge,SEC
+207-HSG24,10/3/2024,7:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Tartan,MEC
+208-HSG24,10/3/2024,7:00 PM,Simley High School,Girls,Varsity,Simley,Hastings,MEC
+211-HSB24,10/3/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Forest Lake,SEC
+209-HSG24,10/3/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Mahtomedi,MEC
+212-HSB24,10/3/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Roseville,SEC
+237-HSB24,10/4/2024,3:45 PM,Hastings High School,Boys,C-Squad,Hastings,Simley,MEC
+237-HSG24,10/4/2024,5:15 PM,Hastings High School,Girls,C-Squad,Hastings,Simley,MEC
+210-HSG24,10/5/2024,11:00 AM,East Ridge High School,Girls,Varsity,East Ridge,Mahtomedi,SEC
+214-HSB24,10/5/2024,11:00 AM,Woodbury High School,Boys,Varsity,Woodbury,St Paul Central,SEC
+212-HSG24,10/5/2024,12:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Duluth East,MEC
+211-HSG24,10/5/2024,1:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Blaine,SEC
+250-HSB24,10/5/2024,1:00 PM,Irondale High School,Boys,Varsity,Irondale,St Cloud Apollo,SEC
+213-HSB24,10/5/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Wayzata,SEC`;
+
+        const calendars = {
+            "august": august,
+            "september": september,
+            "october": october,
+        }
+        
+        function parse_csv(csv) {
+            const lines = csv.split("\n");
+            const headers = lines[0].split(",");
+            const body = lines.slice(1);
+            const data = [];
+            for (line of body) {
+                let datum = {}
+                let line_data = line.split(",");
+                for (let i = 0; i < headers.length; i++) {
+                    datum[headers[i]] = line_data[i];
+                }
+                data.push(datum);
+            }
+            return data;
+        }
+
+        function createCard(day, cardData){
+            const cardEl = document.createElement("div");
+            cardEl.className = "calendar-card";
+            if (day > 0) {
+                let dayEl = document.createElement("div");
+                dayEl.className = "calendar-date";
+                dayEl.innerText = day;
+                cardEl.appendChild(dayEl);
+            }
+            if (cardData) {
+                let prevVenue = "";
+                let listEl = null;
+                for (data of cardData) {
+                    let venue = data["Venue"];
+
+                    if (venue != prevVenue) {
+                        prevVenue = venue;
+                        if (listEl) {
+                            cardEl.appendChild(listEl);
+                        }
+                        let venueEl = document.createElement("p");
+                        venueEl.className = "card-venue closed";
+                        venueEl.innerText = venue;
+                        venueEl.addEventListener("click", (evt) => {
+                            evt.target.classList.toggle("closed");
+                        });
+                        cardEl.appendChild(venueEl);
+
+                        listEl = document.createElement("ul");
+                        listEl.className="card-list";
+                        prevVenue = venue;
+                    }
+
+
+                    const listItem = document.createElement("li");
+                    const label = document.createElement("label");
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.className = "card-checkbox";
+                    checkbox.addEventListener("change", (evt) => {
+                        if (evt.target.checked) {
+                            evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
+                        } else {
+                            evt.target.outerHTML = evt.target.outerHTML.replace(" checked>", ">");
+                        }
+                    })
+                    label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
+                    label.className = "card-label";
+                    listItem.appendChild(checkbox);
+                    listItem.appendChild(label);
+                    listItem.className = "card-game";
+                    listEl.appendChild(listItem);
+                }
+                if (listEl) {
+                    cardEl.appendChild(listEl);
+                }
+            }
+            return cardEl;
+        }
+
+        function generateCalendars() {
+            for (let key in calendars) {
+
+                const calendar = document.getElementById(`${key}-cards`);
+                if (calendar.innerHTML != "") {
+                    continue;
+                }
+
+                const calendarData = parse_csv(calendars[key]);
+                calendarData.sort((a, b) => a["Time"] < b["Time"]);
+                calendarData.sort((a, b) => a["Venue"] < b["Venue"]);
+                calendarData.sort((a, b) => a["Date"] < b["Date"]);
+
+                const date = new Date(`${key} 1, 2024`);
+
+                let cards = 0;
+
+                for (let i = 0; i < date.getDay(); i ++) {
+                    let cardEl = createCard(0);
+                    calendar.appendChild(cardEl);
+                    cards ++;
+                }
+
+                do {
+                    let cardData = [];
+                    if (calendarData.length == 0) {
+                        break;
+                    }
+                    let game = calendarData.pop();
+                    let gameDate = new Date(game["Date"]);
+                    while (gameDate.valueOf() == date.valueOf()) {
+                        cardData.push(game);
+                        if (calendarData.length == 0) {
+                            break;
+                        }
+                        game = calendarData.pop();
+                        gameDate = new Date(game["Date"]);
+                    }
+                    calendarData.push(game);
+
+                    let cardEl = createCard(date.getDate(), cardData);
+                    calendar.appendChild(cardEl);
+                    cards ++;
+                    date.setDate(date.getDate() + 1);
+
+                } while (date.getDate() > 1);
+
+                while (cards < 7 * 5) {
+                    let cardEl = createCard(0);
+                    calendar.appendChild(cardEl);
+                    cards ++;
+                }
+            }
+
+        }
+
+        let page = "home";
+        const pages = ["home", "august", "september", "october"];
+
+        function switchPage(page) {
+            let homepage = document.getElementById("homepage");
+            let calendarpage = document.getElementById("calendar-main");
+            let augustCards = document.getElementById("august-cards");
+            let septemberCards = document.getElementById("september-cards");
+            let octoberCards = document.getElementById("october-cards");
+            if (page === "home") {
+                homepage.style.display = "block";
+                calendarpage.style.display = "none";
+            } else {
+                homepage.style.display = "none";
+                calendarpage.style.display = "block";
+                if (page === "august") {
+                    augustCards.style.display = "grid";
+                    septemberCards.style.display = "none";
+                    octoberCards.style.display = "none";
+                    document.getElementById("calendar-title").innerText = "August";
+                } else if (page === "september") {
+                    augustCards.style.display = "none";
+                    septemberCards.style.display = "grid";
+                    octoberCards.style.display = "none";
+                    document.getElementById("calendar-title").innerText = "September";
+                } else if (page === "october") {
+                    augustCards.style.display = "none";
+                    septemberCards.style.display = "none";
+                    octoberCards.style.display = "grid";
+                    document.getElementById("calendar-title").innerText = "October";
+                }
+            }
+
+            let index = pages.indexOf(page);
+            const nextBtn = document.getElementById("next-btn");
+            const prevBtn = document.getElementById("previous-btn");
+            if (index === pages.length-1) {
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.disabled = false;
+            }
+            if (index == 0) {
+                prevBtn.disabled = true;
+            } else {
+                prevBtn.disabled = false;
+            }
+        }
+
+        function nextPage() {
+            let index = pages.indexOf(page);
+            if (index == pages.length - 1) {
+                alert("Already at the last page!");
+                return;
+            } else {
+                page = pages[index + 1];
+                switchPage(page);
+            }
+        }
+        function previousPage() {
+            let index = pages.indexOf(page);
+            if (index == 0) {
+                alert("Already at the first page!");
+                return;
+            } else {
+                page = pages[index - 1];
+                switchPage(page);
+            }
+        }
+
+        function saveFile(evt) {
+            const nameField = document.getElementById("referee-name");
+            if (nameField == null || nameField.value === "") {
+                evt.preventDefault();
+                alert("You must fill out the referee name field on the first page!");
+            } else {
+                let name = nameField.value.replaceAll(" ", "_");
+                name = name.replaceAll("[^A-z_]", "");
+                evt.target.download = name;
+                evt.target.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)
+            }
+        }
+
+        switchPage("home");
+        generateCalendars();
+    </script>
+</html>
