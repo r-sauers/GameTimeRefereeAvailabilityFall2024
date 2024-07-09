@@ -137,7 +137,7 @@
             <div id="btn-bin">
                 <button id="previous-btn" class="btn" onclick="previousPage()">Previous</button>
                 <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">save</a>
-                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">download availability</a>
+                <a id="availability-btn" class="btn" onclick="downloadAvailability(arguments[0]);" href="#" download="availability.json">download availability</a>
                 <button id="next-btn" class="btn" onclick="nextPage()">Next</button>
             </div>
         </div>
@@ -565,9 +565,12 @@
                     const label = document.createElement("label");
                     const checkbox = document.createElement("input");
                     checkbox.type = "checkbox";
+                    checkbox.id = `availability-${data["Game ID"]}`;
+                    checkbox.name = data["Game ID"];
                     checkbox.className = "card-checkbox";
                     checkbox.addEventListener("change", handleGameCheckboxChange);
                     label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
+                    label.htmlFor = checkbox.id;
                     label.className = "card-label";
                     listItem.appendChild(checkbox);
                     listItem.appendChild(label);
@@ -717,6 +720,30 @@
                 name = name.replaceAll("[^A-z_]", "");
                 evt.target.download = name;
                 evt.target.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)
+            }
+        }
+
+        function downloadAvailability(evt) {
+            const nameField = document.getElementById("referee-name");
+            if (nameField == null || nameField.value === "") {
+                evt.preventDefault();
+                alert("You must fill out the referee name field on the first page!");
+            } else {
+
+                let name = nameField.value.replaceAll(" ", "_");
+                let json = {
+                    name: name,
+                    availabileFor: [],
+                };
+                let checkboxes = document.getElementsByClassName("card-checkbox");
+                for (let checkbox of checkboxes) {
+                    if (checkbox.checked) {
+                        json.availabileFor.push(checkbox.name);
+                    }
+                }
+                name = name.replaceAll("[^A-z_]", "");
+                evt.target.download = name;
+                evt.target.href='data:application/json;charset=UTF-8,'+JSON.stringify(json);
             }
         }
 
