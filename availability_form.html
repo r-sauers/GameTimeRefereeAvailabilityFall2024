@@ -21,6 +21,8 @@
         }
         .calendar-headers {
             grid-template-rows: 1fr;
+            padding-top: 0.5em;
+            padding-bottom: 0.2em;
         }
         .calendar-card {
             padding: 0.5em;
@@ -84,7 +86,7 @@
             padding: 1em;
             border: 1px solid black;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             column-gap: 3em;
             max-width: 25em;
             margin-left: auto;
@@ -94,6 +96,10 @@
             position: fixed;
             bottom: 0px;
             width: 100%;
+        }
+        .game-ratio {
+            margin-left: 0.25em;
+            font-weight: normal;
         }
         </style>
     </head>
@@ -125,11 +131,13 @@
             <label>Referee Name: </label>
             <input id="referee-name"></input>
             <h2>Instructions</h2>
+            <p></p>
         </div>
         <div id="footer">
             <div id="btn-bin">
                 <button id="previous-btn" class="btn" onclick="previousPage()">Previous</button>
-                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">Download</a>
+                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">save</a>
+                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">download availability</a>
                 <button id="next-btn" class="btn" onclick="nextPage()">Next</button>
             </div>
         </div>
@@ -448,6 +456,32 @@
             return data;
         }
 
+        function handleGameCheckboxChange(evt) {
+            const parent = evt.target.parentElement;
+            const index = [].indexOf.call(parent.childNodes, evt.target);
+            const div = evt.target.parentElement.parentElement.parentElement;
+            const selectedGamesEl = div.getElementsByClassName("selected-games")[0];
+            const totalGamesEl = div.getElementsByClassName("total-games")[0];
+            const selectedGames = parseInt(selectedGamesEl.innerText);
+            const totalGames = parseInt(totalGamesEl.innerText);
+            if (evt.target.checked) {
+                evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
+                selectedGamesEl.innerText = selectedGames + 1;
+                if (selectedGames + 1 === totalGames) {
+                    let checkbox = div.getElementsByClassName("venue-checkbox")[0];
+                    checkbox.checked = true;
+                }
+                
+            } else {
+                evt.target.outerHTML = evt.target.outerHTML.replace(' checked=""', "");
+                selectedGamesEl.innerText = selectedGames - 1;
+                let checkbox = div.getElementsByClassName("venue-checkbox")[0];
+                checkbox.checked = false;
+            }
+            parent.childNodes[index].addEventListener("change", handleGameCheckboxChange);
+
+        }
+
         function createCard(day, cardData){
             const cardEl = document.createElement("div");
             cardEl.className = "calendar-card";
@@ -460,21 +494,66 @@
             if (cardData) {
                 let prevVenue = "";
                 let listEl = null;
+                let divEl = null;
                 for (data of cardData) {
                     let venue = data["Venue"];
 
                     if (venue != prevVenue) {
                         prevVenue = venue;
                         if (listEl) {
-                            cardEl.appendChild(listEl);
+                            divEl.appendChild(listEl);
+                            cardEl.appendChild(divEl);
                         }
+                        divEl = document.createElement("div");
                         let venueEl = document.createElement("p");
                         venueEl.className = "card-venue closed";
-                        venueEl.innerText = venue;
                         venueEl.addEventListener("click", (evt) => {
-                            evt.target.classList.toggle("closed");
+                            if (evt.target.className.search("venue-checkbox")){
+                                evt.currentTarget.classList.toggle("closed");
+                            }
                         });
-                        cardEl.appendChild(venueEl);
+                        let venueCheckbox = document.createElement("input");
+                        venueCheckbox.type = "checkbox";
+                        venueCheckbox.className = "venue-checkbox";
+                        venueCheckbox.addEventListener("click", (evt) => {
+                            let div = evt.target.parentElement.parentElement;
+                            let checkboxes = div.getElementsByClassName("card-checkbox");
+                            for (let checkbox of checkboxes) {
+                                checkbox.checked = evt.target.checked;
+                                var event = new Event("change");
+                                checkbox.dispatchEvent(event);
+                            }
+                        });
+                        venueEl.appendChild(venueCheckbox);
+                        let textNode = document.createTextNode(venue);
+                        venueEl.appendChild(textNode);
+
+                        let gameRatioSpan = document.createElement("span");
+                        gameRatioSpan.className = "game-ratio";
+                        textNode = document.createTextNode("(");
+                        gameRatioSpan.appendChild(textNode);
+
+                        let selectedGames = document.createElement("span");
+                        selectedGames.className = "selected-games";
+                        selectedGames.innerText = "0";
+                        gameRatioSpan.appendChild(selectedGames);
+
+                        textNode = document.createTextNode("/");
+                        gameRatioSpan.appendChild(textNode);
+
+                        
+                        let totalGamesEl = document.createElement("span");
+                        totalGamesEl.className = "total-games";
+                        let totalGames = cardData.filter((a) => {return a["Venue"] === venue;}).length;
+                        totalGamesEl.innerText = `${totalGames}`
+                        gameRatioSpan.appendChild(totalGamesEl);
+
+                        textNode = document.createTextNode(")");
+                        gameRatioSpan.appendChild(textNode);
+                        
+                        venueEl.appendChild(gameRatioSpan);
+                        divEl.appendChild(venueEl);
+                        cardEl.appendChild(divEl);
 
                         listEl = document.createElement("ul");
                         listEl.className="card-list";
@@ -487,13 +566,7 @@
                     const checkbox = document.createElement("input");
                     checkbox.type = "checkbox";
                     checkbox.className = "card-checkbox";
-                    checkbox.addEventListener("change", (evt) => {
-                        if (evt.target.checked) {
-                            evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
-                        } else {
-                            evt.target.outerHTML = evt.target.outerHTML.replace(" checked>", ">");
-                        }
-                    })
+                    checkbox.addEventListener("change", handleGameCheckboxChange);
                     label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
                     label.className = "card-label";
                     listItem.appendChild(checkbox);
@@ -502,7 +575,8 @@
                     listEl.appendChild(listItem);
                 }
                 if (listEl) {
-                    cardEl.appendChild(listEl);
+                    divEl.appendChild(listEl);
+                    cardEl.appendChild(divEl);
                 }
             }
             return cardEl;
@@ -648,5 +722,12 @@
 
         switchPage("home");
         generateCalendars();
+        window.addEventListener("beforeunload", function (e) {
+            var confirmationMessage = 'It looks like you have been editing something. '
+                                    + 'If you leave before saving, your changes will be lost.';
+
+            (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+            return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+        });
     </script>
 </html>
