@@ -9,7 +9,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
         <style>
         #calendar-container {
-            border: 1px solid black;
+            background-color: white;
+            box-shadow: 2px 2px 10px 1px lightgray;
         }
         .calendar-headers, .calendar-cards {
             display: grid;
@@ -101,18 +102,44 @@
             margin-left: 0.25em;
             font-weight: normal;
         }
-        #conference-container {
-            position: absolute;
-            right: 0;
-            top: 0;
-            margin-right: 20vw;
-            margin-top: 1em;
-            font-family: Calibri, sans-serif;
-            font-weight: light;
+        body {
+            font-family: Calibri;
+            margin: 0;
+            background-color: rgb(240, 240, 240);
+            min-width: 1000px;
+        }
+        nav {
+            background: linear-gradient(rgb(134, 160, 232), rgb(87, 133, 221), rgb(54, 95, 174) 100%);
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            color: white;
+            column-gap: 3vw;
+            padding: 0 3vw 0 3vw;
+        }
+        h1 {
+            text-align: center;
+        }
+        #homepage {
+            padding: 5em;
+            width: 50vw;
+            background-color: white;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 3em;
+            margin-bottom: 2em;
+            box-shadow: 2px 2px 10px 1px gray;
+        }
+        #calendar-main {
+            padding: 1em;
         }
         </style>
     </head>
     <body>
+        <nav>
+            <h2 id="logo">⚽ Game Time Assigning</h2>
+            <h1>Availability Form</h1>
+            <h3 id="conference">Suburban East &amp; Metro East Conferences 2024</h3>
+        </nav>
         <div id="calendar-main">
             <h1 id="calendar-title">August</h1>
             <h2 id="league"></h2>
@@ -132,18 +159,17 @@
                     <div class="calendar-cards" id="october-cards"></div>
                 </div>
             </div>
-            <div id="conference-container"><p>SUBURBAN EAST &<br>METRO EAST CONFERENCES</p></div>
-
         </div>
         <div id="homepage">
-            <h1>Referee Availability Form</h1>
-            <h4>Game Time Assigning</h4>
-            <label>Referee Name: </label>
+            <label for="referee-name"><b style="font-size: 1.3em;">Referee Name: </b></label>
             <input id="referee-name" placeholder="John Smith"></input>
-            <h2>Instructions</h2>
             <p>Thanks for choosing to referee this high school season! We appreciate your commitment to the game!</p>
+            <h2>Instructions</h2>
+            <h4>Navigation</h4>
             <p>Please fill out this form to let us know what your availability is for the highschool season. You must fill out your name, and you can select the checkboxes of games you are interested in officiating. To find these games, please navigate using the "Next" and "Previous" buttons at the bottom of this page.</p>
-            <p>After selecting all of the games you want, click "download availability" (at the bottom of the page), and you will download a file: "&lt;your_name&gt;.json". This file will show up in your computer's Downloads folder. Please email this file to <a href="mailto:gametimeassigning@gmail.com">gametimeassigning@gmail.com</a>. You must email us this file for us to see your availability.</p>
+            <h4>Reporting Availability</h4>
+            <p>After selecting all of the games you want, click "download availability" (at the bottom of the page), and you will download a file: "&lt;your_name&gt;.json". This file will show up in your computer's Downloads folder. Please email this file to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. You must email us this file for us to see your availability. It is recommended to save your progress so you can make changes to your availability and email the updated changes (see section below).</p>
+            <h4>Saving Progress</h4>
             <p>If you can't complete your availability in one sitting, you can save your progress by clicking the "save" link at the bottom of the page. This will download a file: "&lt;your_name&gt;.html". This file will show up in your computer's Downloads folder. If you go to your file explorer and open the file, the form will open with your saved progress.
         </div>
         <div id="footer">
