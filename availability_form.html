@@ -513,9 +513,11 @@
             let div = evt.target.parentElement.parentElement;
             let checkboxes = div.getElementsByClassName("card-checkbox");
             for (let checkbox of checkboxes) {
-                checkbox.checked = evt.target.checked;
-                var event = new Event("change");
-                checkbox.dispatchEvent(event);
+                if (checkbox.checked != evt.target.checked) {
+                    checkbox.checked = evt.target.checked;
+                    var event = new Event("change");
+                    checkbox.dispatchEvent(event);
+                }
             }
 
             // permanent check
@@ -557,6 +559,80 @@
 
         }
 
+        function createVenueContainer(venue, cardData) {
+            divEl = document.createElement("div");
+            listEl = document.createElement("ul");
+            listEl.className="card-list";
+
+            let venueEl = document.createElement("p");
+            venueEl.className = "card-venue closed";
+            venueEl.addEventListener("click", (evt) => {
+                if (evt.target.className.search("venue-checkbox")){
+                    evt.currentTarget.classList.toggle("closed");
+                }
+            });
+
+            let venueCheckbox = document.createElement("input");
+            venueCheckbox.type = "checkbox";
+            venueCheckbox.className = "venue-checkbox";
+            venueCheckbox.addEventListener("click", handleVenueCheckboxChange);
+            venueEl.appendChild(venueCheckbox);
+
+            let textNode = document.createTextNode(venue);
+            venueEl.appendChild(textNode);
+
+            let gameRatioSpan = document.createElement("span");
+            gameRatioSpan.className = "game-ratio";
+            textNode = document.createTextNode("(");
+            gameRatioSpan.appendChild(textNode);
+
+            let selectedGames = document.createElement("span");
+            selectedGames.className = "selected-games";
+            selectedGames.innerText = "0";
+            gameRatioSpan.appendChild(selectedGames);
+
+            textNode = document.createTextNode("/");
+            gameRatioSpan.appendChild(textNode);
+
+            
+            let totalGamesEl = document.createElement("span");
+            totalGamesEl.className = "total-games";
+            let totalGames = cardData.filter((a) => {return a["Venue"] === venue;}).length;
+            totalGamesEl.innerText = `${totalGames}`
+            gameRatioSpan.appendChild(totalGamesEl);
+
+            textNode = document.createTextNode(")");
+            gameRatioSpan.appendChild(textNode);
+            
+            venueEl.appendChild(gameRatioSpan);
+            divEl.appendChild(venueEl);
+            divEl.appendChild(listEl);
+
+            return divEl;
+
+        }
+
+        function appendGameToVenueContainer(venueContainer, data) {
+
+            let listEl = venueContainer.getElementsByTagName("ul")[0];
+
+            const listItem = document.createElement("li");
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = `availability-${data["Game ID"]}`;
+            checkbox.name = data["Game ID"];
+            checkbox.className = "card-checkbox";
+            checkbox.addEventListener("change", handleGameCheckboxChange);
+            label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
+            label.htmlFor = checkbox.id;
+            label.className = "card-label";
+            listItem.appendChild(checkbox);
+            listItem.appendChild(label);
+            listItem.className = "card-game";
+            listEl.appendChild(listItem);
+        }
+
         function createCard(day, cardData){
             const cardEl = document.createElement("div");
             cardEl.className = "calendar-card";
@@ -568,85 +644,18 @@
             }
             if (cardData) {
                 let prevVenue = "";
-                let listEl = null;
-                let divEl = null;
+                let venueContainer = null;
                 for (data of cardData) {
                     let venue = data["Venue"];
 
                     if (venue != prevVenue) {
-                        prevVenue = venue;
-                        if (listEl) {
-                            divEl.appendChild(listEl);
-                            cardEl.appendChild(divEl);
-                        }
-                        divEl = document.createElement("div");
-                        let venueEl = document.createElement("p");
-                        venueEl.className = "card-venue closed";
-                        venueEl.addEventListener("click", (evt) => {
-                            if (evt.target.className.search("venue-checkbox")){
-                                evt.currentTarget.classList.toggle("closed");
-                            }
-                        });
-                        let venueCheckbox = document.createElement("input");
-                        venueCheckbox.type = "checkbox";
-                        venueCheckbox.className = "venue-checkbox";
-                        venueCheckbox.addEventListener("click", handleVenueCheckboxChange);
-                        venueEl.appendChild(venueCheckbox);
-                        let textNode = document.createTextNode(venue);
-                        venueEl.appendChild(textNode);
-
-                        let gameRatioSpan = document.createElement("span");
-                        gameRatioSpan.className = "game-ratio";
-                        textNode = document.createTextNode("(");
-                        gameRatioSpan.appendChild(textNode);
-
-                        let selectedGames = document.createElement("span");
-                        selectedGames.className = "selected-games";
-                        selectedGames.innerText = "0";
-                        gameRatioSpan.appendChild(selectedGames);
-
-                        textNode = document.createTextNode("/");
-                        gameRatioSpan.appendChild(textNode);
-
-                        
-                        let totalGamesEl = document.createElement("span");
-                        totalGamesEl.className = "total-games";
-                        let totalGames = cardData.filter((a) => {return a["Venue"] === venue;}).length;
-                        totalGamesEl.innerText = `${totalGames}`
-                        gameRatioSpan.appendChild(totalGamesEl);
-
-                        textNode = document.createTextNode(")");
-                        gameRatioSpan.appendChild(textNode);
-                        
-                        venueEl.appendChild(gameRatioSpan);
-                        divEl.appendChild(venueEl);
-                        cardEl.appendChild(divEl);
-
-                        listEl = document.createElement("ul");
-                        listEl.className="card-list";
+                        venueContainer = createVenueContainer(venue, cardData);
+                        cardEl.appendChild(venueContainer);
                         prevVenue = venue;
                     }
 
+                    appendGameToVenueContainer(venueContainer, data);
 
-                    const listItem = document.createElement("li");
-                    const label = document.createElement("label");
-                    const checkbox = document.createElement("input");
-                    checkbox.type = "checkbox";
-                    checkbox.id = `availability-${data["Game ID"]}`;
-                    checkbox.name = data["Game ID"];
-                    checkbox.className = "card-checkbox";
-                    checkbox.addEventListener("change", handleGameCheckboxChange);
-                    label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
-                    label.htmlFor = checkbox.id;
-                    label.className = "card-label";
-                    listItem.appendChild(checkbox);
-                    listItem.appendChild(label);
-                    listItem.className = "card-game";
-                    listEl.appendChild(listItem);
-                }
-                if (listEl) {
-                    divEl.appendChild(listEl);
-                    cardEl.appendChild(divEl);
                 }
             }
             return cardEl;
