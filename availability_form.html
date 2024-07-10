@@ -459,6 +459,29 @@
             return data;
         }
 
+        function handleVenueCheckboxChange(evt) {
+            // check all game checkboxes
+            let div = evt.target.parentElement.parentElement;
+            let checkboxes = div.getElementsByClassName("card-checkbox");
+            for (let checkbox of checkboxes) {
+                checkbox.checked = evt.target.checked;
+                var event = new Event("change");
+                checkbox.dispatchEvent(event);
+            }
+
+            // permanent check
+            const parent = evt.target.parentElement;
+            const index = [].indexOf.call(parent.childNodes, evt.target);
+            if (evt.target.checked) {
+                evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
+            } else {
+                evt.target.outerHTML = evt.target.outerHTML.replace(' checked=""', "");
+            }
+            parent.childNodes[index].addEventListener("click", handleVenueCheckboxChange);
+
+
+        }
+
         function handleGameCheckboxChange(evt) {
             const parent = evt.target.parentElement;
             const index = [].indexOf.call(parent.childNodes, evt.target);
@@ -518,15 +541,7 @@
                         let venueCheckbox = document.createElement("input");
                         venueCheckbox.type = "checkbox";
                         venueCheckbox.className = "venue-checkbox";
-                        venueCheckbox.addEventListener("click", (evt) => {
-                            let div = evt.target.parentElement.parentElement;
-                            let checkboxes = div.getElementsByClassName("card-checkbox");
-                            for (let checkbox of checkboxes) {
-                                checkbox.checked = evt.target.checked;
-                                var event = new Event("change");
-                                checkbox.dispatchEvent(event);
-                            }
-                        });
+                        venueCheckbox.addEventListener("click", handleVenueCheckboxChange);
                         venueEl.appendChild(venueCheckbox);
                         let textNode = document.createTextNode(venue);
                         venueEl.appendChild(textNode);
