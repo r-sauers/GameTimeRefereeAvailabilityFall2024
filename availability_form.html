@@ -670,9 +670,9 @@
                 }
 
                 const calendarData = parse_csv(calendars[key]);
-                calendarData.sort((a, b) => a["Time"] < b["Time"]);
-                calendarData.sort((a, b) => a["Venue"] < b["Venue"]);
-                calendarData.sort((a, b) => a["Date"] < b["Date"]);
+                calendarData.sort((a, b) => a["Time"] < b["Time"] ? 1 : -1);
+                calendarData.sort((a, b) => a["Venue"] < b["Venue"] ? 1 : -1);
+                calendarData.sort((a, b) => a["Date"] < b["Date"] ? 1 : -1);
 
                 const date = new Date(`${key} 1, 2024`);
 
