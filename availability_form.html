@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
         <style>
         #calendar-container {
             background-color: white;
@@ -132,6 +133,16 @@
         #calendar-main {
             padding: 1em;
         }
+        h4 {
+            margin-bottom: 0.2em;
+        }
+        h4 + p {
+            margin-top: 0.2em;
+        }
+        #logo {
+            font-family: "Goldman", sans-serif;
+            font-weight: 400;
+        }
         </style>
     </head>
     <body>
@@ -163,10 +174,12 @@
         <div id="homepage">
             <label for="referee-name"><b style="font-size: 1.3em;">Referee Name: </b></label>
             <input id="referee-name" placeholder="John Smith"></input>
-            <p>Thanks for choosing to referee this high school season! We appreciate your commitment to the game!</p>
-            <h2>Instructions</h2>
-            <h4>Navigation</h4>
-            <p>Please fill out this form to let us know what your availability is for the highschool season. You must fill out your name, and you can select the checkboxes of games you are interested in officiating. To find these games, please navigate using the "Next" and "Previous" buttons at the bottom of this page.</p>
+            <br><br>
+            <p>Thanks for choosing to referee this high school season! We appreciate your commitment to the game! Please fill out this form to let us know what your availability is for the highschool season.</p>
+            <hr style="margin-bottom: 1em; color: white;">
+            <h2 style="margin-bottom: 0em;">Instructions</h2>
+            <h4 style="margin-top: 0em;">Selecting Games</h4>
+            <p>You can select the checkboxes of games you are interested in officiating. To find these games, please navigate using the "Next" and "Previous" buttons at the bottom of this page. There are pages for the months of August, September, and October.</p>
             <h4>Reporting Availability</h4>
             <p>After selecting all of the games you want, click "download availability" (at the bottom of the page), and you will download a file: "&lt;your_name&gt;.json". This file will show up in your computer's Downloads folder. Please email this file to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. You must email us this file for us to see your availability. It is recommended to save your progress so you can make changes to your availability and email the updated changes (see section below).</p>
             <h4>Saving Progress</h4>
