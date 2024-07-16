@@ -647,6 +647,7 @@
         }
 
         function createCard(day, cardData){
+            let gamesAdded = 0;
             const cardEl = document.createElement("div");
             cardEl.className = "calendar-card";
             if (day > 0) {
@@ -668,10 +669,11 @@
                     }
 
                     appendGameToVenueContainer(venueContainer, data);
+                    gamesAdded ++;
 
                 }
             }
-            return cardEl;
+            return { cardEl, gamesAdded };
         }
 
         function generateCalendars() {
@@ -685,14 +687,16 @@
                 const calendarData = parse_csv(calendars[key]);
                 calendarData.sort((a, b) => a["Time"] < b["Time"] ? 1 : -1);
                 calendarData.sort((a, b) => a["Venue"] < b["Venue"] ? 1 : -1);
-                calendarData.sort((a, b) => a["Date"] < b["Date"] ? 1 : -1);
+                calendarData.sort((a, b) => new Date(a["Date"]) < new Date(b["Date"]) ? 1 : -1);
 
                 const date = new Date(`${key} 1, 2024`);
 
                 let cards = 0;
+                let totalGames = calendarData.length;
+                let totalGamesAdded = 0;
 
                 for (let i = 0; i < date.getDay(); i ++) {
-                    let cardEl = createCard(0);
+                    let { cardEl, gamesAdded } = createCard(0);
                     calendar.appendChild(cardEl);
                     cards ++;
                 }
@@ -714,7 +718,8 @@
                     }
                     calendarData.push(game);
 
-                    let cardEl = createCard(date.getDate(), cardData);
+                    let { cardEl, gamesAdded } = createCard(date.getDate(), cardData);
+                    totalGamesAdded += gamesAdded;
                     calendar.appendChild(cardEl);
                     cards ++;
                     date.setDate(date.getDate() + 1);
@@ -722,12 +727,14 @@
                 } while (date.getDate() > 1);
 
                 while (cards < 7 * 5) {
-                    let cardEl = createCard(0);
+                    let { cardEl, gamesAdded } = createCard(0);
                     calendar.appendChild(cardEl);
                     cards ++;
                 }
+                if (totalGamesAdded != totalGames) {
+                    alert("something went wrong");
+                }
             }
-
         }
 
         let page = "home";
