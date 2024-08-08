@@ -209,306 +209,295 @@
         
     </body>
     <script>
-		const august = 
-`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
-322-HSB24,2024-08-22,15:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Stillwater
-323-HSB24,2024-08-22,16:45:00,Hill-Murray High School,Boys,Grade 9,Hill-Murray,Stillwater
-381-HSB24,2024-08-22,17:00:00,Simley High School,Boys,C-Squad,Simley,Rochester Century
-380-HSB24,2024-08-22,17:00:00,Simley High School,Boys,JV,Simley,Rochester Century
-305-HSB24,2024-08-22,17:30:00,Mounds View High School,Girls,Varsity,Mounds View,Champlin Park
-100-HSG24,2024-08-22,19:00:00,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Hill-Murray
-103-HSG24,2024-08-22,19:00:00,Hastings High School,Girls,Varsity,Hastings,Eastview
-382-HSB24,2024-08-22,19:00:00,Simley High School,Boys,Varsity,Simley,Rochester Century
-310-HSB24,2024-08-22,19:00:00,Stillwater High School,Boys,Varsity,Stillwater,Minneapolis Southwest
-306-HSB24,2024-08-22,19:30:00,Mounds View High School,Boys,Varsity,Mounds View,Rochester Lourdes
-303-HSB24,2024-08-23,08:00:00,Forest Lake High School,Boys,JV,Forest Lake,Blaine
-103-HSB24,2024-08-23,10:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,Blaine
-304-HSB24,2024-08-23,17:00:00,Forest Lake High School,Boys,JV,Forest Lake,Duluth East
-224-HSG24,2024-08-24,09:00:00,Hastings High School,Girls,C-Squad,Hastings,Bloomington Jefferson
-225-HSB24,2024-08-24,09:00:00,Hastings High School,Boys,C-Squad,Hastings,Bloomington Jefferson
-383-HSB24,2024-08-24,09:00:00,Simley High School,Boys,C-Squad,Simley,Apple Valley
-385-HSB24,2024-08-24,09:00:00,Simley High School,Girls,C-Squad,Simley,Apple Valley
-384-HSB24,2024-08-24,09:00:00,Simley High School,Girls,JV,Simley,Apple Valley
-109-HSB24,2024-08-24,11:00:00,East Ridge High School,Boys,Varsity,East Ridge,Rosemount
-225-HSG24,2024-08-24,11:00:00,Hastings High School,Girls,JV,Hastings,Bloomington Jefferson
-226-HSB24,2024-08-24,11:00:00,Hastings High School,Boys,JV,Hastings,Bloomington Jefferson
-325-HSB24,2024-08-24,11:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Benilde-St Margaret's
-324-HSB24,2024-08-24,11:00:00,Hill-Murray High School,Boys,JV,Hill-Murray,Duluth Denfeld
-386-HSB24,2024-08-24,11:00:00,Simley High School,Boys,JV,Simley,Apple Valley
-387-HSB24,2024-08-24,11:00:00,Simley High School,Girls,Varsity,Simley,Apple Valley
-110-HSB24,2024-08-24,11:00:00,Woodbury High School,Boys,Varsity,Woodbury,St Thomas Academy
-104-HSG24,2024-08-24,13:00:00,East Ridge High School,Girls,Varsity,East Ridge,Rosemount
-326-HSB24,2024-08-24,13:00:00,Hill-Murray High School,Girls,JV,Hill-Murray,Totino-Grace
-107-HSB24,2024-08-24,13:00:00,North St Paul High School,Boys,Varsity,North St Paul,Minneapolis Edison
-388-HSB24,2024-08-24,13:00:00,Simley High School,Boys,Varsity,Simley,Apple Valley
-311-HSB24,2024-08-24,13:00:00,Stillwater High School,Girls,Varsity,Stillwater,Lakeville North
-109-HSG24,2024-08-26,14:00:00,Roseville High School,Girls,Varsity,Roseville,Duluth Denfeld
-327-HSB24,2024-08-26,17:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,DeLaSalle
-242-HSG24,2024-08-27,14:00:00,Two Rivers High School,Girls,JV,Two Rivers,Rochester John Marshall
-389-HSB24,2024-08-27,17:00:00,Simley High School,Girls,JV,Simley,Blake School
-111-HSB24,2024-08-27,17:00:00,South St Paul High School,Boys,Varsity,South St Paul,Jordan
-307-HSB24,2024-08-27,19:00:00,Mounds View High School,Girls,Varsity,Mounds View,Hill-Murray
-390-HSB24,2024-08-27,19:00:00,Simley High School,Girls,Varsity,Simley,Blake School
-316-HSB24,2024-08-27,19:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Mahtomedi
-317-HSB24,2024-08-28,17:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Eagan
-328-HSB24,2024-08-28,17:15:00,Hill-Murray High School,Girls,C-Squad,Hill-Murray,East Ridge
-318-HSB24,2024-08-28,19:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Eagan
-115-HSG24,2024-08-29,15:00:00,Park High School,Girls,Varsity,Park,Hastings
-329-HSB24,2024-08-29,15:30:00,Hill-Murray High School,Boys,Grade 9,Hill-Murray,East Ridge
-330-HSB24,2024-08-29,15:30:00,Hill-Murray High School,Girls,JV,Hill-Murray,East Ridge
-392-HSB24,2024-08-29,16:00:00,Simley High School,Boys,C-Squad,Simley,St Croix Lutheran
-391-HSB24,2024-08-29,16:00:00,Simley High School,Boys,JV,Simley,St Croix Lutheran
-417-HSB24,2024-08-29,17:00:00,Tartan High School,Girls,Varsity,Tartan,Highland Park
-332-HSB24,2024-08-29,17:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,East Ridge
-331-HSB24,2024-08-29,17:15:00,Hill-Murray High School,Boys,JV,Hill-Murray,East Ridge
-393-HSB24,2024-08-29,18:00:00,Simley High School,Boys,Varsity,Simley,St Croix Lutheran
-431-HSB24,2024-08-29,18:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Academy of Holy Angels
-302-HSB24,2024-08-29,19:00:00,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Simley
-418-HSB24,2024-08-29,19:00:00,Tartan High School,Boys,Varsity,Tartan,Highland Park
-312-HSB24,2024-08-30,19:00:00,Stillwater High School,Girls,Varsity,Stillwater,Edina`
-		const september = 
-`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
-228-HSG24,2024-09-03,15:30:00,Hastings High School,Girls,C-Squad,Hastings,Burnsville
-227-HSB24,2024-09-03,15:30:00,Hastings High School,Boys,C-Squad,Hastings,Burnsville
-334-HSB24,2024-09-03,16:00:00,Hill-Murray High School,Boys,Grade 9,Hill-Murray,Academy of Holy Angels
-333-HSB24,2024-09-03,16:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Academy of Holy Angels
-229-HSG24,2024-09-03,17:00:00,Hastings High School,Girls,JV,Hastings,Burnsville
-228-HSB24,2024-09-03,17:00:00,Hastings High School,Boys,JV,Hastings,Burnsville
-116-HSB24,2024-09-03,17:00:00,Hastings High School,Boys,Varsity,Hastings,Burnsville
-120-HSG24,2024-09-03,17:00:00,Park High School,Girls,Varsity,Park,Apple Valley
-419-HSB24,2024-09-03,17:00:00,Tartan High School,Girls,Varsity,Tartan,St Paul Central
-336-HSB24,2024-09-03,17:30:00,Hill-Murray High School,Girls,JV,Hill-Murray,Academy of Holy Angels
-335-HSB24,2024-09-03,17:30:00,Hill-Murray High School,Boys,JV,Hill-Murray,Academy of Holy Angels
-122-HSG24,2024-09-03,19:00:00,Hastings High School,Girls,Varsity,Hastings,Burnsville
-119-HSB24,2024-09-03,19:00:00,Park High School,Boys,Varsity,Park,Apple Valley
-124-HSG24,2024-09-03,19:00:00,Two Rivers High School,Girls,Varsity,Two Rivers,Benilde-St Margaret's
-319-HSB24,2024-09-03,19:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Andover
-121-HSG24,2024-09-03,19:00:00,Woodbury High School,Girls,Varsity,Woodbury,Lakeville South
-118-HSG24,2024-09-03,19:30:00,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Mahtomedi
-337-HSB24,2024-09-04,16:30:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Mounds View
-394-HSB24,2024-09-05,15:45:00,Simley High School,Girls,JV,Simley,Hill-Murray
-125-HSB24,2024-09-05,17:00:00,East Ridge High School,Boys,Varsity,East Ridge,Roseville
-128-HSB24,2024-09-05,17:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,Cretin-Derham Hall
-126-HSB24,2024-09-05,17:00:00,Park High School,Boys,Varsity,Park,Mounds View
-131-HSG24,2024-09-05,17:00:00,Simley High School,Girls,Varsity,Simley,Hill-Murray
-132-HSG24,2024-09-05,17:00:00,South St Paul High School,Girls,Varsity,South St Paul,Mahtomedi
-124-HSB24,2024-09-05,17:00:00,Tartan High School,Boys,Varsity,Tartan,Two Rivers
-395-HSB24,2024-09-05,17:15:00,Simley High School,Boys,JV,Simley,Hill-Murray
-126-HSG24,2024-09-05,19:00:00,East Ridge High School,Girls,Varsity,East Ridge,Roseville
-134-HSG24,2024-09-05,19:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,Cretin-Derham Hall
-127-HSG24,2024-09-05,19:00:00,Park High School,Girls,Varsity,Park,Mounds View
-122-HSB24,2024-09-05,19:00:00,Simley High School,Boys,Varsity,Simley,Hill-Murray
-123-HSB24,2024-09-05,19:00:00,South St Paul High School,Boys,Varsity,South St Paul,Mahtomedi
-133-HSG24,2024-09-05,19:00:00,Tartan High School,Girls,Varsity,Tartan,Two Rivers
-339-HSB24,2024-09-06,15:45:00,Hill-Murray High School,Girls,C-Squad,Hill-Murray,Simley
-338-HSB24,2024-09-06,15:45:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Hudson
-340-HSB24,2024-09-06,17:15:00,Hill-Murray High School,Boys,C-Squad,Hill-Murray,Simley
-342-HSB24,2024-09-07,10:00:00,Hill-Murray High School,Boys,Grade 9,Hill-Murray,Cretin-Derham Hall
-341-HSB24,2024-09-07,10:00:00,Hill-Murray High School,Boys,JV,Hill-Murray,Cretin-Derham Hall
-137-HSG24,2024-09-07,11:00:00,North St Paul High School,Girls,Varsity,North St Paul,Richfield
-343-HSB24,2024-09-07,12:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Cretin-Derham Hall
-129-HSB24,2024-09-07,12:00:00,Hill-Murray High School,Boys,Varsity,Hill-Murray,Cretin-Derham Hall
-130-HSB24,2024-09-07,12:00:00,South St Paul High School,Boys,Varsity,South St Paul,Highland Park
-135-HSG24,2024-09-07,13:00:00,Irondale High School,Girls,Varsity,Irondale,Fridley
-136-HSG24,2024-09-07,13:00:00,Roseville High School,Girls,Varsity,Roseville,Concordia Academy
-420-HSB24,2024-09-07,13:00:00,Tartan High School,Boys,Varsity,Tartan,East Ridge
-320-HSB24,2024-09-07,13:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,North St Paul
-436-HSB24,2024-09-07,14:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Blake School
-344-HSB24,2024-09-09,15:45:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Tartan
-138-HSG24,2024-09-09,17:00:00,Hastings High School,Girls,Varsity,Hastings,Two Rivers
-139-HSG24,2024-09-09,17:00:00,Mahtomedi High School,Girls,Varsity,Mahtomedi,Tartan
-135-HSB24,2024-09-09,17:00:00,North St Paul High School,Boys,Varsity,North St Paul,South St Paul
-346-HSB24,2024-09-09,17:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,St Thomas Academy
-345-HSB24,2024-09-09,17:15:00,Hill-Murray High School,Boys,JV,Hill-Murray,St Thomas Academy
-132-HSB24,2024-09-09,19:00:00,Hastings High School,Boys,Varsity,Hastings,Two Rivers
-133-HSB24,2024-09-09,19:00:00,Hill-Murray High School,Boys,Varsity,Hill-Murray,St Thomas Academy
-134-HSB24,2024-09-09,19:00:00,Mahtomedi High School,Boys,Varsity,Mahtomedi,Tartan
-140-HSG24,2024-09-09,19:00:00,North St Paul High School,Girls,Varsity,North St Paul,South St Paul
-313-HSB24,2024-09-09,19:00:00,Stillwater High School,Girls,Varsity,Stillwater,Andover
-347-HSB24,2024-09-11,15:45:00,Hill-Murray High School,Boys,JV,Hill-Murray,Mahtomedi
-396-HSB24,2024-09-11,15:45:00,Simley High School,Boys,JV,Simley,Tartan
-146-HSG24,2024-09-11,17:00:00,Hastings High School,Girls,Varsity,Hastings,North St Paul
-231-HSB24,2024-09-11,17:15:00,Hastings High School,Boys,JV,Hastings,North St Paul
-348-HSB24,2024-09-11,17:15:00,Hill-Murray High School,Girls,JV,Hill-Murray,Mahtomedi
-397-HSB24,2024-09-11,17:15:00,Simley High School,Girls,JV,Simley,Tartan
-143-HSB24,2024-09-11,18:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,South St Paul
-141-HSB24,2024-09-11,19:00:00,Hastings High School,Boys,Varsity,Hastings,North St Paul
-149-HSG24,2024-09-11,19:00:00,South St Paul High School,Girls,Varsity,South St Paul,St Croix Prepatory
-150-HSG24,2024-09-12,17:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,Mounds View
-151-HSG24,2024-09-12,17:00:00,Park High School,Girls,Varsity,Park,East Ridge
-152-HSG24,2024-09-12,17:00:00,Stillwater High School,Girls,Varsity,Stillwater,Irondale
-153-HSG24,2024-09-12,17:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Roseville
-154-HSG24,2024-09-12,17:00:00,Woodbury High School,Girls,Varsity,Woodbury,Cretin-Derham Hall
-145-HSB24,2024-09-12,19:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,Mounds View
-146-HSB24,2024-09-12,19:00:00,Park High School,Boys,Varsity,Park,East Ridge
-147-HSB24,2024-09-12,19:00:00,Stillwater High School,Boys,Varsity,Stillwater,Irondale
-148-HSB24,2024-09-12,19:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Roseville
-149-HSB24,2024-09-12,19:00:00,Woodbury High School,Boys,Varsity,Woodbury,Cretin-Derham Hall
-351-HSB24,2024-09-13,15:45:00,Hill-Murray High School,Boys,Grade 9,TBD,TBD
-349-HSB24,2024-09-13,15:45:00,Hill-Murray High School,Boys,Grade 9,TBD,TBD
-155-HSG24,2024-09-13,17:00:00,North St Paul High School,Girls,Varsity,North St Paul,Mounds Park Academy
-352-HSB24,2024-09-13,17:30:00,Hill-Murray High School,Boys,B-Squad,TBD,TBD
-350-HSB24,2024-09-13,17:30:00,Hill-Murray High School,Boys,B-Squad,TBD,TBD
-399-HSB24,2024-09-14,09:00:00,Simley High School,Girls,C-Squad,Simley,Burnsville
-398-HSB24,2024-09-14,09:00:00,Simley High School,Girls,JV,Simley,Burnsville
-156-HSG24,2024-09-14,11:00:00,Roseville High School,Girls,Varsity,Roseville,Osseo
-400-HSB24,2024-09-14,11:00:00,Simley High School,Boys,JV,Simley,Rochester John Marshall
-401-HSB24,2024-09-14,11:00:00,Simley High School,Boys,C-Squad,Simley,Rochester John Marshall
-402-HSB24,2024-09-14,11:00:00,Simley High School,Girls,Varsity,Simley,Burnsville
-355-HSB24,2024-09-14,12:15:00,Hill-Murray High School,Boys,Grade 9,TBD,TBD
-353-HSB24,2024-09-14,12:15:00,Hill-Murray High School,Boys,Grade 9,TBD,TBD
-152-HSB24,2024-09-14,13:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,Hastings
-157-HSG24,2024-09-14,13:00:00,Hastings High School,Girls,Varsity,Hastings,Minnetonka
-308-HSB24,2024-09-14,13:00:00,Mounds View High School,Girls,Varsity,Mounds View,Blaine
-153-HSB24,2024-09-14,13:00:00,Roseville High School,Boys,Varsity,Roseville,Osseo
-403-HSB24,2024-09-14,13:00:00,Simley High School,Boys,Varsity,Simley,Rochester John Marshall
-421-HSB24,2024-09-14,13:00:00,Tartan High School,Boys,Varsity,Tartan,St Anthony Village
-321-HSB24,2024-09-14,13:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Simley
-356-HSB24,2024-09-14,14:00:00,Hill-Murray High School,Boys,B-Squad,TBD,TBD
-354-HSB24,2024-09-14,14:00:00,Hill-Murray High School,Boys,B-Squad,TBD,TBD
-151-HSB24,2024-09-14,15:00:00,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Owatonna
-309-HSB24,2024-09-14,15:00:00,Mounds View High School,Boys,Varsity,Mounds View,Park Center
-150-HSB24,2024-09-14,15:00:00,Two Rivers High School,Boys,Varsity,Two Rivers,Woodbury
-158-HSB24,2024-09-17,17:00:00,East Ridge High School,Boys,Varsity,East Ridge,White Bear Lake
-154-HSB24,2024-09-17,17:00:00,Mahtomedi High School,Boys,Varsity,Mahtomedi,Hastings
-161-HSB24,2024-09-17,17:00:00,Park High School,Boys,Varsity,Park,Woodbury
-162-HSB24,2024-09-17,17:00:00,Roseville High School,Boys,Varsity,Roseville,Forest Lake
-156-HSB24,2024-09-17,17:00:00,Tartan High School,Boys,Varsity,Tartan,Hill-Murray
-246-HSB24,2024-09-17,17:15:00,Two Rivers High School,Boys,JV,Two Rivers,North St Paul
-158-HSG24,2024-09-17,19:00:00,East Ridge High School,Girls,Varsity,East Ridge,White Bear Lake
-163-HSG24,2024-09-17,19:00:00,Mahtomedi High School,Girls,Varsity,Mahtomedi,Hastings
-161-HSG24,2024-09-17,19:00:00,Park High School,Girls,Varsity,Park,Woodbury
-162-HSG24,2024-09-17,19:00:00,Roseville High School,Girls,Varsity,Roseville,Forest Lake
-164-HSG24,2024-09-17,19:00:00,Tartan High School,Girls,Varsity,Tartan,Hill-Murray
-232-HSB24,2024-09-18,15:45:00,Hastings High School,Boys,C-Squad,Hastings,Mahtomedi
-357-HSB24,2024-09-18,15:45:00,Hill-Murray High School,Boys,C-Squad,Hill-Murray,Tartan
-233-HSG24,2024-09-18,17:15:00,Hastings High School,Girls,C-Squad,Hastings,Mahtomedi
-358-HSB24,2024-09-18,17:15:00,Hill-Murray High School,Girls,C-Squad,Hill-Murray,Tartan
-404-HSB24,2024-09-18,17:15:00,Simley High School,Boys,C-Squad,Simley,St Thomas Academy
-359-HSB24,2024-09-19,16:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Two Rivers
-168-HSB24,2024-09-19,17:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,East Ridge
-165-HSB24,2024-09-19,17:00:00,South St Paul High School,Boys,Varsity,South St Paul,Two Rivers
-169-HSB24,2024-09-19,17:00:00,Stillwater High School,Boys,Varsity,Stillwater,Roseville
-174-HSG24,2024-09-19,17:00:00,Tartan High School,Girls,Varsity,Tartan,Hastings
-170-HSB24,2024-09-19,17:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Park
-171-HSB24,2024-09-19,17:00:00,Woodbury High School,Boys,Varsity,Woodbury,Irondale
-405-HSB24,2024-09-19,17:15:00,Simley High School,Boys,JV,Simley,North St Paul
-360-HSB24,2024-09-19,17:30:00,Hill-Murray High School,Girls,JV,Hill-Murray,Anoka
-163-HSB24,2024-09-19,18:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Mahtomedi
-167-HSG24,2024-09-19,19:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,East Ridge
-171-HSG24,2024-09-19,19:00:00,Hill-Murray High School,Girls,Varsity,Hill-Murray,Anoka
-173-HSG24,2024-09-19,19:00:00,South St Paul High School,Girls,Varsity,South St Paul,Two Rivers
-168-HSG24,2024-09-19,19:00:00,Stillwater High School,Girls,Varsity,Stillwater,Roseville
-166-HSB24,2024-09-19,19:00:00,Tartan High School,Boys,Varsity,Tartan,Hastings
-169-HSG24,2024-09-19,19:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Park
-170-HSG24,2024-09-19,19:00:00,Woodbury High School,Girls,Varsity,Woodbury,Irondale
-234-HSG24,2024-09-20,15:45:00,Hastings High School,Girls,C-Squad,Hastings,Tartan
-233-HSB24,2024-09-20,17:15:00,Hastings High School,Boys,C-Squad,Hastings,Tartan
-361-HSB24,2024-09-21,10:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Mahtomedi
-362-HSB24,2024-09-21,10:00:00,Hill-Murray High School,Girls,JV,Hill-Murray,Eagan
-422-HSB24,2024-09-21,10:00:00,Tartan High School,Boys,Varsity,Tartan,Sartell
-175-HSG24,2024-09-21,12:00:00,Hill-Murray High School,Girls,Varsity,Hill-Murray,Eagan
-300-HSB24,2024-09-21,12:00:00,Irondale High School,Boys,Varsity,Irondale,Henry High School
-239-HSG24,2024-09-21,12:00:00,Mahtomedi High School,Girls,Varsity,Mahtomedi,Benilde-St Margaret's
-240-HSB24,2024-09-21,14:00:00,Mahtomedi High School,Boys,Varsity,Mahtomedi,Benilde-St Margaret's
-444-HSB24,2024-09-21,14:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Cretin-Derham Hall
-172-HSB24,2024-09-21,15:00:00,East Ridge High School,Boys,Varsity,East Ridge,Two Rivers
-173-HSB24,2024-09-21,19:00:00,Park High School,Boys,Varsity,Park,Shakopee
-314-HSB24,2024-09-21,19:00:00,Stillwater High School,Boys,Varsity,Stillwater,Minnetonka
-407-HSB24,2024-09-23,17:00:00,Simley High School,Girls,C-Squad,Simley,Rockford
-406-HSB24,2024-09-23,17:00:00,Simley High School,Girls,JV,Simley,Rockford
-408-HSB24,2024-09-23,19:00:00,Simley High School,Girls,Varsity,Simley,Rockford
-234-HSB24,2024-09-24,15:45:00,Hastings High School,Boys,JV,Hastings,Hill-Murray
-176-HSG24,2024-09-24,17:00:00,East Ridge High School,Girls,Varsity,East Ridge,Stillwater
-174-HSB24,2024-09-24,17:00:00,Hastings High School,Boys,Varsity,Hastings,Hill-Murray
-182-HSG24,2024-09-24,17:00:00,Mahtomedi High School,Girls,Varsity,Mahtomedi,Simley
-179-HSG24,2024-09-24,17:00:00,Roseville High School,Girls,Varsity,Roseville,Cretin-Derham Hall
-177-HSB24,2024-09-24,17:00:00,Tartan High School,Boys,Varsity,Tartan,South St Paul
-235-HSG24,2024-09-24,17:15:00,Hastings High School,Girls,JV,Hastings,Hill-Murray
-363-HSB24,2024-09-24,17:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,St Paul Central
-247-HSB24,2024-09-24,17:15:00,Two Rivers High School,Boys,JV,Two Rivers,St Thomas Academy
-179-HSB24,2024-09-24,19:00:00,East Ridge High School,Boys,Varsity,East Ridge,Stillwater
-181-HSG24,2024-09-24,19:00:00,Hastings High School,Girls,Varsity,Hastings,Hill-Murray
-175-HSB24,2024-09-24,19:00:00,Mahtomedi High School,Boys,Varsity,Mahtomedi,Simley
-176-HSB24,2024-09-24,19:00:00,North St Paul High School,Boys,Varsity,North St Paul,Washington Technology Magnet
-182-HSB24,2024-09-24,19:00:00,Roseville High School,Boys,Varsity,Roseville,Cretin-Derham Hall
-183-HSG24,2024-09-24,19:00:00,Tartan High School,Girls,Varsity,Tartan,South St Paul
-178-HSB24,2024-09-24,19:00:00,Two Rivers High School,Boys,Varsity,Two Rivers,St Thomas Academy
-364-HSB24,2024-09-25,15:45:00,Hill-Murray High School,Boys,C-Squad,Hill-Murray,Hastings
-409-HSB24,2024-09-25,15:45:00,Simley High School,Girls,C-Squad,Simley,Mahtomedi
-365-HSB24,2024-09-25,17:15:00,Hill-Murray High School,Girls,C-Squad,Hill-Murray,Hastings
-410-HSB24,2024-09-25,17:15:00,Simley High School,Boys,C-Squad,Simley,Mahtomedi
-366-HSB24,2024-09-26,15:45:00,Hill-Murray High School,Girls,JV,Hill-Murray,Two Rivers
-184-HSG24,2024-09-26,17:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,White Bear Lake
-188-HSG24,2024-09-26,17:00:00,Hill-Murray High School,Girls,Varsity,Hill-Murray,Two Rivers
-185-HSG24,2024-09-26,17:00:00,Irondale High School,Girls,Varsity,Irondale,Roseville
-186-HSG24,2024-09-26,17:00:00,Stillwater High School,Girls,Varsity,Stillwater,Park
-235-HSB24,2024-09-26,17:15:00,Hastings High School,Boys,JV,Hastings,St Thomas Academy
-368-HSB24,2024-09-26,17:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Two Rivers
-367-HSB24,2024-09-26,17:15:00,Hill-Murray High School,Boys,JV,Hill-Murray,Two Rivers
-188-HSB24,2024-09-26,19:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,White Bear Lake
-184-HSB24,2024-09-26,19:00:00,Hastings High School,Boys,Varsity,Hastings,St Thomas Academy
-185-HSB24,2024-09-26,19:00:00,Hill-Murray High School,Boys,Varsity,Hill-Murray,Two Rivers
-189-HSB24,2024-09-26,19:00:00,Irondale High School,Boys,Varsity,Irondale,Roseville
-190-HSB24,2024-09-26,19:00:00,Stillwater High School,Boys,Varsity,Stillwater,Park
-411-HSB24,2024-09-27,15:45:00,Simley High School,Boys,C-Squad,Simley,South St Paul
-412-HSB24,2024-09-27,17:15:00,Simley High School,Girls,C-Squad,Simley,South St Paul
-369-HSB24,2024-09-28,09:00:00,Hill-Murray High School,Boys,Grade 9,Hill-Murray,Benilde-St Margaret's
-370-HSB24,2024-09-28,09:00:00,Hill-Murray High School,Girls,JV,Hill-Murray,Benilde-St Margaret's
-372-HSB24,2024-09-28,11:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Benilde-St Margaret's
-371-HSB24,2024-09-28,11:00:00,Hill-Murray High School,Boys,JV,Hill-Murray,Benilde-St Margaret's
-192-HSG24,2024-09-28,11:00:00,Hill-Murray High School,Girls,Varsity,Hill-Murray,Benilde-St Margaret's
-241-HSB24,2024-09-28,12:00:00,Mahtomedi High School,Boys,Varsity,Mahtomedi,Mounds View
-192-HSB24,2024-09-28,13:00:00,Hill-Murray High School,Boys,Varsity,Hill-Murray,Benilde-St Margaret's
-315-HSB24,2024-09-28,13:00:00,Stillwater High School,Girls,Varsity,Stillwater,Morehead
-423-HSB24,2024-09-28,13:00:00,Tartan High School,Boys,Varsity,Tartan,Zimmerman
-240-HSG24,2024-09-28,14:00:00,Mahtomedi High School,Girls,Varsity,Mahtomedi,Mounds View
-452-HSB24,2024-09-28,14:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Roseville
-194-HSB24,2024-09-28,19:00:00,Park High School,Boys,Varsity,Park,Hastings`
-		const october = 
-`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
-248-HSB24,2024-10-01,15:45:00,Two Rivers High School,Boys,JV,Two Rivers,Simley
-373-HSB24,2024-10-01,16:15:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Rosemount
-199-HSB24,2024-10-01,17:00:00,East Ridge High School,Boys,Varsity,East Ridge,Irondale
-200-HSB24,2024-10-01,17:00:00,Forest Lake High School,Boys,Varsity,Forest Lake,Woodbury
-201-HSB24,2024-10-01,17:00:00,Park High School,Boys,Varsity,Park,Cretin-Derham Hall
-199-HSG24,2024-10-01,17:00:00,South St Paul High School,Girls,Varsity,South St Paul,Hastings
-203-HSB24,2024-10-01,17:00:00,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Stillwater
-245-HSG24,2024-10-01,17:15:00,Two Rivers High School,Girls,JV,Two Rivers,Simley
-193-HSG24,2024-10-01,19:00:00,East Ridge High School,Girls,Varsity,East Ridge,Irondale
-194-HSG24,2024-10-01,19:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,Woodbury
-195-HSG24,2024-10-01,19:00:00,Park High School,Girls,Varsity,Park,Cretin-Derham Hall
-197-HSB24,2024-10-01,19:00:00,South St Paul High School,Boys,Varsity,South St Paul,Hastings
-196-HSB24,2024-10-01,19:00:00,St Thomas Academy,Boys,Varsity,St Thomas Academy,Tartan
-197-HSG24,2024-10-01,19:00:00,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Stillwater
-236-HSG24,2024-10-02,15:45:00,Hastings High School,Girls,C-Squad,Hastings,South St Paul
-374-HSB24,2024-10-02,15:45:00,Hill-Murray High School,Girls,C-Squad,Hill-Murray,North St Paul
-413-HSB24,2024-10-02,15:45:00,Simley High School,Boys,C-Squad,Simley,Two Rivers
-236-HSB24,2024-10-02,17:15:00,Hastings High School,Boys,C-Squad,Hastings,South St Paul
-375-HSB24,2024-10-02,17:15:00,Hill-Murray High School,Boys,C-Squad,Hill-Murray,North St Paul
-414-HSB24,2024-10-02,17:15:00,Simley High School,Girls,C-Squad,Simley,Two Rivers
-246-HSG24,2024-10-02,17:15:00,Two Rivers High School,Girls,JV,Two Rivers,Mahtomedi
-376-HSB24,2024-10-02,19:00:00,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Hill-Murray
-209-HSG24,2024-10-02,19:00:00,Two Rivers High School,Girls,Varsity,Two Rivers,Mahtomedi
-377-HSB24,2024-10-03,15:45:00,Hill-Murray High School,Girls,JV,Hill-Murray,South St Paul
-415-HSB24,2024-10-03,15:45:00,Simley High School,Boys,JV,Simley,Hastings
-205-HSB24,2024-10-03,17:00:00,North St Paul High School,Boys,Varsity,North St Paul,Tartan
-206-HSB24,2024-10-03,17:00:00,Simley High School,Boys,Varsity,Simley,Hastings
-204-HSG24,2024-10-03,17:00:00,Stillwater High School,Girls,Varsity,Stillwater,Forest Lake
-207-HSB24,2024-10-03,17:00:00,Two Rivers High School,Boys,Varsity,Two Rivers,Mahtomedi
-205-HSG24,2024-10-03,17:00:00,Woodbury High School,Girls,Varsity,Woodbury,Roseville
-378-HSB24,2024-10-03,17:15:00,Hill-Murray High School,Boys,JV,Hill-Murray,South St Paul
-416-HSB24,2024-10-03,17:15:00,Simley High School,Girls,JV,Simley,Hastings
-207-HSG24,2024-10-03,19:00:00,North St Paul High School,Girls,Varsity,North St Paul,Tartan
-208-HSG24,2024-10-03,19:00:00,Simley High School,Girls,Varsity,Simley,Hastings
-211-HSB24,2024-10-03,19:00:00,Stillwater High School,Boys,Varsity,Stillwater,Forest Lake
-212-HSB24,2024-10-03,19:00:00,Woodbury High School,Boys,Varsity,Woodbury,Roseville
-210-HSG24,2024-10-05,11:00:00,East Ridge High School,Girls,Varsity,East Ridge,Mahtomedi
-214-HSB24,2024-10-05,11:00:00,Woodbury High School,Boys,Varsity,Woodbury,St Paul Central
-211-HSG24,2024-10-05,13:00:00,Forest Lake High School,Girls,Varsity,Forest Lake,Blaine
-250-HSB24,2024-10-05,13:00:00,Irondale High School,Boys,Varsity,Irondale,St Cloud Apollo
-379-HSB24,2024-10-05,13:00:00,North St Paul High School,Boys,Varsity,North St Paul,St Anthony Village
-212-HSG24,2024-10-05,15:00:00,South St Paul High School,Girls,Varsity,South St Paul,Duluth East`
+        const august = 
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+222-HSG24,8/22/2024,3:30 PM,Hastings High School,Girls,C-Squad,Hastings,Eastview,MEC
+223-HSG24,8/22/2024,5:00 PM,Hastings High School,Girls,JV,Hastings,Eastview,MEC
+101-HSB24,8/22/2024,5:00 PM,Park High School,Boys,Varsity,Park,Bloomington Jefferson,SEC
+102-HSB24,8/22/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Spring Lake Park,SEC
+100-HSG24,8/22/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Hill-Murray,SEC
+103-HSG24,8/22/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Eastview,MEC
+100-HSB24,8/22/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Chisago Lakes,MEC
+101-HSG24,8/22/2024,7:00 PM,Park High School,Girls,Varsity,Park,Bloomington Jefferson,SEC
+102-HSG24,8/22/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Spring Lake Park,SEC
+103-HSB24,8/23/2024,10:00 AM,Forest Lake High School,Boys,Varsity,Forest Lake,Blaine,SEC
+104-HSB24,8/23/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Duluth East,SEC
+238-HSB24,8/23/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Duluth Denfeld,MEC
+224-HSG24,8/24/2024,9:00 AM,Hastings High School,Girls,C-Squad,Hastings,Bloomington Jefferson,MEC
+225-HSB24,8/24/2024,9:00 AM,Hastings High School,Boys,C-Squad,Hastings,Bloomington Jefferson,MEC
+109-HSB24,8/24/2024,11:00 AM,East Ridge High School,Boys,Varsity,East Ridge,Rosemount,SEC
+225-HSG24,8/24/2024,11:00 AM,Hastings High School,Girls,JV,Hastings,Bloomington Jefferson,MEC
+226-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,JV,Hastings,Bloomington Jefferson,MEC
+105-HSB24,8/24/2024,11:00 AM,Hastings High School,Boys,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSB24,8/24/2024,11:00 AM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Duluth Denfeld,MEC
+107-HSG24,8/24/2024,11:00 AM,North St Paul High School,Girls,Varsity,North St Paul,Fridley,MEC
+104-HSG24,8/24/2024,1:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Rosemount,SEC
+105-HSG24,8/24/2024,1:00 PM,Hastings High School,Girls,Varsity,Hastings,Bloomington Jefferson,MEC
+106-HSG24,8/24/2024,1:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Totino-Grace,MEC
+107-HSB24,8/24/2024,1:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Minneapolis Edison,MEC
+108-HSB24,8/24/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Champlin Park,SEC
+110-HSB24,8/24/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,St Thomas Academy,SEC
+109-HSG24,8/26/2024,2:00 PM,Roseville High School,Girls,Varsity,Roseville,Duluth Denfeld,SEC
+108-HSG24,8/26/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Eastview,SEC
+110-HSG24,8/26/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Byron,MEC
+213-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Rochester John Marshall,MEC
+242-HSG24,8/27/2024,2:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Rochester John Marshall,MEC
+226-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,JV,Hastings,Shakopee,MEC
+227-HSG24,8/27/2024,3:00 PM,Hastings High School,Girls,C-Squad,Hastings,Shakopee,MEC
+224-HSB24,8/27/2024,3:00 PM,Hastings High School,Boys,C-Squad,Hastings,Irondale,MEC
+223-HSB24,8/27/2024,5:00 PM,Hastings High School,Boys,JV,Hastings,Irondale,MEC
+113-HSG24,8/27/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,Shakopee,MEC
+113-HSB24,8/27/2024,5:00 PM,Park High School,Boys,Varsity,Park,Burnsville,SEC
+111-HSB24,8/27/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Jordan,MEC
+242-HSB24,8/27/2024,5:00 PM,Two Rivers High School,Boys,JV,Two Rivers,St Paul Central,MEC
+221-HSG24,8/27/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,Irondale,MEC
+111-HSG24,8/27/2024,7:00 PM,Irondale High School,Girls,Varsity,Irondale,Cambridge-Isanti,SEC
+112-HSG24,8/27/2024,7:00 PM,Park High School,Girls,Varsity,Park,Burnsville,SEC
+112-HSB24,8/27/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,St Paul Central,MEC
+114-HSG24,8/28/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,South St Paul,SEC
+239-HSB24,8/28/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Roseville,MEC
+115-HSG24,8/29/2024,3:00 PM,Park High School,Girls,Varsity,Park,Hastings,SEC
+243-HSB24,8/29/2024,3:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Stillwater,MEC
+116-HSG24,8/29/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,East Ridge,MEC
+115-HSB24,8/29/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Stillwater,MEC
+243-HSG24,8/29/2024,5:00 PM,Two Rivers High School,Girls,JV,Two Rivers,Minnetonka,MEC
+114-HSB24,8/29/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,East Ridge,MEC
+238-HSG24,8/29/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Woodbury,MEC
+117-HSG24,8/29/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Minnetonka,MEC`;
+        const september =
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+227-HSB24,9/3/2024,3:30 PM,Hastings High School,Boys,C-Squad,Hastings,Burnsville,MEC
+228-HSG24,9/3/2024,3:30 PM,Hastings High School,Girls,C-Squad,Hastings,Burnsville,MEC
+228-HSB24,9/3/2024,5:00 PM,Hastings High School,Boys,JV,Hastings,Burnsville,MEC
+229-HSG24,9/3/2024,5:00 PM,Hastings High School,Girls,JV,Hastings,Burnsville,MEC
+116-HSB24,9/3/2024,5:00 PM,Hastings High School,Boys,Varsity,Hastings,Burnsville,MEC
+119-HSG24,9/3/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Columbia Heights,SEC
+120-HSG24,9/3/2024,5:00 PM,Park High School,Girls,Varsity,Park,Apple Valley,SEC
+123-HSG24,9/3/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Johnson,MEC
+244-HSG24,9/3/2024,5:00 PM,Two Rivers High School,Girls,JV,Two Rivers,'Benilde-St Margaret''s',MEC
+122-HSG24,9/3/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Burnsville,MEC
+118-HSB24,9/3/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Tartan,SEC
+119-HSB24,9/3/2024,7:00 PM,Park High School,Boys,Varsity,Park,Apple Valley,SEC
+117-HSB24,9/3/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,St Paul Humboldt,MEC
+124-HSG24,9/3/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,'Benilde-St Margaret''s',MEC
+121-HSG24,9/3/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Lakeville South,SEC
+118-HSG24,9/3/2024,7:30 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Mahtomedi,SEC
+125-HSG24,9/4/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Chisago Lakes,SEC
+120-HSB24,9/4/2024,7:30 PM,Woodbury High School,Boys,Varsity,Woodbury,Stillwater,SEC
+125-HSB24,9/5/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Roseville,SEC
+128-HSB24,9/5/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Cretin-Derham Hall,SEC
+130-HSG24,9/5/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,St Paul Harding,MEC
+126-HSB24,9/5/2024,5:00 PM,Park High School,Boys,Varsity,Park,Mounds View,SEC
+131-HSG24,9/5/2024,5:00 PM,Simley High School,Girls,Varsity,Simley,Hill-Murray,MEC
+132-HSG24,9/5/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Mahtomedi,MEC
+124-HSB24,9/5/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,Two Rivers,MEC
+127-HSB24,9/5/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Irondale,SEC
+126-HSG24,9/5/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Roseville,SEC
+134-HSG24,9/5/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Cretin-Derham Hall,SEC
+121-HSB24,9/5/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,St Thomas Academy,MEC
+127-HSG24,9/5/2024,7:00 PM,Park High School,Girls,Varsity,Park,Mounds View,SEC
+122-HSB24,9/5/2024,7:00 PM,Simley High School,Boys,Varsity,Simley,Hill-Murray,MEC
+123-HSB24,9/5/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Mahtomedi,MEC
+133-HSG24,9/5/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,Two Rivers,MEC
+128-HSG24,9/5/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Irondale,SEC
+129-HSG24,9/5/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Stillwater,SEC
+230-HSG24,9/7/2024,9:00 AM,Hastings High School,Girls,C-Squad,Hastings,Apple Valley,MEC
+229-HSB24,9/7/2024,11:00 AM,Hastings High School,Boys,C-Squad,Hastings,Apple Valley,MEC
+137-HSG24,9/7/2024,11:00 AM,North St Paul High School,Girls,Varsity,North St Paul,Richfield,MEC
+129-HSB24,9/7/2024,12:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Cretin-Derham Hall,MEC
+130-HSB24,9/7/2024,12:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Highland Park,MEC
+135-HSG24,9/7/2024,1:00 PM,Irondale High School,Girls,Varsity,Irondale,Fridley,SEC
+136-HSG24,9/7/2024,1:00 PM,Roseville High School,Girls,Varsity,Roseville,Concordia Academy,SEC
+244-HSB24,9/7/2024,5:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Eastview,MEC
+131-HSB24,9/7/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Eastview,MEC
+231-HSG24,9/9/2024,3:45 PM,Hastings High School,Girls,JV,Hastings,Two Rivers,MEC
+138-HSG24,9/9/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,Two Rivers,MEC
+139-HSG24,9/9/2024,5:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Tartan,MEC
+135-HSB24,9/9/2024,5:00 PM,North St Paul High School,Boys,Varsity,North St Paul,South St Paul,MEC
+230-HSB24,9/9/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,Two Rivers,MEC
+132-HSB24,9/9/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,Two Rivers,MEC
+133-HSB24,9/9/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,St Thomas Academy,MEC
+134-HSB24,9/9/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Tartan,MEC
+140-HSG24,9/9/2024,7:00 PM,North St Paul High School,Girls,Varsity,North St Paul,South St Paul,MEC
+141-HSG24,9/10/2024,5:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Stillwater,SEC
+142-HSG24,9/10/2024,5:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Woodbury,SEC
+143-HSG24,9/10/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Forest Lake,SEC
+139-HSB24,9/10/2024,5:00 PM,Mounds View High School,Boys,Varsity,Mounds View,White Bear Lake,SEC
+145-HSG24,9/10/2024,5:00 PM,Roseville High School,Girls,Varsity,Roseville,Park,SEC
+136-HSB24,9/10/2024,7:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Stillwater,SEC
+137-HSB24,9/10/2024,7:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Woodbury,SEC
+138-HSB24,9/10/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Forest Lake,SEC
+144-HSG24,9/10/2024,7:00 PM,Mounds View High School,Girls,Varsity,Mounds View,White Bear Lake,SEC
+140-HSB24,9/10/2024,7:00 PM,Roseville High School,Boys,Varsity,Roseville,Park,SEC
+146-HSG24,9/11/2024,5:00 PM,Hastings High School,Girls,Varsity,Hastings,North St Paul,MEC
+142-HSB24,9/11/2024,5:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Mahtomedi,MEC
+144-HSB24,9/11/2024,5:00 PM,Simley High School,Boys,Varsity,Simley,Tartan,MEC
+231-HSB24,9/11/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,North St Paul,MEC
+141-HSB24,9/11/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,North St Paul,MEC
+147-HSG24,9/11/2024,7:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Mahtomedi,MEC
+148-HSG24,9/11/2024,7:00 PM,Simley High School,Girls,Varsity,Simley,Tartan,MEC
+149-HSG24,9/11/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,St Croix Prepatory,MEC
+143-HSB24,9/11/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,South St Paul,MEC
+150-HSG24,9/12/2024,5:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Mounds View,SEC
+151-HSG24,9/12/2024,5:00 PM,Park High School,Girls,Varsity,Park,East Ridge,SEC
+152-HSG24,9/12/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Irondale,SEC
+153-HSG24,9/12/2024,5:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Roseville,SEC
+154-HSG24,9/12/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Cretin-Derham Hall,SEC
+145-HSB24,9/12/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Mounds View,SEC
+146-HSB24,9/12/2024,7:00 PM,Park High School,Boys,Varsity,Park,East Ridge,SEC
+147-HSB24,9/12/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Irondale,SEC
+148-HSB24,9/12/2024,7:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Roseville,SEC
+149-HSB24,9/12/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Cretin-Derham Hall,SEC
+155-HSG24,9/13/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Mounds Park Academy,MEC
+232-HSG24,9/14/2024,11:00 AM,Hastings High School,Girls,JV,Hastings,Minnetonka,MEC
+156-HSG24,9/14/2024,11:00 AM,Roseville High School,Girls,Varsity,Roseville,Osseo,SEC
+152-HSB24,9/14/2024,1:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Hastings,SEC
+157-HSG24,9/14/2024,1:00 PM,Hastings High School,Girls,Varsity,Hastings,Minnetonka,MEC
+153-HSB24,9/14/2024,1:00 PM,Roseville High School,Boys,Varsity,Roseville,Osseo,SEC
+245-HSB24,9/14/2024,1:00 PM,Two Rivers High School,Boys,JV,Two Rivers,Woodbury,MEC
+151-HSB24,9/14/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Owatonna,SEC
+150-HSB24,9/14/2024,3:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Woodbury,MEC
+158-HSB24,9/17/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,White Bear Lake,SEC
+159-HSB24,9/17/2024,5:00 PM,Irondale High School,Boys,Varsity,Irondale,Cretin-Derham Hall,SEC
+154-HSB24,9/17/2024,5:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Hastings,MEC
+160-HSB24,9/17/2024,5:00 PM,Mounds View High School,Boys,Varsity,Mounds View,Stillwater,SEC
+161-HSB24,9/17/2024,5:00 PM,Park High School,Boys,Varsity,Park,Woodbury,SEC
+162-HSB24,9/17/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Forest Lake,SEC
+156-HSB24,9/17/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,Hill-Murray,MEC
+165-HSG24,9/17/2024,5:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,North St Paul,MEC
+246-HSB24,9/17/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,North St Paul,MEC
+158-HSG24,9/17/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,White Bear Lake,SEC
+159-HSG24,9/17/2024,7:00 PM,Irondale High School,Girls,Varsity,Irondale,Cretin-Derham Hall,SEC
+163-HSG24,9/17/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Hastings,MEC
+160-HSG24,9/17/2024,7:00 PM,Mounds View High School,Girls,Varsity,Mounds View,Stillwater,SEC
+161-HSG24,9/17/2024,7:00 PM,Park High School,Girls,Varsity,Park,Woodbury,SEC
+162-HSG24,9/17/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Forest Lake,SEC
+155-HSB24,9/17/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Simley,MEC
+164-HSG24,9/17/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,Hill-Murray,MEC
+157-HSB24,9/17/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,North St Paul,MEC
+232-HSB24,9/18/2024,3:45 PM,Hastings High School,Boys,C-Squad,Hastings,Mahtomedi,MEC
+233-HSG24,9/18/2024,5:15 PM,Hastings High School,Girls,C-Squad,Hastings,Mahtomedi,MEC
+167-HSB24,9/19/2024,5:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Mounds View,SEC
+168-HSB24,9/19/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,East Ridge,SEC
+171-HSG24,9/19/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Anoka,MEC
+172-HSG24,9/19/2024,5:00 PM,Simley High School,Girls,Varsity,Simley,North St Paul,MEC
+165-HSB24,9/19/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Two Rivers,MEC
+169-HSB24,9/19/2024,5:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Roseville,SEC
+174-HSG24,9/19/2024,5:00 PM,Tartan High School,Girls,Varsity,Tartan,Hastings,MEC
+170-HSB24,9/19/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Park,SEC
+171-HSB24,9/19/2024,5:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Irondale,SEC
+166-HSG24,9/19/2024,7:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,Mounds View,SEC
+167-HSG24,9/19/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,East Ridge,SEC
+164-HSB24,9/19/2024,7:00 PM,Simley High School,Boys,Varsity,Simley,North St Paul,MEC
+173-HSG24,9/19/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Two Rivers,MEC
+163-HSB24,9/19/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Mahtomedi,MEC
+168-HSG24,9/19/2024,7:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Roseville,SEC
+166-HSB24,9/19/2024,7:00 PM,Tartan High School,Boys,Varsity,Tartan,Hastings,MEC
+169-HSG24,9/19/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Park,SEC
+170-HSG24,9/19/2024,7:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Irondale,SEC
+234-HSG24,9/20/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,Tartan,MEC
+233-HSB24,9/20/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,Tartan,MEC
+175-HSG24,9/21/2024,12:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Eagan,MEC
+300-HSB24,9/21/2024,12:00 PM,Irondale High School,Boys,Varsity,Irondale,Henry High School,SEC
+239-HSG24,9/21/2024,12:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,'Benilde-St Margaret''s',MEC
+240-HSB24,9/21/2024,2:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,'Benilde-St Margaret''s',MEC
+172-HSB24,9/21/2024,3:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Two Rivers,SEC
+173-HSB24,9/21/2024,7:00 PM,Park High School,Boys,Varsity,Park,Shakopee,SEC
+234-HSB24,9/24/2024,3:45 PM,Hastings High School,Boys,JV,Hastings,Hill-Murray,MEC
+176-HSG24,9/24/2024,5:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Stillwater,SEC
+174-HSB24,9/24/2024,5:00 PM,Hastings High School,Boys,Varsity,Hastings,Hill-Murray,MEC
+182-HSG24,9/24/2024,5:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Simley,MEC
+177-HSG24,9/24/2024,5:00 PM,Mounds View High School,Girls,Varsity,Mounds View,Irondale,SEC
+178-HSG24,9/24/2024,5:00 PM,Park High School,Girls,Varsity,Park,Forest Lake,SEC
+179-HSG24,9/24/2024,5:00 PM,Roseville High School,Girls,Varsity,Roseville,Cretin-Derham Hall,SEC
+177-HSB24,9/24/2024,5:00 PM,Tartan High School,Boys,Varsity,Tartan,South St Paul,MEC
+180-HSG24,9/24/2024,5:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Woodbury,SEC
+235-HSG24,9/24/2024,5:15 PM,Hastings High School,Girls,JV,Hastings,Hill-Murray,MEC
+247-HSB24,9/24/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,St Thomas Academy,MEC
+179-HSB24,9/24/2024,7:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Stillwater,SEC
+181-HSG24,9/24/2024,7:00 PM,Hastings High School,Girls,Varsity,Hastings,Hill-Murray,MEC
+175-HSB24,9/24/2024,7:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Simley,MEC
+180-HSB24,9/24/2024,7:00 PM,Mounds View High School,Boys,Varsity,Mounds View,Irondale,SEC
+176-HSB24,9/24/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Washington Technology Magnet,MEC
+181-HSB24,9/24/2024,7:00 PM,Park High School,Boys,Varsity,Park,Forest Lake,SEC
+182-HSB24,9/24/2024,7:00 PM,Roseville High School,Boys,Varsity,Roseville,Cretin-Derham Hall,SEC
+183-HSG24,9/24/2024,7:00 PM,Tartan High School,Girls,Varsity,Tartan,South St Paul,MEC
+178-HSB24,9/24/2024,7:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,St Thomas Academy,MEC
+183-HSB24,9/24/2024,7:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Woodbury,SEC
+184-HSG24,9/26/2024,5:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,White Bear Lake,SEC
+188-HSG24,9/26/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,Two Rivers,MEC
+185-HSG24,9/26/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Roseville,SEC
+186-HSB24,9/26/2024,5:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,North St Paul,MEC
+187-HSB24,9/26/2024,5:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Simley,MEC
+186-HSG24,9/26/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Park,SEC
+187-HSG24,9/26/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Mounds View,SEC
+235-HSB24,9/26/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,St Thomas Academy,MEC
+188-HSB24,9/26/2024,7:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,White Bear Lake,SEC
+184-HSB24,9/26/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,St Thomas Academy,MEC
+185-HSB24,9/26/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,Two Rivers,MEC
+189-HSB24,9/26/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Roseville,SEC
+189-HSG24,9/26/2024,7:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,North St Paul,MEC
+190-HSG24,9/26/2024,7:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Simley,MEC
+190-HSB24,9/26/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Park,SEC
+191-HSB24,9/26/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Mounds View,SEC
+191-HSG24,9/28/2024,10:00 AM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,East Ridge,SEC
+192-HSG24,9/28/2024,11:00 AM,Hill-Murray High School,Girls,Varsity,Hill-Murray,'Benilde-St Margaret''s',MEC
+193-HSB24,9/28/2024,12:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,East Ridge,SEC
+241-HSB24,9/28/2024,12:00 PM,Mahtomedi High School,Boys,Varsity,Mahtomedi,Mounds View,MEC
+192-HSB24,9/28/2024,1:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,'Benilde-St Margaret''s',MEC
+240-HSG24,9/28/2024,2:00 PM,Mahtomedi High School,Girls,Varsity,Mahtomedi,Mounds View,MEC
+194-HSB24,9/28/2024,7:00 PM,Park High School,Boys,Varsity,Park,Hastings,SEC`;
+        const october = 
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team,Conference
+248-HSB24,10/1/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Simley,MEC
+199-HSB24,10/1/2024,5:00 PM,East Ridge High School,Boys,Varsity,East Ridge,Irondale,SEC
+200-HSB24,10/1/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Woodbury,SEC
+198-HSG24,10/1/2024,5:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Hill-Murray,MEC
+201-HSB24,10/1/2024,5:00 PM,Park High School,Boys,Varsity,Park,Cretin-Derham Hall,SEC
+202-HSB24,10/1/2024,5:00 PM,Roseville High School,Boys,Varsity,Roseville,Mounds View,SEC
+199-HSG24,10/1/2024,5:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Hastings,MEC
+198-HSB24,10/1/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Simley,MEC
+203-HSB24,10/1/2024,5:00 PM,White Bear Lake North High School,Boys,Varsity,White Bear Lake,Stillwater,SEC
+245-HSG24,10/1/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Simley,MEC
+193-HSG24,10/1/2024,7:00 PM,East Ridge High School,Girls,Varsity,East Ridge,Irondale,SEC
+194-HSG24,10/1/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Woodbury,SEC
+195-HSB24,10/1/2024,7:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Hill-Murray,MEC
+195-HSG24,10/1/2024,7:00 PM,Park High School,Girls,Varsity,Park,Cretin-Derham Hall,SEC
+196-HSG24,10/1/2024,7:00 PM,Roseville High School,Girls,Varsity,Roseville,Mounds View,SEC
+197-HSB24,10/1/2024,7:00 PM,South St Paul High School,Boys,Varsity,South St Paul,Hastings,MEC
+196-HSB24,10/1/2024,7:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Tartan,MEC
+200-HSG24,10/1/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Simley,MEC
+197-HSG24,10/1/2024,7:00 PM,White Bear Lake North High School,Girls,Varsity,White Bear Lake,Stillwater,SEC
+236-HSG24,10/2/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,South St Paul,MEC
+236-HSB24,10/2/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,South St Paul,MEC
+249-HSB24,10/3/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Mahtomedi,MEC
+201-HSG24,10/3/2024,5:00 PM,Cretin-Derham Hall,Girls,Varsity,Cretin-Derham Hall,White Bear Lake,SEC
+206-HSG24,10/3/2024,5:00 PM,Hill-Murray High School,Girls,Varsity,Hill-Murray,South St Paul,MEC
+202-HSG24,10/3/2024,5:00 PM,Irondale High School,Girls,Varsity,Irondale,Park,SEC
+203-HSG24,10/3/2024,5:00 PM,Mounds View High School,Girls,Varsity,Mounds View,East Ridge,SEC
+205-HSB24,10/3/2024,5:00 PM,North St Paul High School,Boys,Varsity,North St Paul,Tartan,MEC
+206-HSB24,10/3/2024,5:00 PM,Simley High School,Boys,Varsity,Simley,Hastings,MEC
+204-HSG24,10/3/2024,5:00 PM,Stillwater High School,Girls,Varsity,Stillwater,Forest Lake,SEC
+207-HSB24,10/3/2024,5:00 PM,Two Rivers High School,Boys,Varsity,Two Rivers,Mahtomedi,MEC
+205-HSG24,10/3/2024,5:00 PM,Woodbury High School,Girls,Varsity,Woodbury,Roseville,SEC
+246-HSG24,10/3/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Mahtomedi,MEC
+208-HSB24,10/3/2024,7:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,White Bear Lake,SEC
+204-HSB24,10/3/2024,7:00 PM,Hill-Murray High School,Boys,Varsity,Hill-Murray,South St Paul,MEC
+209-HSB24,10/3/2024,7:00 PM,Irondale High School,Boys,Varsity,Irondale,Park,SEC
+210-HSB24,10/3/2024,7:00 PM,Mounds View High School,Boys,Varsity,Mounds View,East Ridge,SEC
+207-HSG24,10/3/2024,7:00 PM,North St Paul High School,Girls,Varsity,North St Paul,Tartan,MEC
+208-HSG24,10/3/2024,7:00 PM,Simley High School,Girls,Varsity,Simley,Hastings,MEC
+211-HSB24,10/3/2024,7:00 PM,Stillwater High School,Boys,Varsity,Stillwater,Forest Lake,SEC
+209-HSG24,10/3/2024,7:00 PM,Two Rivers High School,Girls,Varsity,Two Rivers,Mahtomedi,MEC
+212-HSB24,10/3/2024,7:00 PM,Woodbury High School,Boys,Varsity,Woodbury,Roseville,SEC
+237-HSB24,10/4/2024,3:45 PM,Hastings High School,Boys,C-Squad,Hastings,Simley,MEC
+237-HSG24,10/4/2024,5:15 PM,Hastings High School,Girls,C-Squad,Hastings,Simley,MEC
+210-HSG24,10/5/2024,11:00 AM,East Ridge High School,Girls,Varsity,East Ridge,Mahtomedi,SEC
+214-HSB24,10/5/2024,11:00 AM,Woodbury High School,Boys,Varsity,Woodbury,St Paul Central,SEC
+212-HSG24,10/5/2024,12:00 PM,South St Paul High School,Girls,Varsity,South St Paul,Duluth East,MEC
+211-HSG24,10/5/2024,1:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Blaine,SEC
+250-HSB24,10/5/2024,1:00 PM,Irondale High School,Boys,Varsity,Irondale,St Cloud Apollo,SEC
+213-HSB24,10/5/2024,3:00 PM,Cretin-Derham Hall,Boys,Varsity,Cretin-Derham Hall,Wayzata,SEC`;
 
 		const calendars = {
 			"august": august,
