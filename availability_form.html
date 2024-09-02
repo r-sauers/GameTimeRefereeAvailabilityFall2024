@@ -209,160 +209,79 @@
         
     </body>
     <script>
-		const august = 
-`Game ID,Date,Start Time,Venue,Age Group,Gender,Home Team,Away Team
-553-HSB24,08/22/2024,15:30:00,Hastings High School,C-Squad,Boys,Hastings,Eastview
-602-HSB24,08/22/2024,15:30:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Centennial
-554-HSB24,08/22/2024,17:00:00,Hastings High School,JV,Boys,Hastings,Eastview
-603-HSB24,08/22/2024,17:15:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Centennial
-555-HSB24,08/22/2024,17:00:00,White Bear Lake North High School,Varsity,Boys,White Bear Lake,Centennial
-605-HSB24,08/23/2024,15:00:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Duluth East
-606-HSB24,08/23/2024,17:00:00,White Bear Lake North High School,B-Squad,Boys,White Bear Lake,Duluth East
-424-HSB24,08/24/2024,09:00:00,Courtly Park Fields,B-Squad,Boys,Woodbury,Saint Thomas Academy
-559-HSB24,08/24/2024,11:00:00,North St Paul High School,JV,Boys,North St Paul,Minneapolis Edison
-386-HSB24,08/24/2024,11:00:00,Simley High School,JV,Boys,Simley,Apple Valley
-502-HSB24,08/26/2024,16:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Benilde-St Margaret's
-216-HSB24,08/26/2024,17:00:00,South St Paul High School,C,Girls,South St Paul,Byron
-528-HSB24,08/26/2024,14:00:00,Two Rivers High School,C-Squad,Girls,Two Rivers,Rochester John Marshall
-242-HSG24,08/26/2024,14:00:00,Two Rivers High School,JV,Girls,Two Rivers,Rochester John Marshall
-226-HSG24,08/27/2024,15:00:00,Hastings High School,JV,Girls,Hastings,Shakopee
-530-HSB24,08/27/2024,16:00:00,Two Rivers High School,B-Squad,Boys,Two Rivers,St Paul Central
-529-HSB24,08/27/2024,16:00:00,Two Rivers High School,C-Squad,Boys,Two Rivers,St Paul Central
-607-HSB24,08/27/2024,16:00:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Mahtomedi
-223-HSB24,08/27/2024,16:30:00,Hastings High School,JV,Boys,Hastings,Irondale
-608-HSB24,08/27/2024,17:15:00,White Bear Lake North High School,B-Squad,Girls,White Bear Lake,Mahtomedi
-609-HSB24,08/27/2024,17:30:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Mahtomedi
-567-HSB24,08/28/2024,14:30:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Eagan
-566-HSB24,08/28/2024,14:30:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Eagan
-569-HSB24,08/28/2024,16:00:00,White Bear Lake North High School,B-Squad,Girls,White Bear Lake,Eagan
-568-HSB24,08/28/2024,16:00:00,White Bear Lake North High School,B-Squad,Boys,White Bear Lake,Eagan
-328-HSB24,08/28/2024,17:15:00,Hill-Murray High School,C-Squad,Girls,Hill-Murray,East Ridge
-571-HSB24,08/28/2024,17:15:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Eagan
-570-HSB24,08/28/2024,17:15:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Eagan
-531-HSB24,08/29/2024,15:00:00,Two Rivers High School,C-Squad,Boys,Two Rivers,Stillwater
-532-HSB24,08/29/2024,15:00:00,Two Rivers High School,B-Squad,Boys,Two Rivers,Stillwater
-330-HSB24,08/29/2024,15:30:00,Hill-Murray High School,JV,Girls,Hill-Murray,East Ridge
-392-HSB24,08/29/2024,16:00:00,Simley High School,C-Squad,Boys,Simley,St Croix Lutheran
-391-HSB24,08/29/2024,16:00:00,Simley High School,JV,Boys,Simley,St Croix Lutheran
-503-HSB24,08/29/2024,16:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Academy of Holy Angels
-533-HSB24,08/29/2024,17:00:00,Two Rivers High School,C-Squad,Girls,Two Rivers,Minnetonka
-331-HSB24,08/29/2024,17:15:00,Hill-Murray High School,JV,Boys,Hill-Murray,East Ridge
-505-HSB24,08/29/2024,17:15:00,St Thomas Academy,C-Squad,Boys,St Thomas Academy,Academy of Holy Angels
-393-HSB24,08/29/2024,18:00:00,Simley High School,Varsity,Boys,Simley,St Croix Lutheran`
 		const september = 
-`Game ID,Date,Start Time,Venue,Age Group,Gender,Home Team,Away Team
-228-HSG24,09/03/2024,15:30:00,Hastings High School,C-Squad,Girls,Hastings,Burnsville
-227-HSB24,09/03/2024,15:30:00,Hastings High School,C-Squad,Boys,Hastings,Burnsville
-333-HSB24,09/03/2024,16:00:00,Hill-Murray High School,B-Squad,Boys,Hill-Murray,Academy of Holy Angels
-534-HSB24,09/03/2024,16:00:00,Two Rivers High School,C-Squad,Girls,Two Rivers,Benilde-St Margaret's
-572-HSB24,09/03/2024,16:00:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Andover
-229-HSG24,09/03/2024,17:00:00,Hastings High School,JV,Girls,Hastings,Burnsville
-419-HSB24,09/03/2024,17:00:00,Tartan High School,Varsity,Girls,Tartan,St Paul Central
-573-HSB24,09/03/2024,17:15:00,White Bear Lake North High School,B-Squad,Girls,White Bear Lake,Andover
-335-HSB24,09/03/2024,17:30:00,Hill-Murray High School,JV,Boys,Hill-Murray,Academy of Holy Angels
-574-HSB24,09/03/2024,17:30:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Andover
-319-HSB24,09/03/2024,19:00:00,White Bear Lake North High School,Varsity,Girls,White Bear Lake,Andover
-575-HSB24,09/04/2024,16:00:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Irondale
-576-HSB24,09/04/2024,17:15:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Irondale
-577-HSB24,09/05/2024,16:00:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Irondale
-560-HSB24,09/05/2024,17:15:00,North St Paul High School,JV,Boys,North St Paul,North St Paul
-578-HSB24,09/05/2024,17:15:00,White Bear Lake North High School,B-Squad,Girls,White Bear Lake,Irondale
-339-HSB24,09/06/2024,15:45:00,Hill-Murray High School,C-Squad,Girls,Hill-Murray,Simley
-579-HSB24,09/07/2024,11:00:00,White Bear Lake North High School,JV,Boys,White Bear Lake,North St Paul
-580-HSB24,09/07/2024,11:00:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,North St Paul
-539-HSB24,09/07/2024,15:00:00,Two Rivers High School,B-Squad,Boys,Two Rivers,Eastview
-538-HSB24,09/07/2024,15:00:00,Two Rivers High School,C-Squad,Boys,Two Rivers,Eastview
-561-HSB24,09/09/2024,15:45:00,North St Paul High School,JV,Boys,North St Paul,South St Paul
-581-HSB24,09/10/2024,16:00:00,White Bear Lake North High School,B-Squad,Boys,White Bear Lake,Mounds View
-541-HSB24,09/10/2024,17:15:00,Two Rivers High School,C-Squad,Boys,Two Rivers,Hastings
-347-HSB24,09/11/2024,15:45:00,Hill-Murray High School,JV,Boys,Hill-Murray,Mahtomedi
-582-HSB24,09/11/2024,16:00:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Roseville
-425-HSB24,09/11/2024,16:15:00,Courtly Park Fields,Grade 9,Girls,Woodbury,Cretin-Derham Hall
-511-HSB24,09/11/2024,16:15:00,St Thomas Academy,JV,Boys,St Thomas Academy,South St Paul
-231-HSB24,09/11/2024,17:15:00,Hastings High School,JV,Boys,Hastings,North St Paul
-348-HSB24,09/11/2024,17:15:00,Hill-Murray High School,JV,Girls,Hill-Murray,Mahtomedi
-583-HSB24,09/11/2024,17:15:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Roseville
-584-HSB24,09/12/2024,16:00:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Roseville
-585-HSB24,09/12/2024,17:15:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Roseville
-401-HSB24,09/14/2024,11:00:00,Simley High School,C-Squad,Boys,Simley,Rochester John Marshall
-400-HSB24,09/14/2024,11:00:00,Simley High School,JV,Boys,Simley,Rochester John Marshall
-402-HSB24,09/14/2024,11:00:00,Simley High School,Varsity,Girls,Simley,Burnsville
-586-HSB24,09/14/2024,11:00:00,White Bear Lake North High School,JV,Boys,White Bear Lake,South St Paul
-152-HSB24,09/14/2024,13:00:00,Forest Lake High School,Varsity,Boys,Forest Lake,Hastings
-157-HSG24,09/14/2024,13:00:00,Hastings High School,Varsity,Girls,Hastings,Minnetonka
-403-HSB24,09/14/2024,13:00:00,Simley High School,Varsity,Boys,Simley,Rochester John Marshall
-542-HSB24,09/14/2024,13:00:00,Two Rivers High School,C-Squad,Boys,Two Rivers,Woodbury
-543-HSB24,09/14/2024,13:00:00,Two Rivers High School,B-Squad,Boys,Two Rivers,Woodbury
-545-HSB24,09/17/2024,16:00:00,Two Rivers High School,B-Squad,Boys,Two Rivers,Tartan
-587-HSB24,09/17/2024,16:00:00,White Bear Lake North High School,B-Squad,Girls,White Bear Lake,East Ridge
-513-HSB24,09/17/2024,16:15:00,St Thomas Academy,JV,Boys,St Thomas Academy,Simley
-154-HSB24,09/17/2024,17:00:00,Mahtomedi High School,Varsity,Boys,Mahtomedi,Hastings
-246-HSB24,09/17/2024,17:15:00,Two Rivers High School,JV,Boys,Two Rivers,North St Paul
-588-HSB24,09/17/2024,17:15:00,White Bear Lake North High School,B-Squad,Boys,White Bear Lake,East Ridge
-163-HSG24,09/17/2024,19:00:00,Mahtomedi High School,Varsity,Girls,Mahtomedi,Hastings
-589-HSB24,09/18/2024,16:00:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Park
-404-HSB24,09/18/2024,17:15:00,Simley High School,C-Squad,Boys,Simley,St Thomas Academy
-590-HSB24,09/18/2024,17:15:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Park
-591-HSB24,09/19/2024,16:00:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Park
-405-HSB24,09/19/2024,17:15:00,Simley High School,JV,Boys,Simley,North St Paul
-514-HSB24,09/19/2024,16:15:00,St Thomas Academy,JV,Boys,St Thomas Academy,Mahtomedi
-592-HSB24,09/19/2024,17:15:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Park
-170-HSG24,09/19/2024,19:00:00,Woodbury High School,Varsity,Girls,Woodbury,Irondale
-515-HSB24,09/21/2024,10:00:00,St Thomas Academy,C-Squad,Boys,St Thomas Academy,Cretin-Derham Hall
-517-HSB24,09/21/2024,12:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Cretin-Derham Hall
-516-HSB24,09/21/2024,12:00:00,St Thomas Academy,JV,Boys,St Thomas Academy,Cretin-Derham Hall
-518-HSB24,09/23/2024,16:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Hill-Murray
-593-HSB24,09/23/2024,16:00:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Woodbury
-594-HSB24,09/23/2024,17:15:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Woodbury
-595-HSB24,09/24/2024,16:00:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Woodbury
-596-HSB24,09/24/2024,17:15:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Woodbury
-234-HSB24,09/24/2024,15:45:00,Hastings High School,JV,Boys,Hastings,Hill-Murray
-235-HSG24,09/24/2024,17:15:00,Hastings High School,JV,Girls,Hastings,Hill-Murray
-519-HSB24,09/25/2024,17:15:00,St Thomas Academy,C-Squad,Boys,St Thomas Academy,Two Rivers
-366-HSB24,09/26/2024,15:45:00,Hill-Murray High School,JV,Girls,Hill-Murray,Two Rivers
-235-HSB24,09/26/2024,17:15:00,Hastings High School,JV,Boys,Hastings,St Thomas Academy
-184-HSG24,09/26/2024,17:00:00,Forest Lake High School,Varsity,Girls,Forest Lake,White Bear Lake
-188-HSB24,09/26/2024,19:00:00,Forest Lake High School,Varsity,Boys,Forest Lake,White Bear Lake
-367-HSB24,09/26/2024,17:15:00,Hill-Murray High School,JV,Boys,Hill-Murray,Two Rivers
-184-HSB24,09/26/2024,19:00:00,Hastings High School,Varsity,Boys,Hastings,St Thomas Academy
-549-HSB24,09/27/2024,15:45:00,Two Rivers High School,C-Squad,Girls,Two Rivers,Hill-Murray
-550-HSB24,09/27/2024,17:15:00,Two Rivers High School,C-Squad,Boys,Two Rivers,Hill-Murray
-524-HSB24,09/28/2024,12:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Roseville
-423-HSB24,09/28/2024,13:00:00,Tartan High School,Varsity,Boys,Tartan,Zimmerman
-551-HSB24,09/30/2024,15:45:00,Two Rivers High School,B-Squad,Boys,Two Rivers,St Thomas Academy
-597-HSB24,09/30/2024,16:00:00,White Bear Lake North High School,Grade 9,Boys,White Bear Lake,Stillwater
-598-HSB24,09/30/2024,17:15:00,White Bear Lake North High School,Grade 9,Girls,White Bear Lake,Stillwater`
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
+333-HSB24,09/03/2024,4:00 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Academy of Holy Angels
+335-HSB24,09/03/2024,5:30 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Academy of Holy Angels
+534-HSB24,09/03/2024,4:00 PM,Two Rivers High School,Girls,C-Squad,Two Rivers,Benilde-St Margaret's
+572-HSB24,09/03/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Andover
+573-HSB24,09/03/2024,5:15 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,Andover
+575-HSB24,09/04/2024,4:00 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Irondale
+576-HSB24,09/04/2024,5:15 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Irondale
+560-HSB24,09/05/2024,5:15 PM,North St Paul High School,Boys,JV,North St Paul,North St Paul
+577-HSB24,09/05/2024,4:00 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Irondale
+578-HSB24,09/05/2024,5:15 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,Irondale
+393-HSB24,09/07/2024,11:00 AM,Simley High School,Boys,Varsity,Simley,St Croix Lutheran
+538-HSB24,09/07/2024,3:00 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Eastview
+579-HSB24,09/07/2024,11:00 AM,White Bear Lake North High School,Boys,JV,White Bear Lake,North St Paul
+580-HSB24,09/07/2024,11:00 AM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,North St Paul
+561-HSB24,09/09/2024,3:45 PM,North St Paul High School,Boys,JV,North St Paul,South St Paul
+541-HSB24,09/10/2024,5:15 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Hastings
+581-HSB24,09/10/2024,4:00 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,Mounds View
+231-HSB24,09/11/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,North St Paul
+425-HSB24,09/11/2024,4:15 PM,Woodbury High School,Girls,Grade 9,Woodbury,Cretin-Derham Hall
+347-HSB24,09/11/2024,3:45 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Mahtomedi
+582-HSB24,09/11/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Roseville
+583-HSB24,09/11/2024,5:15 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Roseville
+584-HSB24,09/12/2024,4:00 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Roseville
+585-HSB24,09/12/2024,5:15 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Roseville
+152-HSB24,09/14/2024,1:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Hastings
+400-HSB24,09/14/2024,11:00 AM,Simley High School,Boys,JV,Simley,Rochester John Marshall
+401-HSB24,09/14/2024,11:00 AM,Simley High School,Boys,C-Squad,Simley,Rochester John Marshall
+543-HSB24,09/14/2024,1:00 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,Woodbury
+246-HSB24,09/17/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,North St Paul
+513-HSB24,09/17/2024,4:15 PM,St Thomas Academy,Boys,JV,St Thomas Academy,Simley
+545-HSB24,09/17/2024,4:00 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,Tartan
+587-HSB24,09/17/2024,4:00 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,East Ridge
+588-HSB24,09/17/2024,5:15 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,East Ridge
+404-HSB24,09/18/2024,5:15 PM,Simley High School,Boys,C-Squad,Simley,St Thomas Academy
+515-HSB24,09/21/2024,10:00 AM,St Thomas Academy,Boys,C-Squad,St Thomas Academy,Cretin-Derham Hall
+593-HSB24,09/23/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Woodbury
+594-HSB24,09/23/2024,5:15 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Woodbury
+234-HSB24,09/24/2024,3:45 PM,Hastings High School,Boys,JV,Hastings,Hill-Murray
+235-HSG24,09/24/2024,5:15 PM,Hastings High School,Girls,JV,Hastings,Hill-Murray
+595-HSB24,09/24/2024,4:00 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Woodbury
+596-HSB24,09/24/2024,5:15 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Woodbury
+184-HSB24,09/26/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,St Thomas Academy
+235-HSB24,09/26/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,St Thomas Academy
+366-HSB24,09/26/2024,3:45 PM,Hill-Murray High School,Girls,JV,Hill-Murray,Two Rivers
+367-HSB24,09/26/2024,5:15 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Two Rivers
+550-HSB24,09/27/2024,4:00 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Hill-Murray
+524-HSB24,09/28/2024,12:00 PM,St Thomas Academy,Boys,B-Squad,St Thomas Academy,Roseville
+551-HSB24,09/30/2024,3:45 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,St Thomas Academy`
 		const october = 
-`Game ID,Date,Start Time,Venue,Age Group,Gender,Home Team,Away Team
-248-HSB24,10/01/2024,15:45:00,Two Rivers High School,JV,Boys,Two Rivers,Simley
-525-HSB24,10/01/2024,16:00:00,St Thomas Academy,B-Squad,Boys,St Thomas Academy,Tartan
-599-HSB24,10/01/2024,16:00:00,White Bear Lake North High School,JV,Boys,White Bear Lake,Stillwater
-373-HSB24,10/01/2024,16:15:00,Hill-Murray High School,B-Squad,Boys,Hill-Murray,Rosemount
-526-HSB24,10/01/2024,16:15:00,St Thomas Academy,JV,Boys,St Thomas Academy,Tartan
-200-HSB24,10/01/2024,17:00:00,Forest Lake High School,Varsity,Boys,Forest Lake,Woodbury
-563-HSB24,10/01/2024,17:15:00,North St Paul High School,JV,Boys,North St Paul,Hill-Murray
-245-HSG24,10/01/2024,17:15:00,Two Rivers High School,JV,Girls,Two Rivers,Simley
-600-HSB24,10/01/2024,17:15:00,White Bear Lake North High School,JV,Girls,White Bear Lake,Stillwater
-196-HSB24,10/01/2024,18:00:00,St Thomas Academy,Varsity,Boys,St Thomas Academy,Tartan
-194-HSG24,10/01/2024,19:00:00,Forest Lake High School,Varsity,Girls,Forest Lake,Woodbury
-236-HSG24,10/02/2024,15:45:00,Hastings High School,C-Squad,Girls,Hastings,South St Paul
-374-HSB24,10/02/2024,15:45:00,Hill-Murray High School,C-Squad,Girls,Hill-Murray,North St Paul
-413-HSB24,10/02/2024,15:45:00,Simley High School,C-Squad,Boys,Simley,Two Rivers
-236-HSB24,10/02/2024,17:15:00,Hastings High School,C-Squad,Boys,Hastings,South St Paul
-414-HSB24,10/02/2024,17:15:00,Simley High School,C-Squad,Girls,Simley,Two Rivers
-209-HSG24,10/02/2024,18:00:00,Two Rivers High School,Varsity,Girls,Two Rivers,Mahtomedi
-376-HSB24,10/02/2024,19:00:00,Hill-Murray High School,B-Squad,Boys,Hill-Murray,Hill-Murray
-415-HSB24,10/03/2024,15:45:00,Simley High School,JV,Boys,Simley,Hastings
-416-HSB24,10/03/2024,17:15:00,Simley High School,JV,Girls,Simley,Hastings
-601-HSB24,10/03/2024,17:15:00,White Bear Lake North High School,B-Squad,Boys,White Bear Lake,Cretin-Derham Hall
-207-HSB24,10/03/2024,19:00:00,Two Rivers High School,Varsity,Boys,Two Rivers,Mahtomedi
-426-HSB24,10/05/2024,10:00:00,Ojibway Park,JV,Boys,Woodbury,St Paul Central
-565-HSB24,10/05/2024,11:00:00,North St Paul High School,JV,Boys,North St Paul,Saint Anthony Village
-215-HSB24,10/05/2024,13:00:00,South St Paul High School,JV,Girls,South St Paul,Duluth East
-250-HSB24,10/05/2024,13:00:00,Irondale High School,Varsity,Boys,Irondale,St Cloud Apollo`
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
+194-HSG24,10/01/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Woodbury
+200-HSB24,10/01/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Woodbury
+245-HSG24,10/01/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Simley
+248-HSB24,10/01/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Simley
+373-HSB24,10/01/2024,4:15 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Rosemount
+563-HSB24,10/01/2024,5:15 PM,North St Paul High School,Boys,JV,North St Paul,Hill-Murray
+526-HSB24,10/01/2024,4:15 PM,St Thomas Academy,Boys,JV,St Thomas Academy,Tartan
+599-HSB24,10/01/2024,4:00 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Stillwater
+600-HSB24,10/01/2024,5:15 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Stillwater
+236-HSB24,10/02/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,South St Paul
+236-HSG24,10/02/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,South St Paul
+376-HSB24,10/02/2024,7:00 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Hill-Murray
+413-HSB24,10/02/2024,3:45 PM,Simley High School,Boys,C-Squad,Simley,Two Rivers
+414-HSB24,10/02/2024,5:15 PM,Simley High School,Girls,C-Squad,Simley,Two Rivers
+415-HSB24,10/03/2024,3:45 PM,Simley High School,Boys,JV,Simley,Hastings
+416-HSB24,10/03/2024,5:15 PM,Simley High School,Girls,JV,Simley,Hastings
+601-HSB24,10/03/2024,5:15 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,Cretin-Derham Hall
+211-HSG24,10/05/2024,1:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Blaine
+215-HSB24,10/05/2024,1:00 PM,South St Paul High School,Girls,JV,South St Paul,Duluth East`
 
 		const calendars = {
-			"august": august,
 			"september": september,
 			"october": october,
 		}
