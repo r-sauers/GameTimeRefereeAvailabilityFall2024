@@ -12,6 +12,7 @@
         #calendar-container {
             background-color: white;
             box-shadow: 2px 2px 10px 1px lightgray;
+            margin-bottom: 6em;
         }
         .calendar-headers, .calendar-cards {
             display: grid;
@@ -89,12 +90,26 @@
             background-color: white;
             padding: 1em;
             border: 1px solid black;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             column-gap: 3em;
-            max-width: 25em;
             margin-left: auto;
             margin-right: auto;
+        }
+        .btn {
+            background-color: rgb(54, 95, 174);
+            padding: 0.6em;
+            border: none;
+            border-radius: 0.1em;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: Fira Sans, sans-serif;
+        }
+        .btn:hover {
+            background-color: rgb(87, 133, 221);
+            cursor: pointer;
         }
         #footer {
             position: fixed;
@@ -130,7 +145,7 @@
             margin-right: auto;
             margin-left: auto;
             margin-top: 3em;
-            margin-bottom: 2em;
+            margin-bottom: 6em;
             box-shadow: 2px 2px 10px 1px gray;
         }
         #calendar-main {
@@ -194,15 +209,18 @@
             <h4 style="margin-top: 0em;">Selecting Games</h4>
             <p>Please select the checkboxes of games you are interested in officiating for each day you are available. (NOTE: You may select more than one location for each day.) Use the "Next" and "Previous" buttons at the bottom of each page to navigate through August, September and October.</p>
             <h4>Sharing Your Selected Games:</h4>
-            <p>After you have selected all games you are requesting, select "download availability" at the bottom of the page. Your file will download to your computer's Downloads folder "&lt;your_name&gt;.json". After you have located your file, please email it to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. This is not a file you will be able to open and view, as it is a file for scripting purposes on my end only.</p>
+            <p>After you have selected all games you are requesting, select "Download Availability" at the bottom of the page. Your file will download to your computer's Downloads folder "&lt;your_name&gt;.json". After you have located your file, please email it to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. This is not a file you will be able to open and view, as it is a file for scripting purposes on my end only.</p>
             <h4>Saving Your Progress</h4>
-            <p>If you are unable to complete your selections in one sitting, you can save your progress by clicking "Save" at the bottom of the page. This will download your working file "&lt;your_name&gt;.html" to your computer's Downloads folder. When you return to complete your calendar, opening that file will ensure your progress was saved. This is a file that you can return to remind yourself of what games you selected.</p>
+            <p>If you are unable to complete your selections in one sitting, you can use the "Download Availability" button to save your progress to a file named "&lt;your_name&gt;.json". To restore your progress, upload the file using the "Restore From File" button.</p>
         </div>
         <div id="footer">
             <div id="btn-bin">
                 <button id="previous-btn" class="btn" onclick="previousPage()">Previous</button>
-                <a id="save-btn" class="btn" onclick="saveFile(arguments[0]);" href="#" download="page.html">save</a>
-                <a id="availability-btn" class="btn" onclick="downloadAvailability(arguments[0]);" href="#" download="availability.json">download availability</a>
+                <div style="display: flex; flex-direction: column;">
+                    <button for="upload-save" class="btn" onclick="triggerRestoreFile()">Restore From File</button>
+                    <input style="display: none;" type="file" accept="application/json" id="upload-save" oninput="uploadSaveFile(arguments[0])"/>
+                </div>
+                <a id="availability-btn" class="btn" onclick="downloadAvailability(arguments[0]);" href="#" download="availability.json">Download Availability</a>
                 <button id="next-btn" class="btn" onclick="nextPage()">Next</button>
             </div>
         </div>
@@ -1102,6 +1120,8 @@
             } else {
                 prevBtn.disabled = false;
             }
+
+            document.scrollingElement.scrollTo(0, 0);
         }
 
         function nextPage() {
@@ -1122,19 +1142,6 @@
             } else {
                 page = pages[index - 1];
                 switchPage(page);
-            }
-        }
-
-        function saveFile(evt) {
-            const nameField = document.getElementById("referee-name");
-            if (nameField == null || nameField.value === "") {
-                evt.preventDefault();
-                alert("You must fill out the referee name field on the first page!");
-            } else {
-                let name = nameField.value.replaceAll(" ", "_");
-                name = name.replaceAll("[^A-z_]", "");
-                evt.target.download = name;
-                evt.target.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)
             }
         }
 
@@ -1160,6 +1167,35 @@
                 evt.target.download = name;
                 evt.target.href='data:application/json;charset=UTF-8,'+JSON.stringify(json);
             }
+        }
+
+        function triggerRestoreFile() {
+            const event = new MouseEvent("click", {
+                view: window,
+                bubbles: true,
+                cancelable: true,
+            });
+            const uploadEl = document.getElementById("upload-save");
+            uploadEl.dispatchEvent(event);
+        }
+
+        async function uploadSaveFile(evt) {
+            evt.preventDefault();
+
+            const json = JSON.parse( await evt.target.files[0].text() );
+            for (game of json['availabileFor']) {
+                const event = new MouseEvent("click", {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true,
+                });
+                const checkbox = document.getElementById(`availability-${game}`);
+                if (checkbox) {
+                    checkbox.dispatchEvent(event);
+                }
+            }
+
+            document.getElementById('referee-name').value = json['name'];
         }
 
         switchPage("home");
