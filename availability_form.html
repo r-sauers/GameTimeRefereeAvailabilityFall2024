@@ -209,83 +209,621 @@
         
     </body>
     <script>
+
+		const august = 
+`Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
+150-HS25,08/21/2025,3:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Cretin-Derham Hall 
+151-HS25,08/21/2025,3:15 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Cretin-Derham Hall 
+152-HS25,08/21/2025,3:15 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,St Thomas Academy
+153-HS25,08/21/2025,5:00 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Cretin-Derham Hall 
+154-HS25,08/21/2025,5:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Cretin-Derham Hall 
+155-HS25,08/21/2025,5:00 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Cretin-Derham Hall 
+156-HS25,08/21/2025,7:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Cretin-Derham Hall 
+255-HS25,08/21/2025,6:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Minneapolis Edison
+256-HS25,08/21/2025,4:15 PM,St Thomas Academy,Boys,B-Squad,St Thomas Academy,Minneapolis Edison
+312-HS25,08/21/2025,5:15 PM,South St Paul High School ,Girls,JV,South St Paul ,St Paul Academy and Summit School 
+313-HS25,08/21/2025,7:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,St Paul Academy and Summit School 
+478-HS25,08/21/2025,5:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Eagan 
+479-HS25,08/21/2025,7:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Eagan 
+510-HS25,08/21/2025,4:00 PM,Edgewood Middle School ,Boys,JV,Irondale ,Park 
+511-HS25,08/21/2025,7:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Park 
+578-HS25,08/21/2025,5:00 PM,Park High School ,Girls,Varsity,Park ,Bloomington Jefferson 
+579-HS25,08/21/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,Bloomington Jefferson 
+608-HS25,08/21/2025,7:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Maple Grove 
+359-HS25,08/22/2025,2:00 PM,Two Rivers High School ,Girls,JV,Two Rivers,Cloquet 
+360-HS25,08/22/2025,2:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Cloquet 
+361-HS25,08/22/2025,3:30 PM,Two Rivers High School ,Boys,JV,Two Rivers,Cloquet 
+362-HS25,08/22/2025,4:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Cloquet 
+100-HS25,08/23/2025,9:00 AM,Hastings High School ,Boys,C-Squad,Hastings,Bloomington Jefferson
+101-HS25,08/23/2025,9:00 AM,Hastings High School ,Girls,C-Squad,Hastings,Bloomington Jefferson
+102-HS25,08/23/2025,11:00 AM,Hastings High School ,Boys,Varsity,Hastings,Bloomington Jefferson
+103-HS25,08/23/2025,11:00 AM,Hastings High School ,Boys,JV,Hastings,Bloomington Jefferson
+104-HS25,08/23/2025,11:00 AM,Hastings High School ,Girls,JV,Hastings,Bloomington Jefferson
+105-HS25,08/23/2025,1:00 PM,Hastings High School ,Girls,Varsity,Hastings,Bloomington Jefferson
+231-HS25,08/23/2025,11:00 AM,North St Paul High School ,Boys,JV,North St Paul,White Bear Lake
+232-HS25,08/23/2025,1:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,White Bear Lake
+257-HS25,08/23/2025,1:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Woodbury
+258-HS25,08/23/2025,11:00 AM,St Thomas Academy,Boys,JV,St Thomas Academy,Woodbury
+259-HS25,08/23/2025,9:00 AM,St Thomas Academy,Boys,B-Squad,St Thomas Academy,Woodbury
+260-HS25,08/23/2025,9:00 AM,St Thomas Academy,Boys,C-Squad,St Thomas Academy,Woodbury
+363-HS25,08/23/2025,1:00 PM,Two Rivers High School ,Girls,JV,Two Rivers,Duluth Marshall 
+364-HS25,08/23/2025,1:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Duluth Marshall 
+365-HS25,08/23/2025,2:30 PM,Two Rivers High School ,Boys,JV,Two Rivers,Duluth Marshall 
+366-HS25,08/23/2025,3:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Duluth Marshall 
+422-HS25,08/23/2025,1:00 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Highland Park
+423-HS25,08/23/2025,1:00 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,Highland Park
+424-HS25,08/23/2025,1:00 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,Highland Park
+425-HS25,08/23/2025,3:00 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,Academy of Holy Angels 
+426-HS25,08/23/2025,3:00 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,Academy of Holy Angels 
+427-HS25,08/23/2025,3:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,Highland Park
+428-HS25,08/23/2025,5:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,Academy of Holy Angels 
+594-HS25,08/23/2025,1:00 PM,Roseville High School ,Boys,Varsity,Roseville,Park Center 
+157-HS25,08/25/2025,5:15 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Stillwater 
+158-HS25,08/25/2025,5:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Stillwater 
+159-HS25,08/25/2025,7:00 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Stillwater 
+314-HS25,08/25/2025,5:00 PM,South St Paul High School ,Girls,C-Squad,South St Paul ,Academy of Holy Angels 
+315-HS25,08/25/2025,5:00 PM,South St Paul High School ,Girls,JV,South St Paul ,Academy of Holy Angels 
+316-HS25,08/25/2025,7:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Academy of Holy Angels 
+429-HS25,08/25/2025,4:15 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,Benilde-St Margaret's 
+430-HS25,08/25/2025,5:30 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,Benilde-St Margaret's 
+431-HS25,08/25/2025,7:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,Benilde-St Margaret's 
+512-HS25,08/25/2025,5:00 PM,Irondale High School ,Boys,JV,Irondale ,Spring Lake Park
+513-HS25,08/25/2025,7:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Spring Lake Park
+609-HS25,08/25/2025,7:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Centennial
+160-HS25,08/26/2025,3:45 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Mounds View 
+161-HS25,08/26/2025,5:00 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Blake 
+162-HS25,08/26/2025,5:00 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Blake 
+163-HS25,08/26/2025,5:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Mounds View 
+164-HS25,08/26/2025,7:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Blake 
+217-HS25,08/26/2025,5:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,St Anthony Village 
+218-HS25,08/26/2025,7:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,White Bear Lake
+233-HS25,08/26/2025,5:00 PM,North St Paul High School ,Boys,JV,North St Paul,St Paul Harding 
+234-HS25,08/26/2025,7:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,St Paul Harding 
+367-HS25,08/26/2025,4:00 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,St Paul Central
+368-HS25,08/26/2025,4:00 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,St Paul Central
+369-HS25,08/26/2025,4:00 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,St Paul Central
+370-HS25,08/26/2025,5:30 PM,Two Rivers High School ,Girls,JV,Two Rivers,St Paul Central
+480-HS25,08/26/2025,5:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Hudson 
+514-HS25,08/26/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Fridley
+515-HS25,08/26/2025,7:00 AM,Irondale High School ,Girls,Varsity,Irondale ,Fridley
+564-HS25,08/26/2025,5:00 PM,Mounds View High School ,Boys,Varsity,Mounds View ,Duluth East 
+595-HS25,08/26/2025,7:00 PM,Roseville High School ,Boys,Varsity,Roseville,Eastview 
+106-HS25,08/27/2025,4:30 PM,Hastings High School ,Boys,JV,Hastings,Irondale
+107-HS25,08/27/2025,4:30 PM,Hastings High School ,Boys,C-Squad,Hastings,Irondale
+108-HS25,08/27/2025,7:00 PM,Hastings High School ,Boys,Varsity,Hastings,Irondale
+496-HS25,08/27/2025,5:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Cambridge-Isanti 
+497-HS25,08/27/2025,7:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Cambridge-Isanti 
+580-HS25,08/27/2025,7:00 PM,Park High School ,Girls,Varsity,Park ,Minneapolis Washburn 
+165-HS25,08/28/2025,4:00 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Como Park 
+317-HS25,08/28/2025,3:45 PM,South St Paul High School ,Boys,C-Squad,South St Paul ,White Bear Lake
+318-HS25,08/28/2025,5:00 PM,South St Paul High School ,Boys,JV,South St Paul ,White Bear Lake
+319-HS25,08/28/2025,7:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,White Bear Lake
+371-HS25,08/28/2025,4:00 PM,Two Rivers High School ,Girls,B-Squad,Two Rivers,Eastview 
+372-HS25,08/28/2025,4:00 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,Eastview 
+373-HS25,08/28/2025,5:00 PM,Two Rivers High School ,Girls,JV,Two Rivers,Eastview 
+374-HS25,08/28/2025,7:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Eastview 
+432-HS25,08/28/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,St Thomas Academy 
+433-HS25,08/28/2025,4:15 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,St Thomas Academy 
+434-HS25,08/28/2025,5:30 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,St Thomas Academy 
+435-HS25,08/28/2025,7:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,St Thomas Academy 
+481-HS25,08/28/2025,5:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Hill-Murray 
+482-HS25,08/28/2025,7:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Hill-Murray 
+516-HS25,08/28/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Park Center
+517-HS25,08/28/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,Park Center
+518-HS25,08/28/2025,7:00 PM,Irondale High School ,Girls,Varsity,Irondale ,Park Center
+581-HS25,08/28/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,Minnetonka 
+596-HS25,08/28/2025,7:00 PM,Roseville High School ,Boys,Varsity,Roseville,Mahtomedi 
+610-HS25,08/28/2025,7:00 PM,Stillwater High School ,Boys,Varsity,Stillwater ,Eastview 
+658-HS25,08/28/2025,12:55 AM,Woodbury High School ,Girls,Varsity,Woodbury ,Mahtomedi 
+109-HS25,08/29/2025,1:00 PM,Hastings High School ,Girls,JV,Hastings,Farmington
+110-HS25,08/29/2025,1:00 PM,Hastings High School ,Girls,C-Squad,Hastings,Farmington
+111-HS25,08/29/2025,3:00 PM,Hastings High School ,Girls,Varsity,Hastings,Farmington
+235-HS25,08/30/2025,11:00 AM,North St Paul High School ,Girls,Varsity,North St Paul,Minneapolis South 
+687-HS25,08/26/2025,3:45 PM,Mahtomedi High School ,Boys,JV,Mahtomedi ,St Anthony Village 
+688-HS25,08/26/2025,5:15 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,White Bear Lake`
 		const september = 
 `Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
-333-HSB24,09/03/2024,4:00 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Academy of Holy Angels
-335-HSB24,09/03/2024,5:30 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Academy of Holy Angels
-534-HSB24,09/03/2024,4:00 PM,Two Rivers High School,Girls,C-Squad,Two Rivers,Benilde-St Margaret's
-572-HSB24,09/03/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Andover
-573-HSB24,09/03/2024,5:15 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,Andover
-575-HSB24,09/04/2024,4:00 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Irondale
-576-HSB24,09/04/2024,5:15 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Irondale
-560-HSB24,09/05/2024,5:15 PM,North St Paul High School,Boys,JV,North St Paul,North St Paul
-577-HSB24,09/05/2024,4:00 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Irondale
-578-HSB24,09/05/2024,5:15 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,Irondale
-393-HSB24,09/07/2024,11:00 AM,Simley High School,Boys,Varsity,Simley,St Croix Lutheran
-538-HSB24,09/07/2024,3:00 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Eastview
-579-HSB24,09/07/2024,11:00 AM,White Bear Lake North High School,Boys,JV,White Bear Lake,North St Paul
-580-HSB24,09/07/2024,11:00 AM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,North St Paul
-561-HSB24,09/09/2024,3:45 PM,North St Paul High School,Boys,JV,North St Paul,South St Paul
-541-HSB24,09/10/2024,5:15 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Hastings
-581-HSB24,09/10/2024,4:00 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,Mounds View
-231-HSB24,09/11/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,North St Paul
-425-HSB24,09/11/2024,4:15 PM,Woodbury High School,Girls,Grade 9,Woodbury,Cretin-Derham Hall
-347-HSB24,09/11/2024,3:45 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Mahtomedi
-582-HSB24,09/11/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Roseville
-583-HSB24,09/11/2024,5:15 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Roseville
-584-HSB24,09/12/2024,4:00 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Roseville
-585-HSB24,09/12/2024,5:15 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Roseville
-152-HSB24,09/14/2024,1:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Hastings
-400-HSB24,09/14/2024,11:00 AM,Simley High School,Boys,JV,Simley,Rochester John Marshall
-401-HSB24,09/14/2024,11:00 AM,Simley High School,Boys,C-Squad,Simley,Rochester John Marshall
-543-HSB24,09/14/2024,1:00 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,Woodbury
-246-HSB24,09/17/2024,5:15 PM,Two Rivers High School,Boys,JV,Two Rivers,North St Paul
-513-HSB24,09/17/2024,4:15 PM,St Thomas Academy,Boys,JV,St Thomas Academy,Simley
-545-HSB24,09/17/2024,4:00 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,Tartan
-587-HSB24,09/17/2024,4:00 PM,White Bear Lake North High School,Girls,B-Squad,White Bear Lake,East Ridge
-588-HSB24,09/17/2024,5:15 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,East Ridge
-404-HSB24,09/18/2024,5:15 PM,Simley High School,Boys,C-Squad,Simley,St Thomas Academy
-515-HSB24,09/21/2024,10:00 AM,St Thomas Academy,Boys,C-Squad,St Thomas Academy,Cretin-Derham Hall
-593-HSB24,09/23/2024,4:00 PM,White Bear Lake North High School,Girls,Grade 9,White Bear Lake,Woodbury
-594-HSB24,09/23/2024,5:15 PM,White Bear Lake North High School,Boys,Grade 9,White Bear Lake,Woodbury
-234-HSB24,09/24/2024,3:45 PM,Hastings High School,Boys,JV,Hastings,Hill-Murray
-235-HSG24,09/24/2024,5:15 PM,Hastings High School,Girls,JV,Hastings,Hill-Murray
-595-HSB24,09/24/2024,4:00 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Woodbury
-596-HSB24,09/24/2024,5:15 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Woodbury
-184-HSB24,09/26/2024,7:00 PM,Hastings High School,Boys,Varsity,Hastings,St Thomas Academy
-235-HSB24,09/26/2024,5:15 PM,Hastings High School,Boys,JV,Hastings,St Thomas Academy
-366-HSB24,09/26/2024,3:45 PM,Hill-Murray High School,Girls,JV,Hill-Murray,Two Rivers
-367-HSB24,09/26/2024,5:15 PM,Hill-Murray High School,Boys,JV,Hill-Murray,Two Rivers
-550-HSB24,09/27/2024,4:00 PM,Two Rivers High School,Boys,C-Squad,Two Rivers,Hill-Murray
-524-HSB24,09/28/2024,12:00 PM,St Thomas Academy,Boys,B-Squad,St Thomas Academy,Roseville
-551-HSB24,09/30/2024,3:45 PM,Two Rivers High School,Boys,B-Squad,Two Rivers,St Thomas Academy`
+166-HS25,09/02/2025,3:45 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Academy of Holy Angels 
+167-HS25,09/02/2025,3:45 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Academy of Holy Angels 
+168-HS25,09/02/2025,5:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Academy of Holy Angels 
+169-HS25,09/02/2025,5:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Academy of Holy Angels 
+170-HS25,09/02/2025,5:15 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Academy of Holy Angels 
+171-HS25,09/02/2025,7:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Academy of Holy Angels 
+219-HS25,09/02/2025,7:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,Cretin-Derham Hall 
+375-HS25,09/02/2025,4:00 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,Bloomington Kennedy 
+376-HS25,09/02/2025,4:15 PM,Two Rivers High School ,Girls,JV,Two Rivers,Bloomington Kennedy 
+377-HS25,09/02/2025,5:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Bloomington Kennedy 
+378-HS25,09/02/2025,5:30 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,Bloomington Kennedy 
+379-HS25,09/02/2025,5:45 PM,Two Rivers High School ,Boys,JV,Two Rivers,Bloomington Kennedy 
+380-HS25,09/02/2025,7:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Bloomington Kennedy 
+498-HS25,09/02/2025,7:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Coon Rapids 
+519-HS25,09/02/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,Tartan
+520-HS25,09/02/2025,4:15 PM,Edgewood Middle School ,Boys,B-Squad,Irondale ,Tartan
+565-HS25,09/02/2025,5:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Prior Lake 
+597-HS25,09/02/2025,5:00 PM,Roseville High School ,Boys,Varsity,Roseville,Maple Grove 
+598-HS25,09/02/2025,7:00 PM,Roseville High School ,Girls,Varsity,Roseville,Blaine 
+521-HS25,09/03/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,Stillwater 
+522-HS25,09/03/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Stillwater 
+620-HS25,09/03/2025,4:15 PM,White Bear Lake North High School ,Boys,Grade 9,White Bear Lake ,Mounds View 
+621-HS25,09/03/2025,4:15 PM,White Bear Lake North High School ,Girls,Grade 9,White Bear Lake ,Mounds View 
+112-HS25,09/04/2025,3:45 PM,Hastings High School ,Boys,JV,Hastings,Tartan 
+113-HS25,09/04/2025,5:00 PM,Hastings High School ,Boys,Varsity,Hastings,Tartan 
+114-HS25,09/04/2025,5:15 PM,Hastings High School ,Girls,JV,Hastings,Tartan 
+115-HS25,09/04/2025,7:00 PM,Hastings High School ,Girls,Varsity,Hastings,Tartan 
+220-HS25,09/04/2025,6:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,St Thomas Academy
+236-HS25,09/04/2025,3:45 PM,North St Paul High School ,Boys,JV,North St Paul,Simley 
+237-HS25,09/04/2025,5:15 PM,North St Paul High School ,Girls,JV,North St Paul,Simley 
+238-HS25,09/04/2025,5:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,Simley 
+239-HS25,09/04/2025,7:00 PM,North St Paul High School ,Girls,Varsity,North St Paul,Simley 
+381-HS25,09/04/2025,3:45 PM,Two Rivers High School ,Girls,JV,Two Rivers,South St Paul 
+382-HS25,09/04/2025,5:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,South St Paul 
+383-HS25,09/04/2025,5:15 PM,Two Rivers High School ,Boys,JV,Two Rivers,South St Paul 
+384-HS25,09/04/2025,7:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,South St Paul 
+436-HS25,09/04/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Woodbury 
+437-HS25,09/04/2025,4:15 PM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Woodbury 
+483-HS25,09/04/2025,5:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Forest Lake 
+484-HS25,09/04/2025,7:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Forest Lake 
+523-HS25,09/04/2025,4:15 PM,Edgewood Middle School ,Boys,JV,Irondale ,Stillwater 
+524-HS25,09/04/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,Stillwater 
+525-HS25,09/04/2025,5:00 PM,Irondale High School ,Girls,Varsity,Irondale ,Stillwater 
+526-HS25,09/04/2025,7:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Stillwater 
+582-HS25,09/04/2025,5:00 PM,Park High School ,Girls,Varsity,Park ,Roseville
+583-HS25,09/04/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,Roseville
+622-HS25,09/04/2025,4:15 PM,White Bear Lake North High School ,Boys,JV,White Bear Lake ,Mounds View 
+623-HS25,09/04/2025,4:15 PM,White Bear Lake North High School ,Girls,JV,White Bear Lake ,Mounds View 
+624-HS25,09/04/2025,5:00 PM,White Bear Lake North High School ,Girls,Varsity,White Bear Lake ,Mounds View 
+625-HS25,09/04/2025,7:00 PM,White Bear Lake North High School ,Boys,Varsity,White Bear Lake ,Mounds View 
+659-HS25,09/04/2025,5:00 PM,Woodbury High School ,Girls,Varsity,Woodbury ,Cretin-Derham Hall 
+660-HS25,09/04/2025,7:00 PM,Woodbury High School ,Boys,Varsity,Woodbury ,Cretin-Derham Hall 
+261-HS25,09/05/2025,4:15 PM,St Thomas Academy ,Boys,C-Squad,St Thomas Academy,Mahtomedi 
+280-HS25,09/05/2025,3:45 PM,Simley High School ,Boys,C-Squad,Simley ,North St Paul
+281-HS25,09/05/2025,5:15 PM,Simley High School ,Girls,C-Squad,Simley ,North St Paul
+320-HS25,09/05/2025,3:45 PM,South St Paul High School ,Girls,C-Squad,South St Paul ,Two Rivers
+321-HS25,09/05/2025,5:15 PM,South St Paul High School ,Boys,C-Squad,South St Paul ,Two Rivers
+116-HS25,09/06/2025,10:00 AM,Hastings High School ,Boys,Varsity,Hastings,Apple Valley
+117-HS25,09/06/2025,10:00 AM,Hastings High School ,Girls,JV,Hastings,Apple Valley
+118-HS25,09/06/2025,10:00 AM,Hastings High School ,Girls,C-Squad,Hastings,Apple Valley
+119-HS25,09/06/2025,12:00 PM,Hastings High School ,Boys,JV,Hastings,Apple Valley
+120-HS25,09/06/2025,12:00 PM,Hastings High School ,Boys,C-Squad,Hastings,Apple Valley
+121-HS25,09/06/2025,12:00 PM,Hastings High School ,Girls,Varsity,Hastings,Apple Valley
+221-HS25,09/06/2025,12:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,Northfield 
+240-HS25,09/06/2025,9:00 AM,North St Paul High School ,Boys,JV,North St Paul,Minneapolis South 
+241-HS25,09/06/2025,11:00 AM,North St Paul High School ,Boys,Varsity,North St Paul,Minneapolis South 
+322-HS25,09/06/2025,11:00 AM,South St Paul High School ,Girls,C-Squad,South St Paul ,Cretin-Derham Hall 
+323-HS25,09/06/2025,11:00 AM,South St Paul High School ,Girls,JV,South St Paul ,Cretin-Derham Hall 
+324-HS25,09/06/2025,1:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Cretin-Derham Hall 
+485-HS25,09/06/2025,1:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Tartan
+599-HS25,09/06/2025,12:00 PM,Roseville High School ,Girls,Varsity,Roseville,St Paul Central 
+611-HS25,09/06/2025,6:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Duluth East 
+122-HS25,09/08/2025,3:45 PM,Hastings High School ,Boys,C-Squad,Hastings,Two Rivers
+123-HS25,09/08/2025,5:15 PM,Hastings High School ,Girls,C-Squad,Hastings,Two Rivers
+172-HS25,09/08/2025,4:15 PM,Hill-Murray High School ,Boys,C-Squad,Hill-Murray ,St Thomas Academy
+262-HS25,09/08/2025,4:15 PM,St Thomas Academy ,Boys,B-Squad,St Thomas Academy,Hill-Murray 
+438-HS25,09/08/2025,4:15 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,Irondale 
+439-HS25,09/08/2025,4:15 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,Irondale 
+626-HS25,09/08/2025,4:15 PM,White Bear Lake North High School ,Boys,Grade 9,White Bear Lake ,Woodbury 
+627-HS25,09/08/2025,4:15 PM,White Bear Lake North High School ,Girls,Grade 9,White Bear Lake ,Woodbury 
+173-HS25,09/09/2025,4:30 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,New Richmond 
+263-HS25,09/09/2025,4:15 PM,St Thomas Academy ,Boys,JV,St Thomas Academy,Hill-Murray 
+264-HS25,09/09/2025,6:00 PM,St Thomas Academy ,Boys,Varsity,St Thomas Academy,Hill-Murray 
+325-HS25,09/09/2025,3:45 PM,South St Paul High School ,Girls,JV,South St Paul ,North St Paul
+326-HS25,09/09/2025,5:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,North St Paul
+327-HS25,09/09/2025,5:15 PM,South St Paul High School ,Boys,JV,South St Paul ,North St Paul
+328-HS25,09/09/2025,7:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,North St Paul
+352-HS25,09/09/2025,5:00 PM,Tartan High School ,Boys,Varsity,Tartan ,Mahtomedi 
+353-HS25,09/09/2025,7:00 PM,Tartan High School ,Girls,Varsity,Tartan ,Mahtomedi 
+385-HS25,09/09/2025,3:45 PM,Two Rivers High School ,Boys,JV,Two Rivers,Hastings
+386-HS25,09/09/2025,5:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Hastings
+387-HS25,09/09/2025,5:15 PM,Two Rivers High School ,Girls,JV,Two Rivers,Hastings
+388-HS25,09/09/2025,7:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Hastings
+440-HS25,09/09/2025,4:15 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,Irondale 
+441-HS25,09/09/2025,4:15 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,Irondale 
+442-HS25,09/09/2025,5:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,Irondale 
+443-HS25,09/09/2025,7:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,Irondale 
+527-HS25,09/09/2025,4:15 PM,Edgewood Middle School ,Boys,B-Squad,Irondale ,Cretin-Derham Hall 
+528-HS25,09/09/2025,4:15 PM,Edgewood Middle School ,Girls,B-Squad,Irondale ,Cretin-Derham Hall 
+566-HS25,09/09/2025,5:00 PM,Mounds View High School ,Boys,Varsity,Mounds View ,Forest Lake 
+567-HS25,09/09/2025,7:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Forest Lake 
+600-HS25,09/09/2025,5:00 PM,Roseville High School ,Boys,Varsity,Roseville,East Ridge 
+601-HS25,09/09/2025,7:00 PM,Roseville High School ,Girls,Varsity,Roseville,East Ridge 
+612-HS25,09/09/2025,5:00 PM,Stillwater High School ,Boys,Varsity,Stillwater ,Park 
+613-HS25,09/09/2025,7:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Park 
+628-HS25,09/09/2025,4:15 PM,White Bear Lake North High School ,Boys,JV,White Bear Lake ,Woodbury 
+629-HS25,09/09/2025,4:15 PM,White Bear Lake North High School ,Girls,JV,White Bear Lake ,Woodbury 
+630-HS25,09/09/2025,5:00 PM,White Bear Lake North High School ,Boys,Varsity,White Bear Lake ,Woodbury 
+631-HS25,09/09/2025,7:00 PM,White Bear Lake North High School ,Girls,Varsity,White Bear Lake ,Woodbury 
+529-HS25,09/10/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,White Bear Lake 
+530-HS25,09/10/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,White Bear Lake 
+124-HS25,09/11/2025,3:45 PM,Hastings High School ,Boys,JV,Hastings,South St Paul 
+125-HS25,09/11/2025,3:45 PM,Hastings High School ,Girls,JV,Hastings,South St Paul 
+126-HS25,09/11/2025,5:00 PM,Hastings High School ,Girls,Varsity,Hastings,South St Paul 
+127-HS25,09/11/2025,7:00 PM,Hastings High School ,Boys,Varsity,Hastings,South St Paul 
+174-HS25,09/11/2025,3:45 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,North St Paul
+175-HS25,09/11/2025,5:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,North St Paul
+176-HS25,09/11/2025,5:15 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,North St Paul
+177-HS25,09/11/2025,7:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,North St Paul
+282-HS25,09/11/2025,3:45 PM,Simley High School ,Boys,JV,Simley ,Two Rivers
+283-HS25,09/11/2025,3:45 PM,Simley High School ,Girls,JV,Simley ,Two Rivers
+284-HS25,09/11/2025,5:00 PM,Simley High School ,Boys,Varsity,Simley ,Two Rivers
+285-HS25,09/11/2025,5:00 PM,Simley High School ,Girls,Varsity,Simley ,Two Rivers
+354-HS25,09/11/2025,7:00 PM,Tartan High School ,Boys,Varsity,Tartan ,St Thomas Academy
+444-HS25,09/11/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Park 
+445-HS25,09/11/2025,4:15 PM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Park 
+486-HS25,09/11/2025,5:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Stillwater 
+487-HS25,09/11/2025,7:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Stillwater 
+499-HS25,09/11/2025,5:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Roseville
+500-HS25,09/11/2025,7:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Roseville
+531-HS25,09/11/2025,4:15 PM,Edgewood Middle School ,Boys,JV,Irondale ,White Bear Lake 
+532-HS25,09/11/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,White Bear Lake 
+533-HS25,09/11/2025,5:00 PM,Irondale High School ,Boys,Varsity,Irondale ,White Bear Lake 
+534-HS25,09/11/2025,7:00 PM,Irondale High School ,Girls,Varsity,Irondale ,White Bear Lake 
+584-HS25,09/11/2025,5:00 PM,Park High School ,Boys,Varsity,Park ,Cretin-Derham Hall 
+585-HS25,09/11/2025,7:00 PM,Park High School ,Girls,Varsity,Park ,Cretin-Derham Hall 
+632-HS25,09/11/2025,4:15 PM,White Bear Lake North High School ,Boys,B-Squad,White Bear Lake ,Irondale 
+633-HS25,09/11/2025,4:15 PM,White Bear Lake North High School ,Girls,B-Squad,White Bear Lake ,Irondale 
+661-HS25,09/11/2025,5:00 PM,Woodbury High School ,Boys,Varsity,Woodbury ,Mounds View 
+662-HS25,09/11/2025,7:00 PM,Woodbury High School ,Girls,Varsity,Woodbury ,Mounds View 
+178-HS25,09/12/2025,3:45 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,TBD
+179-HS25,09/12/2025,5:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,TBD
+180-HS25,09/12/2025,3:45 PM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,TBD
+181-HS25,09/12/2025,5:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,TBD
+265-HS25,09/12/2025,4:15 PM,St Thomas Academy ,Boys,C-Squad,St Thomas Academy,Tartan 
+329-HS25,09/12/2025,3:45 PM,South St Paul High School ,Boys,C-Squad,South St Paul ,Hastings
+330-HS25,09/12/2025,3:45 PM,South St Paul High School ,Girls,C-Squad,South St Paul ,Hastings
+389-HS25,09/12/2025,3:45 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,Simley 
+390-HS25,09/12/2025,3:45 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,Simley 
+182-HS25,09/13/2025,10:00 AM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,TBD
+183-HS25,09/13/2025,12:00 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,TBD
+184-HS25,09/13/2025,10:00 AM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,TBD
+185-HS25,09/13/2025,12:00 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,TBD
+222-HS25,09/13/2025,12:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,Blake 
+223-HS25,09/13/2025,2:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,Shakopee 
+242-HS25,09/13/2025,11:00 AM,North St Paul High School ,Girls,Varsity,North St Paul,Minneapolis Edison 
+286-HS25,09/13/2025,9:00 AM,Simley High School ,Boys,C-Squad,Simley ,Pine Island 
+287-HS25,09/13/2025,9:00 AM,Simley High School ,Boys,JV,Simley ,Pine Island 
+288-HS25,09/13/2025,11:00 AM,Simley High School ,Boys,Varsity,Simley ,Pine Island 
+331-HS25,09/13/2025,11:00 AM,South St Paul High School ,Boys,JV,South St Paul ,Trinity School at River Ridge 
+332-HS25,09/13/2025,1:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,Trinity School at River Ridge 
+333-HS25,09/13/2025,3:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Trinity School at River Ridge 
+446-HS25,09/13/2025,11:00 AM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,Simley 
+501-HS25,09/13/2025,1:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Anoka 
+502-HS25,09/13/2025,3:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Anoka 
+535-HS25,09/13/2025,11:00 AM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Hopkins
+536-HS25,09/13/2025,11:00 AM,Edgewood Middle School ,Girls,JV,Irondale ,Hopkins
+537-HS25,09/13/2025,11:00 AM,Irondale High School ,Girls,Varsity,Irondale ,Hopkins
+538-HS25,09/13/2025,1:00 PM,Edgewood Middle School ,Boys,JV,Irondale ,Hopkins
+539-HS25,09/13/2025,1:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Hopkins
+568-HS25,09/13/2025,1:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Centennial
+586-HS25,09/13/2025,5:00 PM,Park High School ,Girls,Varsity,Park ,Eastview 
+587-HS25,09/13/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,Eastview 
+663-HS25,09/13/2025,12:55 AM,Woodbury High School ,Boys,Varsity,Woodbury ,Two Rivers 
+664-HS25,09/13/2025,12:55 AM,Woodbury High School ,Girls,Varsity,Woodbury ,Maple Grove 
+128-HS25,09/15/2025,3:45 PM,Hastings High School ,Boys,C-Squad,Hastings,Hill-Murray 
+129-HS25,09/15/2025,5:15 PM,Hastings High School ,Girls,C-Squad,Hastings,Hill-Murray 
+391-HS25,09/15/2025,4:00 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,Hill-Murray 
+392-HS25,09/15/2025,4:15 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,St Thomas Academy
+447-HS25,09/15/2025,4:15 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,East Ridge 
+448-HS25,09/15/2025,4:15 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,East Ridge 
+634-HS25,09/15/2025,4:15 PM,White Bear Lake North High School ,Boys,Grade 9,White Bear Lake ,Park 
+635-HS25,09/15/2025,4:15 PM,White Bear Lake North High School ,Girls,Grade 9,White Bear Lake ,Park 
+186-HS25,09/16/2025,3:45 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Hastings
+187-HS25,09/16/2025,5:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Hastings
+188-HS25,09/16/2025,5:15 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Hastings
+189-HS25,09/16/2025,7:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Hastings
+266-HS25,09/16/2025,4:15 PM,St Thomas Academy ,Boys,JV,St Thomas Academy,Two Rivers
+267-HS25,09/16/2025,6:00 PM,St Thomas Academy ,Boys,Varsity,St Thomas Academy,Two Rivers
+289-HS25,09/16/2025,3:45 PM,Simley High School ,Boys,JV,Simley ,Mahtomedi 
+290-HS25,09/16/2025,5:00 PM,Simley High School ,Boys,Varsity,Simley ,Mahtomedi 
+291-HS25,09/16/2025,5:15 PM,Simley High School ,Girls,JV,Simley ,Mahtomedi 
+292-HS25,09/16/2025,7:00 PM,Simley High School ,Girls,Varsity,Simley ,Mahtomedi 
+334-HS25,09/16/2025,3:45 PM,South St Paul High School ,Boys,JV,South St Paul ,Tartan 
+335-HS25,09/16/2025,5:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,Tartan 
+336-HS25,09/16/2025,5:15 PM,South St Paul High School ,Girls,JV,South St Paul ,Tartan 
+337-HS25,09/16/2025,7:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Tartan 
+393-HS25,09/16/2025,5:00 PM,Two Rivers High School ,Girls,JV,Two Rivers,Visitation 
+394-HS25,09/16/2025,7:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Visitation 
+449-HS25,09/16/2025,4:15 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,East Ridge 
+450-HS25,09/16/2025,4:15 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,East Ridge 
+451-HS25,09/16/2025,5:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,East Ridge 
+452-HS25,09/16/2025,7:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,East Ridge 
+540-HS25,09/16/2025,4:15 PM,Edgewood Middle School ,Boys,B-Squad,Irondale ,Woodbury 
+541-HS25,09/16/2025,4:15 PM,Edgewood Middle School ,Girls,B-Squad,Irondale ,Woodbury 
+569-HS25,09/16/2025,5:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Roseville
+570-HS25,09/16/2025,7:00 PM,Mounds View High School ,Boys,Varsity,Mounds View ,Roseville
+614-HS25,09/16/2025,5:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Forest Lake 
+615-HS25,09/16/2025,7:00 PM,Stillwater High School ,Boys,Varsity,Stillwater ,Forest Lake 
+636-HS25,09/16/2025,4:15 PM,White Bear Lake North High School ,Boys,JV,White Bear Lake ,Park 
+637-HS25,09/16/2025,4:15 PM,White Bear Lake North High School ,Girls,JV,White Bear Lake ,Park 
+638-HS25,09/16/2025,5:00 PM,White Bear Lake North High School ,Girls,Varsity,White Bear Lake ,Park 
+639-HS25,09/16/2025,7:00 PM,White Bear Lake North High School ,Boys,Varsity,White Bear Lake ,Park 
+665-HS25,09/16/2025,5:00 PM,Woodbury High School ,Girls,Varsity,Woodbury ,Irondale 
+666-HS25,09/16/2025,7:00 PM,Woodbury High School ,Boys,Varsity,Woodbury ,Irondale 
+542-HS25,09/17/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,Mounds View 
+543-HS25,09/17/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Mounds View 
+190-HS25,09/18/2025,4:00 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,St Thomas Academy
+224-HS25,09/18/2025,5:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,Hill-Murray 
+225-HS25,09/18/2025,7:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,Hill-Murray 
+243-HS25,09/18/2025,3:45 PM,North St Paul High School ,Boys,JV,North St Paul,Hastings
+244-HS25,09/18/2025,5:15 PM,North St Paul High School ,Girls,JV,North St Paul,Hastings
+245-HS25,09/18/2025,5:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,Hastings
+246-HS25,09/18/2025,7:00 PM,North St Paul High School ,Girls,Varsity,North St Paul,Hastings
+338-HS25,09/18/2025,5:15 PM,South St Paul High School ,Boys,JV,South St Paul ,St Thomas Academy
+339-HS25,09/18/2025,7:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,St Thomas Academy
+355-HS25,09/18/2025,5:00 PM,Tartan High School ,Girls,Varsity,Tartan ,Simley 
+356-HS25,09/18/2025,7:00 PM,Tartan High School ,Boys,Varsity,Tartan ,Simley 
+453-HS25,09/18/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Forest Lake 
+454-HS25,09/18/2025,4:15 PM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Forest Lake 
+488-HS25,09/18/2025,5:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,White Bear Lake 
+489-HS25,09/18/2025,7:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,White Bear Lake 
+503-HS25,09/18/2025,5:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Cretin-Derham Hall 
+504-HS25,09/18/2025,7:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Cretin-Derham Hall 
+544-HS25,09/18/2025,4:15 PM,Edgewood Middle School ,Boys,JV,Irondale ,Mounds View 
+545-HS25,09/18/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,Mounds View 
+546-HS25,09/18/2025,5:00 PM,Irondale High School ,Girls,Varsity,Irondale ,Mounds View 
+547-HS25,09/18/2025,7:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Mounds View 
+588-HS25,09/18/2025,5:00 PM,Park High School ,Girls,Varsity,Park ,Woodbury 
+589-HS25,09/18/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,Woodbury 
+602-HS25,09/18/2025,5:00 PM,Roseville High School ,Girls,Varsity,Roseville,Stillwater 
+603-HS25,09/18/2025,7:00 PM,Roseville High School ,Boys,Varsity,Roseville,Stillwater 
+640-HS25,09/18/2025,4:15 PM,White Bear Lake North High School ,Boys,B-Squad,White Bear Lake ,East Ridge 
+641-HS25,09/18/2025,4:15 PM,White Bear Lake North High School ,Girls,B-Squad,White Bear Lake ,East Ridge 
+130-HS25,09/19/2025,3:45 PM,Hastings High School ,Boys,C-Squad,Hastings,North St Paul
+131-HS25,09/19/2025,5:15 PM,Hastings High School ,Girls,C-Squad,Hastings,North St Paul
+191-HS25,09/19/2025,3:45 PM,Hill-Murray High School ,Girls,C-Squad,Hill-Murray ,Mahtomedi 
+192-HS25,09/19/2025,5:15 PM,Hill-Murray High School ,Boys,C-Squad,Hill-Murray ,Mahtomedi 
+268-HS25,09/19/2025,4:15 PM,St Thomas Academy ,Boys,C-Squad,St Thomas Academy,South St Paul
+293-HS25,09/19/2025,3:45 PM,Simley High School ,Girls,C-Squad,Simley ,Tartan 
+294-HS25,09/19/2025,5:15 PM,Simley High School ,Boys,C-Squad,Simley ,Tartan 
+295-HS25,09/20/2025,9:00 AM,Simley High School ,Boys,C-Squad,Simley ,Richfield 
+296-HS25,09/20/2025,9:00 AM,Simley High School ,Boys,JV,Simley ,Richfield 
+297-HS25,09/20/2025,10:30 AM,Simley High School ,Girls,JV,Simley ,Richfield 
+298-HS25,09/20/2025,11:00 AM,Simley High School ,Boys,Varsity,Simley ,Richfield 
+299-HS25,09/20/2025,1:00 PM,Simley High School ,Girls,Varsity,Simley ,Richfield 
+396-HS25,09/20/2025,9:00 AM,Two Rivers High School ,Girls,JV,Two Rivers,Eagan 
+397-HS25,09/20/2025,10:00 AM,Two Rivers High School ,Girls,B-Squad,Two Rivers,Eagan 
+398-HS25,09/20/2025,10:00 AM,Two Rivers High School ,Girls,C-Squad,Two Rivers,Eagan 
+399-HS25,09/20/2025,11:00 AM,Two Rivers High School ,Girls,Varsity,Two Rivers,Eagan 
+400-HS25,09/20/2025,3:00 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,East Ridge 
+401-HS25,09/20/2025,3:00 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,East Ridge 
+402-HS25,09/20/2025,5:00 PM,Two Rivers High School ,Boys,JV,Two Rivers,East Ridge 
+403-HS25,09/20/2025,7:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,East Ridge 
+455-HS25,09/20/2025,1:00 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,St Paul Central 
+456-HS25,09/20/2025,1:00 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,St Paul Central 
+457-HS25,09/20/2025,1:00 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,St Paul Central 
+458-HS25,09/20/2025,3:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,St Paul Central 
+490-HS25,09/20/2025,3:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Spring Lake Park 
+505-HS25,09/20/2025,1:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,North Branch 
+193-HS25,09/22/2025,3:45 PM,Hill-Murray High School ,Boys,C-Squad,Hill-Murray ,South St Paul 
+194-HS25,09/22/2025,5:15 PM,Hill-Murray High School ,Girls,C-Squad,Hill-Murray ,South St Paul 
+300-HS25,09/22/2025,3:45 PM,Simley High School ,Girls,C-Squad,Simley ,Hastings
+301-HS25,09/22/2025,5:15 PM,Simley High School ,Boys,C-Squad,Simley ,Hastings
+404-HS25,09/22/2025,3:45 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,Como Park 
+405-HS25,09/22/2025,3:45 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,Mahtomedi 
+406-HS25,09/22/2025,5:15 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,Mahtomedi 
+459-HS25,09/22/2025,4:15 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,Roseville
+460-HS25,09/22/2025,4:15 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,Roseville
+548-HS25,09/22/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,Park 
+549-HS25,09/22/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Park 
+642-HS25,09/22/2025,4:15 PM,White Bear Lake North High School ,Boys,Grade 9,White Bear Lake ,Forest Lake 
+643-HS25,09/22/2025,4:15 PM,White Bear Lake North High School ,Girls,Grade 9,White Bear Lake ,Forest Lake 
+132-HS25,09/23/2025,3:45 PM,Hastings High School ,Girls,JV,Hastings,Simley 
+133-HS25,09/23/2025,5:00 PM,Hastings High School ,Girls,Varsity,Hastings,Simley 
+134-HS25,09/23/2025,5:15 PM,Hastings High School ,Boys,JV,Hastings,Simley 
+135-HS25,09/23/2025,7:00 PM,Hastings High School ,Boys,Varsity,Hastings,Simley 
+226-HS25,09/23/2025,5:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,Two Rivers
+227-HS25,09/23/2025,7:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,Two Rivers
+269-HS25,09/23/2025,4:15 PM,St Thomas Academy,Boys,JV,St Thomas Academy,Benilde-St Margaret's
+270-HS25,09/23/2025,6:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Benilde-St Margaret's
+340-HS25,09/23/2025,3:45 PM,South St Paul High School ,Boys,JV,South St Paul ,Hill-Murray 
+341-HS25,09/23/2025,5:00 PM,South St Paul High School ,Boys,Varsity,South St Paul ,Hill-Murray 
+342-HS25,09/23/2025,5:15 PM,South St Paul High School ,Girls,JV,South St Paul ,Hill-Murray 
+343-HS25,09/23/2025,7:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Hill-Murray 
+357-HS25,09/23/2025,5:00 PM,Tartan High School ,Girls,Varsity,Tartan ,North St Paul
+358-HS25,09/23/2025,7:00 PM,Tartan High School ,Boys,Varsity,Tartan ,North St Paul
+461-HS25,09/23/2025,4:15 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,Roseville
+462-HS25,09/23/2025,4:15 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,Roseville
+463-HS25,09/23/2025,5:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,Roseville
+464-HS25,09/23/2025,7:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,Roseville
+550-HS25,09/23/2025,4:15 PM,Edgewood Middle School ,Boys,JV,Irondale ,Park 
+551-HS25,09/23/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,Park 
+552-HS25,09/23/2025,5:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Park 
+553-HS25,09/23/2025,7:00 PM,Irondale High School ,Girls,Varsity,Irondale ,Park 
+571-HS25,09/23/2025,5:00 PM,Mounds View High School ,Boys,Varsity,Mounds View ,Stillwater 
+572-HS25,09/23/2025,7:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Stillwater 
+644-HS25,09/23/2025,4:15 PM,White Bear Lake North High School ,Boys,JV,White Bear Lake ,Forest Lake 
+645-HS25,09/23/2025,4:15 PM,White Bear Lake North High School ,Girls,JV,White Bear Lake ,Forest Lake 
+646-HS25,09/23/2025,5:00 PM,White Bear Lake North High School ,Boys,Varsity,White Bear Lake ,Forest Lake 
+647-HS25,09/23/2025,7:00 PM,White Bear Lake North High School ,Girls,Varsity,White Bear Lake ,Forest Lake 
+667-HS25,09/23/2025,5:00 PM,Woodbury High School ,Boys,Varsity,Woodbury ,East Ridge 
+668-HS25,09/23/2025,7:00 PM,Woodbury High School ,Girls,Varsity,Woodbury ,East Ridge 
+407-HS25,09/24/2025,3:45 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,Como Park 
+195-HS25,09/25/2025,3:45 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Hudson 
+196-HS25,09/25/2025,5:15 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Two Rivers
+247-HS25,09/25/2025,3:45 PM,North St Paul High School ,Girls,JV,North St Paul,Mahtomedi 
+248-HS25,09/25/2025,5:15 PM,North St Paul High School ,Boys,JV,North St Paul,Mahtomedi 
+249-HS25,09/25/2025,5:00 PM,North St Paul High School ,Girls,Varsity,North St Paul,Mahtomedi 
+250-HS25,09/25/2025,7:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,Mahtomedi 
+271-HS25,09/25/2025,4:15 PM,St Thomas Academy ,Boys,JV,St Thomas Academy,Hastings
+272-HS25,09/25/2025,6:00 PM,St Thomas Academy ,Boys,Varsity,St Thomas Academy,Hastings
+302-HS25,09/25/2025,3:45 PM,Simley High School ,Girls,JV,Simley ,South St Paul 
+303-HS25,09/25/2025,5:00 PM,Simley High School ,Girls,Varsity,Simley ,South St Paul 
+304-HS25,09/25/2025,5:15 PM,Simley High School ,Boys,JV,Simley ,South St Paul 
+305-HS25,09/25/2025,7:00 PM,Simley High School ,Boys,Varsity,Simley ,South St Paul 
+408-HS25,09/25/2025,3:45 PM,Two Rivers High School ,Boys,JV,Two Rivers,Hill-Murray 
+409-HS25,09/25/2025,5:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Hill-Murray 
+410-HS25,09/25/2025,5:15 PM,Two Rivers High School ,Girls,JV,Two Rivers,Hill-Murray 
+411-HS25,09/25/2025,7:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Hill-Murray 
+465-HS25,09/25/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Stillwater 
+466-HS25,09/25/2025,4:15 PM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Stillwater 
+491-HS25,09/25/2025,5:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Irondale 
+492-HS25,09/25/2025,7:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Irondale 
+506-HS25,09/25/2025,5:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Woodbury 
+507-HS25,09/25/2025,7:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Woodbury 
+554-HS25,09/25/2025,4:15 PM,Edgewood Middle School ,Boys,B-Squad,Irondale ,East Ridge 
+555-HS25,09/25/2025,4:15 PM,Edgewood Middle School ,Girls,B-Squad,Irondale ,East Ridge 
+590-HS25,09/25/2025,5:00 PM,Park High School ,Boys,Varsity,Park ,Mounds View 
+591-HS25,09/25/2025,7:00 PM,Park High School ,Girls,Varsity,Park ,Mounds View 
+604-HS25,09/25/2025,5:00 PM,Roseville High School ,Boys,Varsity,Roseville,White Bear Lake 
+605-HS25,09/25/2025,7:00 PM,Roseville High School ,Girls,Varsity,Roseville,White Bear Lake 
+616-HS25,09/25/2025,5:00 PM,Stillwater High School ,Boys,Varsity,Stillwater ,Cretin-Derham Hall 
+617-HS25,09/25/2025,7:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Cretin-Derham Hall 
+648-HS25,09/25/2025,4:15 PM,White Bear Lake North High School ,Boys,B-Squad,White Bear Lake ,Roseville
+649-HS25,09/25/2025,4:15 PM,White Bear Lake North High School ,Girls,B-Squad,White Bear Lake ,Roseville
+136-HS25,09/26/2025,4:15 PM,Hastings High School ,Boys,C-Squad,Hastings,St Thomas Academy
+197-HS25,09/26/2025,3:45 PM,Hill-Murray High School ,Boys,C-Squad,Hill-Murray ,Two Rivers
+198-HS25,09/26/2025,5:15 PM,Hill-Murray High School ,Girls,C-Squad,Hill-Murray ,Two Rivers
+344-HS25,09/26/2025,3:45 PM,South St Paul High School ,Girls,C-Squad,South St Paul ,Simley 
+345-HS25,09/26/2025,5:15 PM,South St Paul High School ,Boys,C-Squad,South St Paul ,Simley 
+137-HS25,09/27/2025,10:00 AM,Hastings High School ,Girls,JV,Hastings,Park
+138-HS25,09/27/2025,10:00 AM,Hastings High School ,Girls,C-Squad,Hastings,Park
+139-HS25,09/27/2025,11:30 AM,Hastings High School ,Boys,JV,Hastings,Park
+140-HS25,09/27/2025,11:30 AM,Hastings High School ,Boys,C-Squad,Hastings,Park
+141-HS25,09/27/2025,12:00 PM,Hastings High School ,Girls,Varsity,Hastings,Park
+142-HS25,09/27/2025,2:00 PM,Hastings High School ,Boys,Varsity,Hastings,Park
+199-HS25,09/27/2025,10:00 AM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Highland Park
+200-HS25,09/27/2025,10:00 AM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Highland Park
+201-HS25,09/27/2025,12:00 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Highland Park
+202-HS25,09/27/2025,12:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Highland Park
+306-HS25,09/27/2025,9:00 AM,Simley High School ,Girls,JV,Simley ,Cretin-Derham Hall
+307-HS25,09/27/2025,11:00 AM,Simley High School ,Girls,Varsity,Simley ,Cretin-Derham Hall
+346-HS25,09/27/2025,11:00 AM,South St Paul High School ,Boys,JV,South St Paul ,Richfield 
+347-HS25,09/27/2025,11:00 AM,South St Paul High School ,Boys,Varsity,South St Paul ,Richfield 
+348-HS25,09/27/2025,1:00 PM,South St Paul High School ,Girls,JV,South St Paul ,Richfield 
+349-HS25,09/27/2025,1:00 PM,South St Paul High School ,Girls,Varsity,South St Paul ,Richfield 
+412-HS25,09/27/2025,3:00 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,Stillwater 
+413-HS25,09/27/2025,3:00 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,Stillwater 
+414-HS25,09/27/2025,5:00 PM,Two Rivers High School ,Boys,JV,Two Rivers,Stillwater 
+415-HS25,09/27/2025,7:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Stillwater 
+467-HS25,09/27/2025,11:00 AM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Totino-Grace 
+468-HS25,09/27/2025,11:00 AM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,Totino-Grace 
+469-HS25,09/27/2025,1:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,Totino-Grace 
+573-HS25,09/27/2025,10:00 AM,Mounds View High School ,Girls,Varsity,Mounds View ,Minneapolis Southwest 
+669-HS25,09/27/2025,12:55 AM,Woodbury High School ,Boys,Varsity,Woodbury ,Wayzata 
+203-HS25,09/29/2025,5:00 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,St Thomas Academy
+308-HS25,09/29/2025,3:45 PM,Simley High School ,Boys,C-Squad,Simley ,Hill-Murray 
+309-HS25,09/29/2025,5:15 PM,Simley High School ,Girls,C-Squad,Simley ,Hill-Murray 
+350-HS25,09/29/2025,3:45 PM,South St Paul High School ,Boys,C-Squad,South St Paul ,Mahtomedi 
+351-HS25,09/29/2025,5:15 PM,South St Paul High School ,Girls,C-Squad,South St Paul ,Mahtomedi 
+556-HS25,09/29/2025,4:15 PM,Edgewood Middle School ,Boys,Grade 9,Irondale ,Forest Lake 
+557-HS25,09/29/2025,4:15 PM,Edgewood Middle School ,Girls,Grade 9,Irondale ,Forest Lake 
+650-HS25,09/29/2025,4:15 PM,White Bear Lake North High School ,Boys,Grade 9,White Bear Lake ,Stillwater 
+651-HS25,09/29/2025,4:15 PM,White Bear Lake North High School ,Girls,Grade 9,White Bear Lake ,Stillwater 
+204-HS25,09/30/2025,3:45 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Simley 
+205-HS25,09/30/2025,5:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Simley 
+206-HS25,09/30/2025,5:15 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Simley 
+207-HS25,09/30/2025,7:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Simley 
+228-HS25,09/30/2025,5:00 PM,Mahtomedi High School ,Boys,Varsity,Mahtomedi ,South St Paul 
+229-HS25,09/30/2025,7:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,South St Paul 
+273-HS25,09/30/2025,4:15 PM,St Thomas Academy ,Boys,JV,St Thomas Academy,North St Paul
+274-HS25,09/30/2025,6:00 PM,St Thomas Academy ,Boys,Varsity,St Thomas Academy,North St Paul
+416-HS25,09/30/2025,3:45 PM,Two Rivers High School ,Boys,JV,Two Rivers,Tartan 
+417-HS25,09/30/2025,5:00 PM,Two Rivers High School ,Boys,Varsity,Two Rivers,Tartan 
+418-HS25,09/30/2025,5:15 PM,Two Rivers High School ,Girls,JV,Two Rivers,Tartan 
+419-HS25,09/30/2025,7:00 PM,Two Rivers High School ,Girls,Varsity,Two Rivers,Tartan 
+470-HS25,09/30/2025,4:15 PM,Cretin-Derham Hall ,Boys,B-Squad,Cretin-Derham Hall ,Mounds View 
+471-HS25,09/30/2025,4:15 PM,Cretin-Derham Hall ,Girls,B-Squad,Cretin-Derham Hall ,Mounds View 
+558-HS25,09/30/2025,4:15 PM,Edgewood Middle School ,Boys,JV,Irondale ,Forest Lake 
+559-HS25,09/30/2025,4:15 PM,Edgewood Middle School ,Girls,JV,Irondale ,Forest Lake 
+560-HS25,09/30/2025,5:00 PM,Irondale High School ,Girls,Varsity,Irondale ,Forest Lake 
+561-HS25,09/30/2025,7:00 PM,Irondale High School ,Boys,Varsity,Irondale ,Forest Lake 
+574-HS25,09/30/2025,5:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Cretin-Derham Hall 
+575-HS25,09/30/2025,7:00 PM,Mounds View High School ,Boys,Varsity,Mounds View ,Cretin-Derham Hall 
+592-HS25,09/30/2025,5:00 PM,Park High School ,Girls,Varsity,Park ,East Ridge 
+593-HS25,09/30/2025,7:00 PM,Park High School ,Boys,Varsity,Park ,East Ridge 
+652-HS25,09/30/2025,4:15 PM,White Bear Lake North High School ,Boys,JV,White Bear Lake ,Stillwater 
+653-HS25,09/30/2025,4:15 PM,White Bear Lake North High School ,Girls,JV,White Bear Lake ,Stillwater 
+654-HS25,09/30/2025,5:00 PM,White Bear Lake North High School ,Girls,Varsity,White Bear Lake ,Stillwater 
+655-HS25,09/30/2025,7:00 PM,White Bear Lake North High School ,Boys,Varsity,White Bear Lake ,Stillwater 
+670-HS25,09/30/2025,5:00 PM,Woodbury High School ,Girls,Varsity,Woodbury ,Roseville
+671-HS25,09/30/2025,7:00 PM,Woodbury High School ,Boys,Varsity,Woodbury ,Roseville
+495-HS25,09/02/2025,3:45 PM,Mahtomedi High School ,Girls,B-Squad,Mahtomedi ,Cretin-Derham Hall 
+674-HS25,09/02/2025,3:45 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,Cretin-Derham Hall 
+689-HS25,09/02/2025,5:15 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,Cretin-Derham Hall 
+690-HS25,09/04/2025,4:15 PM,Mahtomedi High School ,Boys,JV,Mahtomedi ,St Thomas Academy
+675-HS25,09/06/2025,12:00 PM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,Northfield 
+691-HS25,09/06/2025,10:15 AM,Mahtomedi High School ,Boys,JV,Mahtomedi ,Northfield 
+676-HS25,09/08/2025,3:45 PM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,Tartan 
+677-HS25,09/08/2025,5:15 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,Tartan 
+672-HS25,09/13/2025,2:00 PM,Mahtomedi High School ,Girls,B-Squad,Mahtomedi ,Shakopee 
+678-HS25,09/13/2025,10:30 AM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,Blake 
+679-HS25,09/13/2025,12:15 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,Shakopee 
+692-HS25,09/13/2025,10:30 AM,Mahtomedi High School ,Boys,JV,Mahtomedi ,Blake 
+693-HS25,09/13/2025,12:15 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,Shakopee 
+680-HS25,09/15/2025,3:45 PM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,Simley 
+681-HS25,09/15/2025,5:15 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,Simley 
+694-HS25,09/18/2025,3:45 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,Hill-Murray 
+695-HS25,09/18/2025,5:15 PM,Mahtomedi High School ,Boys,JV,Mahtomedi ,Hill-Murray 
+696-HS25,09/23/2025,3:45 PM,Mahtomedi High School ,Boys,JV,Mahtomedi ,Two Rivers
+697-HS25,09/23/2025,5:15 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,Two Rivers
+682-HS25,09/26/2025,3:45 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,North St Paul
+683-HS25,09/26/2025,5:15 PM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,North St Paul
+698-HS25,09/30/2025,3:45 PM,Mahtomedi High School ,Boys,JV,Mahtomedi ,South St Paul 
+699-HS25,09/30/2025,5:15 PM,Mahtomedi High School ,Girls,JV,Mahtomedi ,South St Paul 
+395-HS25,09/17/2025,4:00 PM,Two Rivers High School ,Boys,B-Squad,Two Rivers,Tartan `
 		const october = 
 `Game ID,Date,Time,Venue,Gender,Level,Home Team,Away Team
-194-HSG24,10/01/2024,7:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Woodbury
-200-HSB24,10/01/2024,5:00 PM,Forest Lake High School,Boys,Varsity,Forest Lake,Woodbury
-245-HSG24,10/01/2024,5:15 PM,Two Rivers High School,Girls,JV,Two Rivers,Simley
-248-HSB24,10/01/2024,3:45 PM,Two Rivers High School,Boys,JV,Two Rivers,Simley
-373-HSB24,10/01/2024,4:15 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Rosemount
-563-HSB24,10/01/2024,5:15 PM,North St Paul High School,Boys,JV,North St Paul,Hill-Murray
-526-HSB24,10/01/2024,4:15 PM,St Thomas Academy,Boys,JV,St Thomas Academy,Tartan
-599-HSB24,10/01/2024,4:00 PM,White Bear Lake North High School,Boys,JV,White Bear Lake,Stillwater
-600-HSB24,10/01/2024,5:15 PM,White Bear Lake North High School,Girls,JV,White Bear Lake,Stillwater
-236-HSB24,10/02/2024,5:15 PM,Hastings High School,Boys,C-Squad,Hastings,South St Paul
-236-HSG24,10/02/2024,3:45 PM,Hastings High School,Girls,C-Squad,Hastings,South St Paul
-376-HSB24,10/02/2024,7:00 PM,Hill-Murray High School,Boys,B-Squad,Hill-Murray,Hill-Murray
-413-HSB24,10/02/2024,3:45 PM,Simley High School,Boys,C-Squad,Simley,Two Rivers
-414-HSB24,10/02/2024,5:15 PM,Simley High School,Girls,C-Squad,Simley,Two Rivers
-415-HSB24,10/03/2024,3:45 PM,Simley High School,Boys,JV,Simley,Hastings
-416-HSB24,10/03/2024,5:15 PM,Simley High School,Girls,JV,Simley,Hastings
-601-HSB24,10/03/2024,5:15 PM,White Bear Lake North High School,Boys,B-Squad,White Bear Lake,Cretin-Derham Hall
-211-HSG24,10/05/2024,1:00 PM,Forest Lake High School,Girls,Varsity,Forest Lake,Blaine
-215-HSB24,10/05/2024,1:00 PM,South St Paul High School,Girls,JV,South St Paul,Duluth East`
+472-HS25,10/01/2025,4:15 PM,Cretin-Derham Hall ,Boys,Grade 9,Cretin-Derham Hall ,White Bear Lake 
+473-HS25,10/01/2025,4:15 PM,Cretin-Derham Hall ,Girls,Grade 9,Cretin-Derham Hall ,White Bear Lake 
+143-HS25,10/02/2025,3:45 PM,Hastings High School ,Boys,JV,Hastings,Mahtomedi 
+144-HS25,10/02/2025,5:00 PM,Hastings High School ,Boys,Varsity,Hastings,Mahtomedi 
+145-HS25,10/02/2025,5:15 PM,Hastings High School ,Girls,JV,Hastings,Mahtomedi 
+146-HS25,10/02/2025,7:00 PM,Hastings High School ,Girls,Varsity,Hastings,Mahtomedi 
+208-HS25,10/02/2025,3:45 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Como Park 
+209-HS25,10/02/2025,3:45 PM,Hill-Murray High School ,Girls,JV,Hill-Murray ,Tartan 
+210-HS25,10/02/2025,5:00 PM,Hill-Murray High School ,Girls,Varsity,Hill-Murray ,Tartan 
+211-HS25,10/02/2025,5:15 PM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Tartan 
+212-HS25,10/02/2025,7:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Tartan 
+251-HS25,10/02/2025,3:45 PM,North St Paul High School ,Girls,JV,North St Paul,Two Rivers
+252-HS25,10/02/2025,5:15 PM,North St Paul High School ,Boys,JV,North St Paul,Two Rivers
+253-HS25,10/02/2025,5:00 PM,North St Paul High School ,Girls,Varsity,North St Paul,Two Rivers
+254-HS25,10/02/2025,7:00 PM,North St Paul High School ,Boys,Varsity,North St Paul,Two Rivers
+310-HS25,10/02/2025,5:15 PM,Simley High School ,Boys,JV,Simley ,St Thomas Academy
+311-HS25,10/02/2025,7:00 PM,Simley High School ,Boys,Varsity,Simley ,St Thomas Academy
+474-HS25,10/02/2025,4:15 PM,Cretin-Derham Hall ,Boys,JV,Cretin-Derham Hall ,White Bear Lake 
+475-HS25,10/02/2025,4:15 PM,Cretin-Derham Hall ,Girls,JV,Cretin-Derham Hall ,White Bear Lake 
+476-HS25,10/02/2025,5:00 PM,Cretin-Derham Hall ,Girls,Varsity,Cretin-Derham Hall ,White Bear Lake 
+477-HS25,10/02/2025,7:00 PM,Cretin-Derham Hall ,Boys,Varsity,Cretin-Derham Hall ,White Bear Lake 
+493-HS25,10/02/2025,5:00 PM,East Ridge High School ,Girls,Varsity,East Ridge ,Mounds View 
+494-HS25,10/02/2025,7:00 PM,East Ridge High School ,Boys,Varsity,East Ridge ,Mounds View 
+508-HS25,10/02/2025,5:00 PM,Forest Lake High School ,Girls,Varsity,Forest Lake ,Park 
+509-HS25,10/02/2025,7:00 PM,Forest Lake High School ,Boys,Varsity,Forest Lake ,Park 
+562-HS25,10/02/2025,4:15 PM,Edgewood Middle School ,Boys,B-Squad,Irondale ,Roseville
+563-HS25,10/02/2025,4:15 PM,Edgewood Middle School ,Girls,B-Squad,Irondale ,Roseville
+606-HS25,10/02/2025,5:00 PM,Roseville High School ,Girls,Varsity,Roseville,Irondale 
+607-HS25,10/02/2025,7:00 PM,Roseville High School ,Boys,Varsity,Roseville,Irondale 
+618-HS25,10/02/2025,5:00 PM,Stillwater High School ,Girls,Varsity,Stillwater ,Woodbury 
+619-HS25,10/02/2025,7:00 PM,Stillwater High School ,Boys,Varsity,Stillwater ,Woodbury 
+656-HS25,10/02/2025,4:15 PM,White Bear Lake North High School ,Boys,B-Squad,White Bear Lake ,Cretin-Derham Hall 
+657-HS25,10/02/2025,4:15 PM,White Bear Lake North High School ,Girls,B-Squad,White Bear Lake ,Cretin-Derham Hall 
+275-HS25,10/03/2025,4:15 PM,St Thomas Academy ,Boys,C-Squad,St Thomas Academy,Simley 
+420-HS25,10/03/2025,3:45 PM,Two Rivers High School ,Girls,C-Squad,Two Rivers,North St Paul
+421-HS25,10/03/2025,5:15 PM,Two Rivers High School ,Boys,C-Squad,Two Rivers,North St Paul
+147-HS25,10/04/2025,10:00 AM,Hastings High School ,Boys,C-Squad,Hastings,Forest Lake
+148-HS25,10/04/2025,11:30 AM,Hastings High School ,Boys,JV,Hastings,Forest Lake
+149-HS25,10/04/2025,1:00 PM,Hastings High School ,Boys,Varsity,Hastings,Forest Lake
+213-HS25,10/04/2025,10:00 AM,Hill-Murray High School ,Boys,Grade 9,Hill-Murray ,Edina 
+214-HS25,10/04/2025,10:00 AM,Hill-Murray High School ,Boys,JV,Hill-Murray ,Edina 
+215-HS25,10/04/2025,12:00 PM,Hill-Murray High School ,Boys,B-Squad,Hill-Murray ,Edina 
+216-HS25,10/04/2025,12:00 PM,Hill-Murray High School ,Boys,Varsity,Hill-Murray ,Edina 
+230-HS25,10/04/2025,12:00 PM,Mahtomedi High School ,Girls,Varsity,Mahtomedi ,East Ridge 
+276-HS25,10/04/2025,9:00 AM,St Thomas Academy,Boys,C-Squad,St Thomas Academy,Orono
+277-HS25,10/04/2025,9:00 AM,St Thomas Academy,Boys,B-Squad,St Thomas Academy,Orono
+278-HS25,10/04/2025,11:00 AM,St Thomas Academy,Boys,JV,St Thomas Academy,Orono
+279-HS25,10/04/2025,1:00 PM,St Thomas Academy,Boys,Varsity,St Thomas Academy,Orono
+576-HS25,10/04/2025,11:00 AM,Mounds View High School ,Boys,Varsity,Mounds View ,Spring Lake Park 
+577-HS25,10/04/2025,1:00 PM,Mounds View High School ,Girls,Varsity,Mounds View ,Spring Lake Park 
+684-HS25,10/03/2025,3:45 PM,Mahtomedi High School ,Boys,C-Squad,Mahtomedi ,Hastings
+685-HS25,10/03/2025,5:15 PM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,Hastings
+673-HS25,10/04/2025,12:00 PM,Mahtomedi High School ,Girls,B-Squad,Mahtomedi ,East Ridge 
+686-HS25,10/04/2025,10:15 AM,Mahtomedi High School ,Girls,C-Squad,Mahtomedi ,East Ridge 
+700-HS25,10/04/2025,10:15 AM,Mahtomedi High School ,Girls,JV,Mahtomedi ,East Ridge `
 
 		const calendars = {
+			"august": august,
 			"september": september,
 			"october": october,
 		}
-        
+
         function parse_csv(csv) {
             const lines = csv.split("\n");
             const headers = lines[0].split(",");
@@ -470,7 +1008,7 @@
                 calendarData.sort((a, b) => a["Venue"] < b["Venue"] ? 1 : -1);
                 calendarData.sort((a, b) => new Date(a["Date"]) < new Date(b["Date"]) ? 1 : -1);
 
-                const date = new Date(`${key} 1, 2024`);
+                const date = new Date(`${key} 1, 2025`);
 
                 let cards = 0;
                 let totalGames = calendarData.length;
