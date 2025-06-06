@@ -571,7 +571,35 @@
             return data;
         }
 
+        let lastVenueCheckbox = null;
+        let lastVenueCheckboxShifted = false;
         function handleVenueCheckboxChange(evt) {
+
+            if ( evt.shiftKey && lastVenueCheckbox != null && lastVenueCheckbox.parentElement.parentElement.parentElement === evt.target.parentElement.parentElement.parentElement && (lastVenueCheckboxShifted || lastVenueCheckbox.checked === evt.target.checked) ) {
+                const event = new MouseEvent("click", {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true,
+                });
+                let startIndex = [].indexOf.call(evt.target.parentElement.parentElement.parentElement.children, evt.target.parentElement.parentElement)
+                let endIndex = [].indexOf.call(evt.target.parentElement.parentElement.parentElement.children, lastVenueCheckbox.parentElement.parentElement)
+                if ( startIndex > endIndex ) {
+                    let temp = startIndex;
+                    startIndex = endIndex;
+                    endIndex = temp;
+                }
+                for ( let i = startIndex; i <= endIndex; i ++ ) {
+                    let div = evt.target.parentElement.parentElement.parentElement.children[i];
+                    let checkbox = div.getElementsByClassName("venue-checkbox")[0];
+                    if ( ! checkbox ) {
+                        continue;
+                    }
+                    if ( checkbox.checked !== evt.target.checked && checkbox !== evt.target && (lastVenueCheckboxShifted || checkbox !== lastVenueCheckbox)  ) {
+                        checkbox.dispatchEvent( event );
+                    }
+                }
+            }
+
             // check all game checkboxes
             let div = evt.target.parentElement.parentElement;
             let checkboxes = div.getElementsByClassName("card-checkbox");
@@ -583,20 +611,50 @@
                 }
             }
 
-            // permanent check
-            const parent = evt.target.parentElement;
-            const index = [].indexOf.call(parent.childNodes, evt.target);
-            if (evt.target.checked) {
-                evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
+            const selectedGamesEl = evt.target.parentElement.getElementsByClassName("selected-games")[0];
+            if ( evt.target.checked ) {
+                selectedGamesEl.innerText = checkboxes.length;
             } else {
-                evt.target.outerHTML = evt.target.outerHTML.replace(' checked=""', "");
+                selectedGamesEl.innerText = 0;
             }
-            parent.childNodes[index].addEventListener("click", handleVenueCheckboxChange);
 
 
+            if ( evt.isTrusted ) {
+                if ( evt.shiftKey ) {
+                    lastVenueCheckboxShifted = true;
+                } else {
+                    lastVenueCheckboxShifted = false;
+                }
+                lastVenueCheckbox = evt.target;
+            }
         }
 
+        let lastGameCheckbox = null;
+        let lastGameCheckboxShifted = false;
         function handleGameCheckboxChange(evt) {
+
+            if ( evt.shiftKey && lastGameCheckbox != null && lastGameCheckbox.parentElement.parentElement === evt.target.parentElement.parentElement && ( lastGameCheckboxShifted || lastGameCheckbox.checked === evt.target.checked ) ) {
+                const event = new MouseEvent("click", {
+                    view: window,
+                    bubbles: true,
+                    cancelable: true,
+                });
+                let startIndex = [].indexOf.call(evt.target.parentElement.parentElement.children, evt.target.parentElement)
+                let endIndex = [].indexOf.call(evt.target.parentElement.parentElement.children, lastGameCheckbox.parentElement)
+                if ( startIndex > endIndex ) {
+                    let temp = startIndex;
+                    startIndex = endIndex;
+                    endIndex = temp;
+                }
+                for ( let i = startIndex; i <= endIndex; i ++ ) {
+                    let div = evt.target.parentElement.parentElement.children[i];
+                    let checkbox = div.getElementsByClassName("card-checkbox")[0];
+                    if ( checkbox.checked !== evt.target.checked && checkbox !== evt.target && ( lastGameCheckboxShifted || checkbox !== lastGameCheckbox ) ) {
+                        checkbox.dispatchEvent( event );
+                    }
+                }
+            }
+
             const parent = evt.target.parentElement;
             const index = [].indexOf.call(parent.childNodes, evt.target);
             const div = evt.target.parentElement.parentElement.parentElement;
@@ -605,7 +663,6 @@
             const selectedGames = parseInt(selectedGamesEl.innerText);
             const totalGames = parseInt(totalGamesEl.innerText);
             if (evt.target.checked) {
-                evt.target.outerHTML = evt.target.outerHTML.replace(">", " checked>");
                 selectedGamesEl.innerText = selectedGames + 1;
                 if (selectedGames + 1 === totalGames) {
                     let checkbox = div.getElementsByClassName("venue-checkbox")[0];
@@ -613,12 +670,19 @@
                 }
                 
             } else {
-                evt.target.outerHTML = evt.target.outerHTML.replace(' checked=""', "");
                 selectedGamesEl.innerText = selectedGames - 1;
                 let checkbox = div.getElementsByClassName("venue-checkbox")[0];
                 checkbox.checked = false;
             }
-            parent.childNodes[index].addEventListener("change", handleGameCheckboxChange);
+
+            if ( evt.isTrusted ) {
+                if ( evt.shiftKey ) {
+                    lastGameCheckboxShifted = true;
+                } else {
+                    lastGameCheckboxShifted = false;
+                }
+                lastGameCheckbox = evt.target;
+            }
 
         }
 
@@ -686,7 +750,7 @@
             checkbox.id = `availability-${data["Game ID"]}`;
             checkbox.name = data["Game ID"];
             checkbox.className = "card-checkbox";
-            checkbox.addEventListener("change", handleGameCheckboxChange);
+            checkbox.addEventListener("click", handleGameCheckboxChange);
             label.innerText = `${data["Gender"]} ${data["Level"]} ${data["Time"]}`;
             label.htmlFor = checkbox.id;
             label.className = "card-label";
