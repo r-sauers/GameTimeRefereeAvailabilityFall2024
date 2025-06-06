@@ -214,9 +214,9 @@
             <h4 style="margin-top: 0em;">Selecting Games</h4>
             <p>Please select the checkboxes of games you are interested in officiating for each day you are available. (NOTE: You may select more than one location for each day.) Use the "Next" and "Previous" buttons at the bottom of each page to navigate through August, September and October.</p>
             <h4>Sharing Your Selected Games:</h4>
-            <p>After you have selected all games you are requesting, select "Download Availability" at the bottom of the page. Your file will download to your computer's Downloads folder "&lt;your_name&gt;.json". After you have located your file, please email it to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. This is not a file you will be able to open and view, as it is a file for scripting purposes on my end only.</p>
+            <p>After you have selected all games you are requesting, select "Save Availability to File" at the bottom of the page. Your file will download to your computer's Downloads folder "&lt;your_name&gt;.json". After you have located your file, please email it to <a href="mailto:gametimeassigning@gmail.com?subject=Highschool%20Availability">gametimeassigning@gmail.com</a>. This is not a file you will be able to open and view, as it is a file for scripting purposes on my end only.</p>
             <h4>Saving Your Progress</h4>
-            <p>If you are unable to complete your selections in one sitting, you can use the "Download Availability" button to save your progress to a file named "&lt;your_name&gt;.json". To restore your progress, upload the file using the "Restore From File" button.</p>
+            <p>If you are unable to complete your selections in one sitting, you can use the "Save Availability to File" button to save your progress to a file named "&lt;your_name&gt;.json". To restore your progress, upload the file using the "Restore From File" button.</p>
         </div>
         <div id="footer">
             <div id="btn-bin">
@@ -225,7 +225,7 @@
                     <button for="upload-save" class="btn" onclick="triggerRestoreFile()">Restore From File</button>
                     <input style="display: none;" type="file" accept="application/json" id="upload-save" oninput="uploadSaveFile(arguments[0])"/>
                 </div>
-                <a id="availability-btn" class="btn" onclick="downloadAvailability(arguments[0]);" href="#" download="availability.json">Download Availability</a>
+                <a id="availability-btn" class="btn" onclick="downloadAvailability(arguments[0]);" href="#" download="availability.json">Save Availability to File</a>
                 <button id="next-btn" class="btn" onclick="nextPage()">Next</button>
             </div>
         </div>
@@ -904,7 +904,9 @@
                 });
                 const checkbox = document.getElementById(`availability-${game}`);
                 if (checkbox) {
-                    checkbox.dispatchEvent(event);
+                    if (!checkbox.checked) {
+                        checkbox.dispatchEvent(event);
+                    }
                 }
             }
 
