@@ -122,6 +122,7 @@ Primary Options:
     --august <august_file>
     --september <september_file>
     --october <october_file>
+    --any <game_file>
     -excel, -e                      Use this flag to use excel files.
 
 -c, --create-csv <filename>        Create a games csv file from monthly calendar files.
@@ -193,18 +194,22 @@ def parse_time(time):
 
 
 # Generates application game data and copies to clipboard.
-def generate_application_data(data, use_excel, use_months=True):
+def generate_application_data(month_data=None, any_data=None, use_excel=False):
 
     content = ""
     csv_content = ""
 
-    if use_months:
-        months = data
+    months = {}
+    if month_data is not None:
+        months = month_data
 
         for month in months.keys():
             month_file = months[month]
             if use_excel:
-                read_file = pd.read_excel(month_file, converters={"Time": lambda time: parse_time(time)})
+                read_file = pd.read_excel(
+                    month_file,
+                    converters={"Time": lambda time: parse_time(time)}
+                )
                 csv_content = read_file.to_csv(
                     index=False, date_format="%m/%d/%Y")
             else:
@@ -215,19 +220,67 @@ def generate_application_data(data, use_excel, use_months=True):
 
                 csv_lines = csv_content.split('\n')
                 quotes = 0
-                csv_content = ""
+                months[month] = ""
                 for line in csv_lines:
                     quotes += line.count('"')
                     line = line.replace('"', '')
                     if line != "":
                         if (quotes % 2) == 0:
-                            csv_content += line + '\n'
+                            months[month] += line + '\n'
                         else:
-                            csv_content += line
-                content += f"\t\tconst {month} = \n`"
-                content += csv_content
-                content = content[:-1]
-                content += "`\n"
+                            months[month] += line
+
+    if any_data is not None:
+
+        if use_excel:
+            read_file = pd.read_excel(
+                any_data,
+                converters={"Time": lambda time: parse_time(time)}
+            )
+            csv_content = read_file.to_csv(
+                index=False, date_format="%m/%d/%Y")
+        else:
+            with open(any_data, "r") as f:
+                csv_content = f.read()
+
+        if csv_content != "":
+
+            csv_lines = csv_content.split('\n')
+            quotes = 0
+            parsed_line = ""
+            for line in csv_lines[1:]:
+                quotes += line.count('"')
+                line = line.replace('"', '')
+                if line != "":
+                    if (quotes % 2) == 0:
+                        parsed_line = parsed_line + line
+                        month_abbrev = parsed_line.split(",")[1].split("/")[0]
+                        month = ""
+                        if month_abbrev in ["09", "9"]:
+                            month = "september"
+                        elif month_abbrev in ["08", "8"]:
+                            month = "august"
+                        elif month_abbrev in ["10", "10"]:
+                            month = "october"
+                        else:
+                            print("Error: couldn't parse month:")
+                            print(parsed_line.split(",")[1])
+                            parsed_line = ""
+                            continue
+
+                        if month in months:
+                            months[month] += parsed_line + '\n'
+                        else:
+                            months[month] = parsed_line + '\n'
+                        parsed_line = ""
+                    else:
+                        parsed_line += line
+
+    for month in months.keys():
+        content += f"\t\tconst {month} = \n`"
+        content += months[month]
+        content = content[:-1]
+        content += "`\n"
 
     content += "\n\t\tconst calendars = {\n"
     for month in months.keys():
@@ -908,6 +961,7 @@ if __name__ == "__main__":
     elif (command == "-app-data" or command == "--generate-application-data") and len(sys.argv) >= 2:
 
         months = {}
+        any_month = {}
         use_excel = False
 
         if "--excel" in sys.argv:
@@ -924,11 +978,17 @@ if __name__ == "__main__":
 
             if month_flag in ["--august", "--september", "--october"]:
                 months[month_flag[2:]] = month_file
+            elif month_flag == "--any":
+                any_month = month_file
             else:
                 print(
                     f"Unrecognized month flag: {month_flag}", file=sys.stderr)
 
-        if generate_application_data(months, use_excel):
+        if not months:
+            months = None
+        if not any_month:
+            any_month = None
+        if generate_application_data(months, any_month, use_excel):
             print("Successfully copied to clipboard!")
 
     elif (command == "-c" or command == "--create-csv") and len(sys.argv) >= 1:
