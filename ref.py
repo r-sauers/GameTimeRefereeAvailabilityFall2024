@@ -203,6 +203,7 @@ def generate_application_data(month_data=None, any_data=None, use_excel=False):
     if month_data is not None:
         months = month_data
 
+        file_headers = ""
         for month in months.keys():
             month_file = months[month]
             if use_excel:
@@ -210,7 +211,8 @@ def generate_application_data(month_data=None, any_data=None, use_excel=False):
                     month_file,
                     converters={"Time": lambda time: parse_time(time)}
                 )
-                csv_content = read_file.to_csv(
+                file_headers = list(read_file.columns)
+                csv_content = ",".join(file_headers) + "\n" + read_file.to_csv(
                     index=False, date_format="%m/%d/%Y")
             else:
                 with open(month_file, "r") as f:
@@ -237,6 +239,7 @@ def generate_application_data(month_data=None, any_data=None, use_excel=False):
                 any_data,
                 converters={"Time": lambda time: parse_time(time)}
             )
+            file_headers = list(read_file.columns)
             csv_content = read_file.to_csv(
                 index=False, date_format="%m/%d/%Y")
         else:
@@ -271,7 +274,7 @@ def generate_application_data(month_data=None, any_data=None, use_excel=False):
                         if month in months:
                             months[month] += parsed_line + '\n'
                         else:
-                            months[month] = parsed_line + '\n'
+                            months[month] = ",".join(file_headers) + "\n" + parsed_line + '\n'
                         parsed_line = ""
                     else:
                         parsed_line += line
