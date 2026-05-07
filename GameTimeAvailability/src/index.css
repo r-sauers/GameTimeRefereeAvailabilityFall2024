@@ -1,0 +1,241 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --color-bg: #1a1b2e;
+  --color-card: rgba(255,255,255,0.08);
+  --color-primary: #f0f0f0;
+  --color-accent: hsl(210,80%,55%);
+  --gradient-bg: linear-gradient(135deg, #2b2d44, #1a1b2e);
+}
+
+/* Global reset and smooth transitions */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--gradient-bg);
+  color: var(--color-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glass‑morphism card */
+.card {
+  background: var(--color-card);
+  backdrop-filter: blur(12px);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.btn {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.btn:hover { background: hsl(210,80%,62%); }
+
+input, select, textarea {
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+
+/* Mobile Responsiveness & Scrolling */
+.referee-page {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.referee-page header, 
+.referee-page section > h2, 
+.referee-page section > p {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.referee-calendar-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y; /* Allow diagonal scrolling gestures */
+}
+
+.referee-calendar-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.referee-calendar-wrapper::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+.referee-calendar-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+/* New Referee Calendar Styles */
+.month-section {
+  margin-bottom: 4rem;
+}
+.month-title {
+  padding: 0 2rem;
+}
+.calendar-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+  min-width: 1400px;
+}
+.calendar-header {
+  text-align: center;
+  font-family: "Audiowide", sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+.calendar-cards {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  min-width: 1400px;
+}
+.calendar-card {
+  padding: 0.5rem;
+  background: var(--color-card);
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.calendar-date {
+  font-family: "Audiowide", sans-serif;
+  font-size: 2rem;
+  color: rgba(255,255,255,0.05);
+  position: absolute;
+  bottom: 0.1rem;
+  left: 0.3rem;
+  pointer-events: none;
+}
+.venue-group {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+.venue-header {
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+  color: #fff;
+}
+.venue-header:hover {
+  color: var(--color-accent);
+}
+.venue-header::after {
+  content: "▸";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+  display: inline-block;
+  margin-left: 4px;
+  opacity: 0.5;
+}
+.venue-group:not(.closed) .venue-header::after {
+  transform: rotate(90deg);
+}
+.venue-games {
+  margin-left: 1.2rem;
+  list-style: none;
+  padding: 0;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  margin-top: 4px;
+}
+.venue-group.closed .venue-games {
+  display: none;
+}
+.game-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+}
+.game-label {
+  font-weight: 400;
+  opacity: 0.8;
+  color: #d1d1d1;
+}
+.game-checkbox, .venue-checkbox {
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+.game-ratio {
+  font-weight: normal;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-left: 2px;
+}
+
+.month-title {
+  text-align: center;
+  font-family: "Audiowide", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.venue-header-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+.calendar-card.empty {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.1);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: #1a1b2e;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+}
