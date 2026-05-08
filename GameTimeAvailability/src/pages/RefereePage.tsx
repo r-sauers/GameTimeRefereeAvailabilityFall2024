@@ -55,13 +55,15 @@ export default function RefereePage() {
     return (
         <div className="referee-page">
             <header style={{ display: "flex", justifyContent: "space-between" }}>
-                <h1>⚽ Game Time – Referee Dashboard</h1>
+                <h1 className="text-xl font-bold">⚽ Game Time – Referee Availabiity
+                    <span className="text-base font-normal opacity-70 ms-2">(2026 Suburban East &amp; Metro East Conferences)</span>
+                </h1>
                 <button className="btn" onClick={signOutUser}>Logout</button>
             </header>
 
             <section>
                 <h2>Hello, {user?.displayName || referee?.name || "Referee"}!</h2>
-                <p>Select the games you’re willing to officiate.</p>
+                <p className="mb-4">Please select the games you’d like to officiate this highschool season. Your availability will only be visible to Todd and Carole.</p>
                 <GameCalendar
                     games={games}
                     selectedIds={selected ?? []}

@@ -51,7 +51,11 @@ const CalendarCell = memo(({ dayNumber, venues, selectedIds, onToggle, onBatchTo
                                     onClick={() => toggleVenue(venueName)}
                                 >
                                     {venueName}
-                                    <span className="game-ratio">({selectedInVenue}/{venueGames.length})</span>
+                                    {selectedInVenue > 1 ? (
+                                        <span className="game-ratio">(<span className="game-ratio-highlight">{selectedInVenue}/{venueGames.length}</span>)</span>
+                                    ) : (
+                                        <span className="game-ratio">(<span>{selectedInVenue}/{venueGames.length}</span>)</span>
+                                    )}
                                 </div>
                             </div>
                             <ul className="venue-games">
