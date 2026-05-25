@@ -1,5 +1,5 @@
 // src/components/admin/AdminCalendar.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 import type { Game } from "../../types";
@@ -25,53 +25,111 @@ export default function AdminCalendar() {
         setShowModal(true);
     };
 
-    const months = ["August", "September", "October"];
-    const year = getYear(new Date());
+    const uniqueMonths = useMemo(() => {
+        if (games.length === 0) {
+            const currentYear = getYear(new Date());
+            return ["August", "September", "October"].map(name => {
+                return startOfMonth(new Date(`${name} 1, ${currentYear}`));
+            });
+        }
 
-    const calendarData = months.map(monthName => {
-        const firstDay = startOfMonth(new Date(`${monthName} 1, ${year}`));
+        const monthsMap: Record<string, Date> = {};
+        games.forEach(g => {
+            try {
+                const date = parse(g.date, "MM/dd/yyyy", new Date());
+                const start = startOfMonth(date);
+                monthsMap[start.toISOString()] = start;
+            } catch (e) {
+                // ignore parsing errors
+            }
+        });
+
+        const sorted = Object.values(monthsMap).sort((a, b) => a.getTime() - b.getTime());
+        return sorted;
+    }, [games]);
+
+    const [currentMonthIndex, setCurrentMonthIndex] = useState(0);
+
+    // Keep state within bounds if uniqueMonths changes
+    useEffect(() => {
+        if (currentMonthIndex >= uniqueMonths.length) {
+            setCurrentMonthIndex(Math.max(0, uniqueMonths.length - 1));
+        }
+    }, [uniqueMonths, currentMonthIndex]);
+
+    const activeMonthDate = uniqueMonths[currentMonthIndex] || new Date();
+
+    const activeMonthData = useMemo(() => {
+        const firstDay = startOfMonth(activeMonthDate);
         const lastDay = endOfMonth(firstDay);
         const daysInMonth = eachDayOfInterval({ start: firstDay, end: lastDay });
         const padding = Array.from({ length: getDay(firstDay) });
 
+        const days = daysInMonth.map(date => {
+            const dayGames = games.filter(g => {
+                try {
+                    const gDate = parse(g.date, "MM/dd/yyyy", new Date());
+                    return isSameDay(gDate, date);
+                } catch {
+                    return false;
+                }
+            });
+            return {
+                date,
+                dayNumber: date.getDate(),
+                games: dayGames
+            };
+        });
+
         return {
-            name: monthName,
+            name: activeMonthDate.toLocaleString('en-US', { month: 'long', year: 'numeric' }),
             padding,
-            days: daysInMonth.map(date => {
-                const dayGames = games.filter(g => {
-                    try {
-                        const gDate = parse(g.date, "MM/dd/yyyy", new Date());
-                        return isSameDay(gDate, date);
-                    } catch {
-                        return false;
-                    }
-                });
-                return {
-                    date,
-                    dayNumber: date.getDate(),
-                    games: dayGames
-                };
-            })
+            days
         };
-    });
+    }, [games, activeMonthDate]);
+
+    const handlePrevMonth = () => {
+        setCurrentMonthIndex(prev => Math.max(0, prev - 1));
+    };
+
+    const handleNextMonth = () => {
+        setCurrentMonthIndex(prev => Math.min(uniqueMonths.length - 1, prev + 1));
+    };
 
     return (
         <div className="referee-calendar-wrapper">
-            <h3 style={{ padding: "0 2rem", marginBottom: "2rem" }}>Admin Calendar Overview</h3>
+            <h3 style={{ padding: "0 2rem", marginBottom: "1rem" }}>Admin Calendar Overview</h3>
             
-            {calendarData.map(month => (
-                <section key={month.name} className="month-section">
-                    <h2 className="month-title">{month.name}</h2>
+            <div className="calendar-navigation-header">
+                <button 
+                    className="nav-btn prev-btn" 
+                    onClick={handlePrevMonth}
+                    disabled={currentMonthIndex <= 0}
+                >
+                    &larr; Prev
+                </button>
+                <h2 className="month-title">{activeMonthData.name}</h2>
+                <button 
+                    className="nav-btn next-btn" 
+                    onClick={handleNextMonth}
+                    disabled={currentMonthIndex >= uniqueMonths.length - 1}
+                >
+                    Next &rarr;
+                </button>
+            </div>
+
+            <section className="month-section">
+                <div className="calendar-scroll-container">
                     <div className="calendar-headers">
                         {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(d => (
                             <div key={d} className="calendar-header">{d}</div>
                         ))}
                     </div>
                     <div className="calendar-cards">
-                        {month.padding.map((_, i) => (
+                        {activeMonthData.padding.map((_, i) => (
                             <div key={`pad-${i}`} className="calendar-card empty"></div>
                         ))}
-                        {month.days.map(day => (
+                        {activeMonthData.days.map(day => (
                             <div 
                                 key={day.date.toISOString()} 
                                 className="calendar-card" 
@@ -114,8 +172,8 @@ export default function AdminCalendar() {
                             </div>
                         ))}
                     </div>
-                </section>
-            ))}
+                </div>
+            </section>
 
             {showModal && selectedDay && (
                 <DayModal
