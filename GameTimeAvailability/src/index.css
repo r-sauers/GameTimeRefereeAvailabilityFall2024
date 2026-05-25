@@ -340,7 +340,8 @@ input, select, textarea {
 .calendar-scroll-indicator-text-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12px;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 600;
@@ -348,7 +349,6 @@ input, select, textarea {
 
 .calendar-scroll-indicator-text {
   text-align: center;
-  flex: 1;
   font-family: 'Inter', sans-serif;
   letter-spacing: 0.75px;
   text-transform: uppercase;
@@ -388,11 +388,11 @@ input, select, textarea {
 }
 
 .scroll-indicator-arrow.left-arrow {
-  margin-right: 8px;
+  margin-right: 0;
 }
 
 .scroll-indicator-arrow.right-arrow {
-  margin-left: 8px;
+  margin-left: 0;
 }
 
 .calendar-scroll-indicator-bar-container {
