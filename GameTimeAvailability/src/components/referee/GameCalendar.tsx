@@ -1,5 +1,5 @@
 // src/components/referee/GameCalendar.tsx
-import { useState, memo, useMemo, useEffect } from "react";
+import { useState, memo, useMemo, useEffect, useRef } from "react";
 import type { Game } from "../../types";
 import { startOfMonth, getDay, eachDayOfInterval, endOfMonth, parse, isSameDay, getYear } from "date-fns";
 
@@ -127,6 +127,9 @@ export default function GameCalendar({ games, selectedIds, onToggle, onBatchTogg
     }, [games]);
 
     const [currentMonthIndex, setCurrentMonthIndex] = useState(0);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [isScrollable, setIsScrollable] = useState(false);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     // Keep state within bounds if uniqueMonths changes
     useEffect(() => {
@@ -173,6 +176,45 @@ export default function GameCalendar({ games, selectedIds, onToggle, onBatchTogg
         };
     }, [games, activeMonthDate]);
 
+    const updateScrollStatus = () => {
+        const el = scrollContainerRef.current;
+        if (el) {
+            const { scrollLeft, scrollWidth, clientWidth } = el;
+            const totalScrollable = scrollWidth - clientWidth;
+            setIsScrollable(totalScrollable > 0);
+            if (totalScrollable > 0) {
+                setScrollProgress((scrollLeft / totalScrollable) * 100);
+            } else {
+                setScrollProgress(0);
+            }
+        }
+    };
+
+    const handleScroll = () => {
+        updateScrollStatus();
+    };
+
+    const scrollContainer = (direction: "left" | "right") => {
+        const el = scrollContainerRef.current;
+        if (el) {
+            const amount = el.clientWidth * 0.65; // Scroll about 65% of screen width for smooth navigation
+            el.scrollBy({
+                left: direction === "left" ? -amount : amount,
+                behavior: "smooth"
+            });
+        }
+    };
+
+    useEffect(() => {
+        // Wait a tick for the DOM to render and calculate correct scrollWidth
+        const timer = setTimeout(updateScrollStatus, 50);
+        window.addEventListener("resize", updateScrollStatus);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", updateScrollStatus);
+        };
+    }, [activeMonthData]);
+
     const handlePrevMonth = () => {
         setCurrentMonthIndex(prev => Math.max(0, prev - 1));
     };
@@ -202,7 +244,43 @@ export default function GameCalendar({ games, selectedIds, onToggle, onBatchTogg
             </div>
             
             <section className="month-section">
-                <div className="calendar-scroll-container">
+                {isScrollable && (
+                    <div className="calendar-scroll-indicator-wrapper">
+                        <div className="calendar-scroll-indicator-text-container">
+                            <button 
+                                className="scroll-indicator-arrow left-arrow"
+                                onClick={() => scrollContainer("left")}
+                                disabled={scrollProgress <= 1}
+                                aria-label="Scroll calendar left"
+                            >
+                                &larr;
+                            </button>
+                            <span className="calendar-scroll-indicator-text">
+                                Swipe or scroll horizontally to view the full calendar
+                            </span>
+                            <button 
+                                className="scroll-indicator-arrow right-arrow"
+                                onClick={() => scrollContainer("right")}
+                                disabled={scrollProgress >= 99}
+                                aria-label="Scroll calendar right"
+                            >
+                                &rarr;
+                            </button>
+                        </div>
+                        <div className="calendar-scroll-indicator-bar-container">
+                            <div 
+                                className="calendar-scroll-indicator-bar-fill" 
+                                style={{ width: `${scrollProgress}%` }}
+                            />
+                        </div>
+                    </div>
+                )}
+
+                <div 
+                    className="calendar-scroll-container"
+                    ref={scrollContainerRef}
+                    onScroll={handleScroll}
+                >
                     <div className="calendar-headers">
                         {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(d => (
                             <div key={d} className="calendar-header">{d}</div>
@@ -222,6 +300,11 @@ export default function GameCalendar({ games, selectedIds, onToggle, onBatchTogg
                                 onToggle={onToggle}
                                 onBatchToggle={onBatchToggle}
                             />
+                        ))}
+                    </div>
+                    <div className="calendar-headers calendar-headers-bottom">
+                        {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(d => (
+                            <div key={`${d}-bottom`} className="calendar-header">{d}</div>
                         ))}
                     </div>
                 </div>
