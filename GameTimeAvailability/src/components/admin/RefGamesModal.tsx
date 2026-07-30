@@ -24,10 +24,11 @@ export default function RefGamesModal({ referee, onClose }: Props) {
             i += 30;
         }
         Promise.all(promises).then((reqs) => {
-            let games = [] as Game[];
+            const games = [] as Game[];
             for (const r of reqs) {
-                console.log(r.docs);
-                games = games.concat(r.docs as unknown as Game[]);
+                r.forEach((gdoc) => {
+                    games.push(gdoc.data() as unknown as Game);
+                });
             }
             games.sort((a, b) =>
                        new Date(a.date + " " + a.time).valueOf()
