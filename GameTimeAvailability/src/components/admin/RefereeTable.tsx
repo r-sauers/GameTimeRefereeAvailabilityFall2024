@@ -28,32 +28,34 @@ export default function RefereeTable() {
     if (loading) return <div>Loading referees…</div>;
 
     return (
-        <div className="card" style={{ overflowX: "auto" }}>
-            <h3>All Referees</h3>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                <thead>
-                    <tr>
-                        <th>Name</th><th># of requests</th><th>View Requests</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {refs.map((r) => (
-                        <tr key={r.email}>
-                            <td>{r.name}</td>
-                            <td>{r.availableFor.length}</td>
-                            <td>
-                                <button className="btn" onClick={() => viewGames(r)}>View Games</button>
-                            </td>
+        <>
+            <div className="card" style={{ overflowX: "auto", overflowY: "scroll", maxHeight: "80vh" }}>
+                <h3>All Referees</h3>
+                <table className="reftable" style={{ borderCollapse: "collapse" }}>
+                    <thead>
+                        <tr>
+                            <th>Name</th><th># of requests</th><th>View Requests</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {refs.map((r) => (
+                            <tr key={r.email}>
+                                <td>{r.name}</td>
+                                <td>{r.availableFor.length}</td>
+                                <td>
+                                    <button className="btn" onClick={() => viewGames(r)}>View Games</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             {selectedRef && (
                 <RefGamesModal
                     referee={selectedRef}
                     onClose={() => setRef(null)}
                 />
             )}
-        </div>
+        </>
     );
 }

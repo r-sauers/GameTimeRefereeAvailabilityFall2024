@@ -422,3 +422,17 @@ input, select, textarea {
     transform: scale(1.2);
   }
 }
+
+.reftable th {
+  text-align: left;
+  background-color: #2c2e3e;
+}
+
+.reftable th, .reftable td {
+  border: 1px solid #6b6f8c;
+  padding-inline: 1em;
+}
+
+.reftable tr:nth-child(2n) td {
+	background-color: #5c5f78;
+}

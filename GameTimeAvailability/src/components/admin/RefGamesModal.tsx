@@ -16,9 +16,18 @@ export default function RefGamesModal({ referee, onClose }: Props) {
 
     useEffect(() => {
         const gamesCol = collection(db, "games");
-        const q = query(gamesCol, where("gameId", "in", referee.availableFor));
-        getDocs(q).then((g) => {
-            const games = g.docs as unknown as Game[];
+        let i = 0;
+        const promises = [];
+        while (i < referee.availableFor.length) {
+            const q = query(gamesCol, where("gameId", "in", referee.availableFor.slice(i, i + 30)));
+            promises.push(getDocs(q));
+            i += 30;
+        }
+        Promise.all(promises).then((reqs) => {
+            const games = [] as Game[];
+            for (const r of reqs) {
+                games.concat(r.docs as unknown as Game[]);
+            }
             games.sort((a, b) =>
                        new Date(a.date + " " + a.time).valueOf()
                        - new Date(b.date + " " + b.time).valueOf())
