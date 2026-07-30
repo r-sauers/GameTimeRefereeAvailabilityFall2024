@@ -24,9 +24,9 @@ export default function RefGamesModal({ referee, onClose }: Props) {
             i += 30;
         }
         Promise.all(promises).then((reqs) => {
-            const games = [] as Game[];
+            let games = [] as Game[];
             for (const r of reqs) {
-                games.concat(r.docs as unknown as Game[]);
+                games = games.concat(r.docs as unknown as Game[]);
             }
             games.sort((a, b) =>
                        new Date(a.date + " " + a.time).valueOf()
