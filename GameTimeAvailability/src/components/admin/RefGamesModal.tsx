@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import type { Game, RefereeDoc } from "../../types";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 
 interface Props {
     referee: RefereeDoc;
@@ -30,7 +30,8 @@ export default function RefGamesModal({ referee, onClose }: Props) {
             }
             games.sort((a, b) =>
                        new Date(a.date + " " + a.time).valueOf()
-                       - new Date(b.date + " " + b.time).valueOf())
+                       - new Date(b.date + " " + b.time).valueOf());
+            console.log("sorted");
             setGames(games);
             setLoading(false);
         });
@@ -65,7 +66,7 @@ export default function RefGamesModal({ referee, onClose }: Props) {
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                                     <div>
                                         <h4 style={{ marginBottom: "0.5rem" }}>
-                                            {format(new Date(g.date), "EEEE, MMMM d, yyyy")} {g.time} - {g.venue}
+                                            {format( parse(g.date, "MM/dd/yyyy", new Date()), "EEEE, MMMM d, yyyy")} {g.time} - {g.venue}
                                             {g.listed === false && <span style={{ color: "#ff4444", fontSize: "0.7rem", marginLeft: "8px" }}>(Unlisted)</span>}
                                         </h4>
                                         <p style={{ marginBottom: "0.5rem", opacity: 0.9 }}>{g.gender} {g.level} | {g.homeTeam} vs {g.awayTeam}</p>
