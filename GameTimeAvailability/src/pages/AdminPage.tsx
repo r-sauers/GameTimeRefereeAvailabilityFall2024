@@ -3,9 +3,10 @@ import { useState } from "react";
 import FileUpload from "../components/admin/FileUpload";
 import GameTable from "../components/admin/GameTable";
 import AdminCalendar from "../components/admin/AdminCalendar";
+import RefereeTable from "../components/admin/RefereeTable";
 
 export default function AdminPage() {
-    const [tab, setTab] = useState<"upload" | "games" | "calendar">("upload");
+    const [tab, setTab] = useState<"upload" | "games" | "calendar" | "referees">("upload");
     return (
         <div style={{ padding: "2rem" }}>
             <header style={{ display: "flex", justifyContent: "space-between" }}>
@@ -13,7 +14,7 @@ export default function AdminPage() {
             </header>
 
             <nav style={{ marginBottom: "1rem" }}>
-                {["upload", "games", "calendar"].map((t) => (
+                {["upload", "games", "calendar", "referees"].map((t) => (
                     <button
                         key={t}
                         className="btn"
@@ -31,6 +32,7 @@ export default function AdminPage() {
             {tab === "upload" && <FileUpload />}
             {tab === "games" && <GameTable />}
             {tab === "calendar" && <AdminCalendar />}
+            {tab === "referees" && <RefereeTable />}
         </div>
     );
 }
