@@ -29,9 +29,17 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(auth.currentUser);
+  const [loading, setLoading] = useState(!auth.currentUser);
   const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      getDoc(doc(db, "admins", auth.currentUser.uid)).then((adminSnap) => {
+        setIsAdmin(adminSnap.exists());
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (u) => {
